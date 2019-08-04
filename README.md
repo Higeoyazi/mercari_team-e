@@ -37,7 +37,7 @@
 
 
 
-## adresses table
+## addresses table
 
 |Column|Type|Options|
 |------|----|-------|
