@@ -3,8 +3,8 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|integer|null: false|
-|email|integer|null: false|
-|tel|integer|null: false|
+|email|integer|null: false, unique: true|
+|tel|integer|null: false, unique: true|
 |street_adress|string|null: false, foreign_key: true|
 |credit_number|integer|null: false, foreign_key: true|
 |birthday|integer|null: false|
@@ -14,7 +14,7 @@
 - has_many :products
 - has_many :comments
 - has_one :profile, dependent: :destroy
-- has_one :address, dependent: :destroy
+- has_one :street_address, dependent: :destroy
 - has_many :credit_cards, dependent: :destroy
 
 
@@ -23,6 +23,13 @@
 ## profiles table
 |Column|Type|Options|
 |------|----|-------|
+|profile|text|-------|
+|family_name|string|null: false|
+|first_name|string|null: false|
+|family_name_kana|string|null: false|
+|first_name_kana|string|null: false|
+|phone_number|string|null: false, unique: true|
+|user|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -62,6 +69,8 @@
 ##orders
 |Column|Type|Options|
 |------|----|-------|
+|user|references|foreign_key: true|
+|product|references|foreign_key: true|
 ### Association
 - belongs_to :user
 - belongs_to :products
