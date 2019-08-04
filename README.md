@@ -6,6 +6,7 @@
 |email|string|null: false, unique: true|
 |password|string|null: false, unique: true|
 |birthday|integer|null: false|
+|avatar|string||
 
 ### Association
 - has_one_attached :avatar
