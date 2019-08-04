@@ -1,4 +1,4 @@
-## user table
+## users table
 
 |Column|Type|Options|
 |------|----|-------|
@@ -10,10 +10,23 @@
 |birthday|integer|null: false|
 
 ### Association
-- belongs_to :street_adress
-- belongs_to :credit
+- has_many :orders
 - has_many :products
 - has_many :comments
+- has_one :profile, dependent: :destroy
+- has_one :address, dependent: :destroy
+- has_many :credit_cards, dependent: :destroy
+
+
+
+
+## profiles table
+|Column|Type|Options|
+|------|----|-------|
+
+### Association
+- belongs_to :user
+
 
 
 
@@ -30,7 +43,9 @@
 - belongs_to :user
 
 
-## credit table
+
+
+## credit_cards table
 
 |Column|Type|Options|
 |------|----|-------|
@@ -42,7 +57,18 @@
 - belongs_to :user
 
 
-## product table
+
+
+##orders
+|Column|Type|Options|
+|------|----|-------|
+### Association
+- belongs_to :user
+- belongs_to :products
+
+
+
+## products table
 
 |Column|Type|Options|
 |------|----|-------|
@@ -52,16 +78,28 @@
 |shipping_origin|string|null: false|
 |listing_status|string|null: false|
 |description|text|null: false|
-|image|text|null: false|
 |user_id|references: user|foreign_key: true|
 |category_id|references: category|foreign_key: true|
 
 ### Association
 - belongs_to :user
-- has_many :categorys, through: :items
+- has_one :order
+- has_many :comments, dependent: :destroy
+- has_many :images, dependent: :destroy
+- has_many :categories, through: :items
 
 
-## category table
+
+
+## products_images table
+|Column|Type|Options|
+|------|----|-------|
+### Association
+- belongs_to :products
+
+
+
+## categories table
 
 |Column|Type|Options|
 |------|----|-------|
@@ -77,6 +115,7 @@
 
 
 
+
 ## items table
 |Column|Type|Options|
 |------|----|-------|
@@ -84,12 +123,13 @@
 |category_id|references: category|foreign_key: true|
 
 ### Association
-- belongs_to :product
+- belongs_to :products
 - belongs_to :category
 
 
 
-## comment table
+
+## comments table
 |Column|Type|Options|
 |------|----|-------|
 |user_id|references: user|foreign_key: true|
@@ -98,3 +138,4 @@
 
 ### Association
 - belongs_to :user
+- belongs_to :product
