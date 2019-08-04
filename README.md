@@ -6,6 +6,7 @@
 |email|string|null: false, unique: true|
 |password|string|null: false, unique: true|
 |birthday|integer|null: false|
+|avatar|string||
 
 ### Association
 - has_one_attached :avatar
@@ -36,7 +37,7 @@
 
 
 
-## adresses table
+## addresses table
 
 |Column|Type|Options|
 |------|----|-------|
@@ -90,14 +91,14 @@
 |delivery_origin|string|null: false|
 |delivery_status|integer|default: 0|
 |user|references|null: false,foreign_key: true|
-|category|references|null: false,foreign_key: true|
+
 
 ### Association
 - belongs_to :user
 - has_one :order
 - has_many :comments, dependent: :destroy
 - has_many :images, dependent: :destroy
-- has_many :categories, through: :items
+- has_many :category_genres, through: :categories
 
 ## index
 - add_index products, :name
@@ -123,6 +124,7 @@
 |name|string|null: false|
 
 ### Association
+- has_many :categories
 - has_many :products, through: :categories
 
 
