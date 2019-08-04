@@ -80,8 +80,8 @@
 |quality|integer|null: false|
 |delivery_origin|string|null: false|
 |delivery_status|integer|default: 0|
-|user|references: user|null: false,foreign_key: true|
-|category|references: category|null: false,foreign_key: true|
+|user|references|null: false,foreign_key: true|
+|category|references|null: false,foreign_key: true|
 
 ### Association
 - belongs_to :user
