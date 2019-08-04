@@ -30,7 +30,7 @@
 
 
 
-## street_adress table
+## street_adresses table
 
 |Column|Type|Options|
 |------|----|-------|
@@ -73,13 +73,15 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|price|integer|null: false|
-|quality|string|null: false|
-|shipping_origin|string|null: false|
-|listing_status|string|null: false|
 |description|text|null: false|
-|user_id|references: user|foreign_key: true|
-|category_id|references: category|foreign_key: true|
+|price|integer|null: false|
+|size|integer|null: false|
+|brand_name|string|null: false|
+|quality|integer|null: false|
+|delivery_origin|string|null: false|
+|delivery_status|integer|default: 0|
+|user|references: user|null: false,foreign_key: true|
+|category|references: category|null: false,foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -88,39 +90,40 @@
 - has_many :images, dependent: :destroy
 - has_many :categories, through: :items
 
+## index
+- add_index products, :name
 
 
 
 ## products_images table
 |Column|Type|Options|
 |------|----|-------|
+|image_url|string|null: false|
+|product|references|null: false,foreign_key: true|
+
+
 ### Association
-- belongs_to :products
+- belongs_to :product
+
+
+
+
+## category_genres table
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+
+### Association
+- has_many :products, through: :categories
+
 
 
 
 ## categories table
-
 |Column|Type|Options|
 |------|----|-------|
-|lady|references: product|foreign_key: true|
-|man|references: product|foreign_key: true|
-|kids|references: product|foreign_key: true|
-|daily|references: product|foreign_key: true|
-|enterme|references: product|foreign_key: true|
-|other|references: product|foreign_key: true|
-
-### Association
-- has_many :products, through: :items
-
-
-
-
-## items table
-|Column|Type|Options|
-|------|----|-------|
-|product_id|references: product|foreign_key: true|
-|category_id|references: category|foreign_key: true|
+|product|references|null: false,foreign_key: true|
+|category_genre|references|null: false,foreign_key: true|
 
 ### Association
 - belongs_to :products
@@ -132,9 +135,9 @@
 ## comments table
 |Column|Type|Options|
 |------|----|-------|
-|user_id|references: user|foreign_key: true|
-|product_id|references: product|foreign_key: true|
 |text|text|null: false|
+|user|references|null: false,foreign_key: true|
+|product|references|null: false,foreign_key: true|
 
 ### Association
 - belongs_to :user
