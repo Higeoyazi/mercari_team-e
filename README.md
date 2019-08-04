@@ -2,19 +2,18 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|name|integer|null: false|
-|email|integer|null: false, unique: true|
-|tel|integer|null: false, unique: true|
-|street_adress|string|null: false, foreign_key: true|
-|credit_number|integer|null: false, foreign_key: true|
+|nickname|string|null: false, unique: true|
+|email|string|null: false, unique: true|
+|password|string|null: false, unique: true|
 |birthday|integer|null: false|
 
 ### Association
+- has_one_attached :avatar
 - has_many :orders
 - has_many :products
 - has_many :comments
 - has_one :profile, dependent: :destroy
-- has_one :street_address, dependent: :destroy
+- has_one :address, dependent: :destroy
 - has_many :credit_cards, dependent: :destroy
 
 
@@ -23,7 +22,7 @@
 ## profiles table
 |Column|Type|Options|
 |------|----|-------|
-|profile|text|-------|
+|profile|text||
 |family_name|string|null: false|
 |first_name|string|null: false|
 |family_name_kana|string|null: false|
@@ -37,14 +36,15 @@
 
 
 
-## street_adresses table
+## adresses table
 
 |Column|Type|Options|
 |------|----|-------|
 |prefecture|string|null: false|
 |city|string|null: false|
-|adress|integer|null: false|
+|block|string|null: false|
 |building|string|null: false|
+|user|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -59,21 +59,21 @@
 |number|integer|null: false, unique: true|
 |expiration_date|integer|null: false|
 |security_code|integer|null: false, unique: true|
-
+|user|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
 
 
 
 
-##orders
+## Orders table
 |Column|Type|Options|
 |------|----|-------|
-|user|references|foreign_key: true|
-|product|references|foreign_key: true|
+|user|references|null: false, foreign_key: true|
+|product|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
-- belongs_to :products
+- belongs_to :product
 
 
 
@@ -81,7 +81,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false|
+|name|string|null: false, index: true|
 |description|text|null: false|
 |price|integer|null: false|
 |size|integer|null: false|
@@ -151,3 +151,10 @@
 ### Association
 - belongs_to :user
 - belongs_to :product
+
+
+
+## enum
+- enum products, :size
+- enum products, :quality
+- enum products, :delivery_status
