@@ -5,15 +5,13 @@
       %p.app-lower-baner__content__inner__text 今すぐ無料ダウンロード
       %ul.middle
         %li
-          %img{src: "//www-mercari-jp.akamaized.net/assets/img/common/common/mercari_icon.png?206587138", width: "70"}
+          = image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/mercari_icon.png?206587138", width: "70"
         %li
-          %a{href:"https://itunes.apple.com/jp/app/id667861049?l=ja&amp;mt=8",target:"_blank"}
-            %img{src: "//www-mercari-jp.akamaized.net/assets/img/common/common/app-store.svg?206587138", width: "135",height:"40"}
+          = link_to image_tag("//www-mercari-jp.akamaized.net/assets/img/common/common/app-store.svg?206587138", size: "135x40"), "https://itunes.apple.com/jp/app/id667861049?l=ja&amp;mt=8",target: "_blank"
         %li
-          %a{href:"https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja",target: "_blank"}
-            %img{alt: "", height: "40",src: "//www-mercari-jp.akamaized.net/assets/img/common/common/google-play.svg?206587138", width:"135"}
+          = link_to image_tag("//www-mercari-jp.akamaized.net/assets/img/common/common/google-play.svg?206587138", size: "135x40"), "https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja",target: "_blank"
     .app-lower-baner__content__app
-      %img{alt: "",src: "//www-mercari-jp.akamaized.net/assets/img/common/jp/download_content_pc.png?206587138",id:"sp",height: "260px"}
+      = image_tag "//www-mercari-jp.akamaized.net/assets/img/common/jp/download_content_pc.png?206587138",id:"sp",height: "260px"
 .footer
   .footer__content
     .footer__content__box
