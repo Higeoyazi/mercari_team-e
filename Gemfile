@@ -79,3 +79,7 @@ gem 'fog-aws'
 gem 'mini_magick','~> 4.9.4'
 gem 'rails-i18n'
 gem 'pry-rails'
+
+gem "omniauth-rails_csrf_protection"
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
