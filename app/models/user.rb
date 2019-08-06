@@ -13,4 +13,9 @@ class User < ApplicationRecord
   has_many :orders
   has_many :products
   has_many :comments
+
+  # Validation
+  validates :nickname, presence: true
+  validates :birthday, presence: true, length: { is: 8 }
+
 end
