@@ -1,0 +1,113 @@
+.header{
+  width: 100vw;
+  height: 100px;
+  .inner{
+    width: 1020px;
+    margin: 0 210px;
+    .upper{
+      height: 40px;
+      margin-top: 10px;
+      display: flex;
+      &__left{
+        height: 40px;
+        box-sizing: border-box;
+        &__title{
+
+        }
+      }
+      &__right{
+        position: relative;
+        background: #f5f5f5;
+        height: 42px;
+        width: 100%;
+        margin-left: 40px;
+        box-sizing: border-box;
+        border-radius:4px;
+        display: flex;
+        border: 1px solid #ccc;
+        .form{
+          position: absolute;
+          left:0;
+          top:0;
+          background:#f5f5f5;
+          border: none ;
+          box-sizing: border-box;
+          font-size: 16px;
+          color: #434a54;
+          height: 36px;
+          width: 841px;
+          padding-left: 10px;
+          padding-right: 42px;
+          border-radius: 4px;
+        }
+        .mask{
+          background:none;
+          border-radius:10px;
+          position: absolute;
+          top: 0;
+          right: 0;
+          display: flex;
+          -webkit-box-align: center;
+          align-products: center;
+          justify-content: center;
+          -webkit-box-pack: center;
+          width: 40px;
+          height: 40px;
+          cursor: pointer;
+          border: none;
+          font-size: 15px;
+          font-family: "icon-font";
+          &__search{
+            box-sizing: inherit;
+          }
+        }
+      }
+    }
+    .lower{
+      height: 46px;
+      box-sizing: border-box;
+      &__left{
+        height: 46px;
+        float: left;
+        box-sizing: border-box;
+        .option{
+          display: inline-block;
+          line-height: 46px;
+          list-style: none;
+          font-size: 14px;
+          font-weight: 400;
+          padding-right: 10px;
+          cursor: pointer;
+          &__icon{
+            color: red;
+          }
+        }
+      }
+      &__right{
+        height: 46px;
+        float: right;
+        box-sizing: border-box;
+        .user-nav{
+          height: 46px;
+          box-sizing: border-box;
+          &__menu{
+            display: inline-block;
+            line-height: 46px;
+            list-style: none;
+            padding-left: 15px;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            font-variant: normal;
+            -webkit-font-smoothing: antialiased;
+            cursor: pointer;
+            &__icon{
+              color: gray;
+              box-sizing: inherit;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+.wrapper
+  = render 'shared/header'
+  .main
+    .slide
+    .products-box-container
+      .products-box-content
+        -#ここから切り出した方がいい
+        = render partial: "products-box"
+        = render partial: "products-box"
+        = render partial: "products-box"
+        = render partial: "products-box"
+        = render partial: "products-box"
+        = render partial: "products-box"
+        = render partial: "products-box"
+        = render partial: "products-box"
+        -# @productにproductテーブルの最新のデータ4件を
+  = render 'shared/footer' 

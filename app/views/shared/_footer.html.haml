@@ -1,0 +1,90 @@
+.app-lower-baner
+  .app-lower-baner__content
+    .app-lower-baner__content__inner
+      %h2.app-lower-baner__content__inner__text スマホでかんたんフリマアプリ
+      %p.app-lower-baner__content__inner__text 今すぐ無料ダウンロード
+      %ul.middle
+        %li
+          %img{src: "//www-mercari-jp.akamaized.net/assets/img/common/common/mercari_icon.png?206587138", width: "70"}
+        %li
+          %a{href:"https://itunes.apple.com/jp/app/id667861049?l=ja&amp;mt=8",target:"_blank"}
+            %img{src: "//www-mercari-jp.akamaized.net/assets/img/common/common/app-store.svg?206587138", width: "135",height:"40"}
+        %li
+          %a{href:"https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja",target: "_blank"}
+            %img{alt: "", height: "40",src: "//www-mercari-jp.akamaized.net/assets/img/common/common/google-play.svg?206587138", width:"135"}
+    .app-lower-baner__content__app
+      %img{alt: "",src: "//www-mercari-jp.akamaized.net/assets/img/common/jp/download_content_pc.png?206587138",id:"sp",height: "260px"}
+.footer
+  .footer__content
+    .footer__content__box
+      %h2.footer__content__box__title メルカリについて
+      %ul.footer__content__box__mass
+        %li.footer__content__box__mass__list 
+          =link_to "会社概要（運営会社）"
+        %li.footer__content__box__mass__list
+          =link_to " 採用情報"
+        %li.footer__content__box__mass__list
+          =link_to " プレリリース"
+        %li.footer__content__box__mass__list
+          =link_to "公式ブログ"
+        %li.footer__content__box__mass__list
+          =link_to "メルカリロゴ利用ガイドライン"
+        =link_to "", class: "footer__content__box__mass__btn" do
+          %i.fab.fa-twitter.fa-2x
+        =link_to "", class: "footer__content__box__mass__btn" do
+          %i.fab.fa-facebook.fa-2x
+    .footer__content__box
+      %h2.footer__content__box__title ヘルプ＆ガイド
+      %ul.footer__content__box__mass
+        %li.footer__content__box__mass__list
+          =link_to "メルカリガイド"
+        %li.footer__content__box__mass__list
+          =link_to "らくらくメルカリ便"
+        %li.footer__content__box__mass__list
+          =link_to "ゆうゆうメリカリ便"
+        %li.footer__content__box__mass__list
+          =link_to "大型メルカリ便"
+        %li.footer__content__box__mass__list
+          =link_to "車体取引ガイド"
+        %li.footer__content__box__mass__list
+          =link_to "メルカリあんしん・あんぜん宣言！"
+        %li.footer__content__box__mass__list
+          =link_to "偽ブランド品撲滅への取り組み"
+        %li.footer__content__box__mass__list
+          =link_to "メルカリロゴ利用ガイドライン"
+    .footer__content__box
+      %h2.footer__content__box__title プライバシーと利用規約
+      %ul.footer__content__box__mass
+        .footer__content__box__mass__left
+          %li.footer__content__box__mass__left__list
+            =link_to "プライバシーポリシー"
+          %li.footer__content__box__mass__left__list
+            =link_to "メルカリ利用規約"
+          %li.footer__content__box__mass__left__list
+            =link_to "あんしんスマホサポート制度"
+            %br
+            =link_to "に関する利用特約"
+          %li.footer__content__box__mass__left__list
+            =link_to "コンプライアンスポリシー"
+        .footer__content__box__mass__right
+          %li.footer__content__box__mass__right__list
+            =link_to "個人データの安全管理に係る基本方針"
+          %li.footer__content__box__mass__right__list
+            =link_to "特定商取引に関する表記"
+          %li.footer__content__box__mass__right__list
+            =link_to "資金決済法に基づく表示"
+          %li.footer__content__box__mass__right__list
+            =link_to "法令遵守と犯罪抑止のために"
+          %li.footer__content__box__mass__right__list
+            =link_to "返品・返金ポリシー"
+    .footer__content__box
+      %h2.footer__content__box__title 国
+      %ul.footer__content__box__mass
+        %li.footer__content__box__mass__list
+          =link_to "日本"
+        %li.footer__content__box__mass__list
+          =link_to "United State"
+    .footer__content__bottom
+      = link_to image_tag("//www-mercari-jp.akamaized.net/assets/img/common/common/logo-white.svg?4069491723", size: "124x33", alt: "メルカリアイコン", class: "footer__content__bottom__icon"),"#"
+      %span.footer__content__bottom__copy-write
+        %small © 2019 Mercari

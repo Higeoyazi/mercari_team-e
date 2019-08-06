@@ -1,0 +1,34 @@
+.header
+  .inner
+    .upper
+      %h1.upper__left
+        .upper__left__title
+          %img{alt: "mercari", height: "36", src: "//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?863303983", :width => "134"}
+      %form.upper__right
+        %input{type: "search", class:"form", placeholder:"何かお探しですか"}
+        %button{type: "submit", class:"mask" }
+          = fa_icon "search", class: "mask__search"
+    .lower
+      %ul.lower__left
+        %li.option
+          %h2
+            = fa_icon "list", class: "option__icon"
+            %span カテゴリーから探す
+        %li.option
+          %h2
+            = fa_icon "tags", class: "option__icon"
+            %span ブランドから探す
+      .lower__right
+        %ul.user-nav
+          %li.user-nav__menu
+            = fa_icon "heart", class: "user-nav__menu__icon"
+            %span いいね！一覧
+          %li.user-nav__menu
+            = fa_icon "bell", class: "user-nav__menu__icon"
+            %span お知らせ
+          %li.user-nav__menu
+            = fa_icon "check", class: "user-nav__menu__icon"
+            %span やることリスト
+          %li.user-nav__menu
+            = fa_icon "edit", class: "user-nav__menu__icon"
+            %span マイページ

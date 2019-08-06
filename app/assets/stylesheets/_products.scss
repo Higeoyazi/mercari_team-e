@@ -1,0 +1,48 @@
+// Place all the styles related to the products controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.main{
+  width: 100vw;
+  height: 100%;
+  .slide{
+    height: 390px;
+    background: yellow;
+  }
+  .products-box-container{
+    .products-box-content{
+      height: 100%;
+      width:940px;
+      margin: 0 auto;
+      background: #ccc;
+      .products-box{
+        height: 330px;
+        background: lightgreen;
+        margin: 100px 0;
+        display: flex;
+        justify-content: space-around;
+        .product{
+          height: 330px;
+          width: 213px;
+          background: gray;
+          &__photo{
+            height: 220px;
+          }
+          &__body{
+            height: 110px;
+            &__name{
+              height: 48px;
+              width: 181px;
+            }
+            &__num{
+              height: 17px;
+              width: 181px;
+              .price{
+
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
