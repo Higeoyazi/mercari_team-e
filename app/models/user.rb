@@ -16,6 +16,6 @@ class User < ApplicationRecord
 
   # Validation
   validates :nickname, presence: true
-  validates :birthday, presence: true
+  validates :birthday, presence: true, length: { is: 8 }
 
 end

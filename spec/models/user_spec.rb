@@ -3,7 +3,7 @@ require 'rails_helper'
 describe User do
   describe '#create' do
     context 'can save' do
-      it 'is valid with a nickname, email, password, password_confirmation' do
+      it 'is valid with a nickname, email, birthday, password, password_confirmation' do
         expect(build(:user)).to be_valid
       end
 
@@ -13,12 +13,12 @@ describe User do
       end
     end
 
-    # context 'can not save' do
-    #   it 'is invalid without a nickname' do
-    #     user = build(:user, nickname: "")
-    #     user.valid?
-    #     expect(user.errors[:nickname]).to include('を入力してください')
-    #   end
+    context 'can not save' do
+      it 'is invalid without a nickname' do
+        user = build(:user, nickname: "")
+        user.valid?
+        expect(user.errors[:nickname]).to include('を入力してください')
+      end
 
     #   it 'is invalid without email' do
     #     user = build(:user, email: "")
@@ -50,7 +50,7 @@ describe User do
     #     user.valid?
     #     expect(user.errors[:password][0]).to include('は6文字以上で入力してください')
     #   end
-    
+    end
 
   end
 end
