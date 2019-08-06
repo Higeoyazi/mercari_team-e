@@ -3,7 +3,7 @@ require 'rails_helper'
 describe User do
 
   describe '#create' do
-    
+
     context 'can save' do
       it 'is valid with a nickname, email, birthday, password, password_confirmation' do
         expect(build(:user)).to be_valid
@@ -38,7 +38,7 @@ describe User do
         user = build(:user, birthday: "123456789")
         user.valid?
         expect(user.errors[:birthday]).to include('は8文字で入力してください。')
-      end     
+      end
 
       it 'is invalid without password' do
         user = build(:user, password: "")
