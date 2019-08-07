@@ -9,11 +9,6 @@
   </div>
 
   <div class="field">
-    <%= f.label :birthday %> <br />
-    <%= f.text_field :birthday, autocomplete: "birthday" %>
-  </div>
-
-  <div class="field">
     <%= f.label :email %> <br />
     <%= f.email_field :email, autocomplete: "email" %>
   </div>
@@ -36,7 +31,5 @@
   </div>
 <% end %>
 
-<%# <%= link_to 'Facebook', user_facebook_omniauth_authorize_path %>
-<%# <%= link_to 'Google',  user_google_oauth2_omniauth_authorize_path %>
 
 <%= render "devise/shared/links" %>
