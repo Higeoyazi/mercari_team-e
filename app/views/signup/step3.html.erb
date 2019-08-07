@@ -1,17 +1,6 @@
 <h2>User profile</h2>
 
-<%= form_for @user, url: step4_signup_path, method: :get do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-  
-  <div class="field">
-    <%= f.label :nickname %> <br />
-    <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %> <br />
-    <%= f.email_field :email, autocomplete: "email" %>
-  </div>
+<%= form_for @user, url: step4_signup_index_path, method: :get do |f| %>
 
   <div class="field">
     <%= f.label :password %>
@@ -25,6 +14,7 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
+
 
   <div class="actions">
     <%= f.submit "次へ" %>
