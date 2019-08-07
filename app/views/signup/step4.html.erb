@@ -2,6 +2,21 @@
 
 <%= form_for @user, url: signup_index_path, method: :post do |f| %>
 
+  <div class="field">
+    <%= f.label :カード番号 %><br />
+    <%= f.text_field :number, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :有効期限 %> <br />
+    <%= f.text_field :expiration_date_month %>
+    <%= f.text_field :expiration_date_year %>
+  </div>
+
+  <div class="field">
+    <%= f.label :セキュリティコード %><br />
+    <%= f.text_field :security_code %>
+  </div>
 
 
   <div class="actions">
