@@ -10,25 +10,25 @@
           = fa_icon "search", class: "mask__search"
     .lower
       %ul.lower__left
-        %li.option
+        =link_to "", class: "option" do
           %h2
             = fa_icon "list", class: "option__icon"
             %span カテゴリーから探す
-        %li.option
+        =link_to "", class: "option" do
           %h2
             = fa_icon "tags", class: "option__icon"
             %span ブランドから探す
       .lower__right
         %ul.user-nav
-          %li.user-nav__menu
+          =link_to "", class: "user-nav__menu" do
             = fa_icon "heart", class: "user-nav__menu__icon"
             %span いいね！一覧
-          %li.user-nav__menu
+          =link_to "", class: "user-nav__menu" do
             = fa_icon "bell", class: "user-nav__menu__icon"
             %span お知らせ
-          %li.user-nav__menu
+          =link_to "", class: "user-nav__menu" do
             = fa_icon "check", class: "user-nav__menu__icon"
             %span やることリスト
-          %li.user-nav__menu
+          =link_to "", class: "user-nav__menu" do
             = fa_icon "edit", class: "user-nav__menu__icon"
             %span マイページ

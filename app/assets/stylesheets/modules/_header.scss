@@ -48,7 +48,7 @@
           right: 0;
           display: flex;
           -webkit-box-align: center;
-          align-products: center;
+          align-contents: center;
           justify-content: center;
           -webkit-box-pack: center;
           width: 40px;
@@ -70,13 +70,17 @@
         height: 46px;
         float: left;
         box-sizing: border-box;
+        a:link {color: black;}
+        a:visited{color: black;}
+        a:hover {color: #0099e8;text-decoration: none;}
         .option{
           display: inline-block;
           line-height: 46px;
           list-style: none;
           font-size: 14px;
-          font-weight: 400;
+          font-weight: 500;
           padding-right: 10px;
+          text-decoration: none;
           cursor: pointer;
           &__icon{
             color: red;
@@ -90,6 +94,9 @@
         .user-nav{
           height: 46px;
           box-sizing: border-box;
+          a:link {color: black;}
+          a:visited{color: black;}
+          a:hover {color: #0099e8;text-decoration: none;}
           &__menu{
             display: inline-block;
             line-height: 46px;
@@ -100,6 +107,7 @@
             font-weight: 400;
             font-variant: normal;
             -webkit-font-smoothing: antialiased;
+            text-decoration: none;
             cursor: pointer;
             &__icon{
               color: gray;
