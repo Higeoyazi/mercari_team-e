@@ -1,2 +1,15 @@
 .products-box
   = render partial: "product", collection: @products
+.products-view-all
+  = link_to "すべての商品を見る"
+
+  -# %section.product
+  -# -# %a{href:""}
+  -# %figure.product__photo
+  -#   -# = image_tag product.product_image.image_url
+  -# .product__body
+  -#   %h3.product__body__name
+  -#     = product.name
+  -#   .product__body__num
+  -#     .price
+  -#       = product.price
