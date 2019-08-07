@@ -1,10 +1,10 @@
-<h2>User profile</h2>
+<h2>phone</h2>
 
 <%= form_for @user, url: step3_signup_index_path, method: :get do |f| %>
 
   <div class="field">
-    <%= f.label :email %> <br />
-    <%= f.email_field :email, autocomplete: "email" %>
+    phone number
+    <%= f.text_field :phone_number, autofocus: true %>
   </div>
 
   <div class="actions">
