@@ -15,10 +15,11 @@ class User < ApplicationRecord
   has_many :orders
   has_many :products
   has_many :comments
+  has_many :sns_credentials
 
   # Validation
   validates :nickname, presence: true
-  validates :birthday, presence: true, length: { is: 8 }
+  # validates :birthday, presence: true, length: { is: 8 }
 
 
   # Sign_up & Login with FB or Google
@@ -41,7 +42,7 @@ class User < ApplicationRecord
           nickname: auth.info.name,
           email:    auth.info.email,
           password: Devise.friendly_token[0, 20],
-          telephone: "08000000000"
+          # birthday: 19920101
           )
         SnsCredential.create(
           uid: uid,

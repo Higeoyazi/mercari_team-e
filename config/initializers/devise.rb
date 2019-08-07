@@ -3,7 +3,8 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
-
+  require 'devise/orm/active_record'
+  #require "omniauth-google-oauth2"
   config.omniauth :google_oauth2,
                   Rails.application.credentials.development[:google_client_id],
                   Rails.application.credentials.development[:google_client_secret]
