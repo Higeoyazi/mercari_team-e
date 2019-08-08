@@ -21,15 +21,25 @@ def step3
   @user = User.new
   @user.build_profile
   @user.build_address
-  session[:email] = user_params[:email]
+  session[:phone_number] = user_params[:profile_attributes][:phone_number]
 end
 
 def step4
   @user = User.new
-  #@user.build_credit_card
   @credit_card = CreditCard.new
-  session[:password] = user_params[:password]
-  session[:password_confirmation] = user_params[:password_confirmation]
+
+  #session for profile
+  session[:family_name] = user_params[:profile_attributes][:family_name]
+  session[:first_name] = user_params[:profile_attributes][:first_name]
+  session[:family_name_kana] = user_params[:profile_attributes][:family_name_kana]
+  session[:first_name_kana] = user_params[:profile_attributes][:first_name_kana]
+
+  #session for address
+  session[:postal_code] = user_params[:address_attributes][:postal_code]
+  session[:prefecture] = user_params[:address_attributes][:prefecture]
+  session[:city] = user_params[:address_attributes][:city]
+  session[:block] = user_params[:address_attributes][:block]
+  session[:building] = user_params[:address_attributes][:building]
 end
 
 
