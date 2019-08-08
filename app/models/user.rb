@@ -5,8 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
 
-  
-
+         
   # Association
   has_one :profile, dependent: :destroy
   accepts_nested_attributes_for :profile
@@ -23,6 +22,8 @@ class User < ApplicationRecord
   has_many :comments
   has_many :sns_credentials
 
+
+
   # Validation
   VALID_EMAIL_REGEX =  /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :nickname,              presence: true, length: {maximum: 20}, on: :validates_step1
@@ -30,7 +31,7 @@ class User < ApplicationRecord
                                     format: { with: VALID_EMAIL_REGEX }, on: :validates_step1
   validates :password,              presence: true, length: {minimum: 6, maximum: 128}, on: :validates_step1
   validates :password_confirmation, presence: true, length: {minimum: 6, maximum: 128}, on: :validates_step1
-  # validates :birthday, presence: true, length: { is: 8 }
+
 
 
   # Sign_up & Login with FB or Google
