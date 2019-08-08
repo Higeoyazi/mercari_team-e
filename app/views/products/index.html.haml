@@ -1,0 +1,28 @@
+.wrapper
+  = render 'shared/header'
+  .main
+    .slide
+    .products-container
+      %h2.products-container__head
+        %span 商品一覧
+      .products-container__content
+        -#ここから切り出した方がいい
+        = render partial: "products-box"
+        = render partial: "products-box"
+        = render partial: "products-box"
+        = render partial: "products-box"
+        = render partial: "products-box"
+        = render partial: "products-box"
+        = render partial: "products-box"
+        = render partial: "products-box"
+
+        -# = render partial: "products-box", collection: @products
+        -# = render partial: "products-box", collection: @products
+        -# = render partial: "products-box", collection: @products
+        -# = render partial: "products-box", collection: @products
+        -# = render partial: "products-box", collection: @products
+        -# = render partial: "products-box", collection: @products
+        -# = render partial: "products-box", collection: @products
+        -# = render partial: "products-box", collection: @products
+        -# @productにproductテーブルの最新のデータ4件を
+  = render 'shared/footer' 
