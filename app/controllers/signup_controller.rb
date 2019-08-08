@@ -64,13 +64,34 @@ def done
 end
 
   private
-  # 許可するキーを設定します
     def user_params
       params.require(:user).permit(
         :nickname, 
         :email, 
         :password, 
-        :password_confirmation, 
-      )
+        :password_confirmation,
+        profile_attributes: [
+          :id,
+          :family_name,
+          :first_name,
+          :family_name_kana,
+          :first_name_kana,
+          :phone_number
+        ],
+        address_attributes: [
+          :id,
+          :postal_code,
+          :prefecture,
+          :city,
+          :block,
+          :building
+        ],
+        credit_card: [
+          :id,
+          :number,
+          :expiration_date_month,
+          :expiration_date_year,
+          :security_code
+        ])
     end
 end
