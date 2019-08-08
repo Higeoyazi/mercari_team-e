@@ -45,11 +45,15 @@ end
 
 def create
   @user = User.new(
-    nickname: session[:nickname], # sessionに保存された値をインスタンスに渡す
+    nickname: session[:nickname],
     email: session[:email],
     password: session[:password],
     password_confirmation: session[:password_confirmation],
   )
+  @user.build_profile(user_params[:profile_attributes])
+  @user.build_address(user_params[:address_attributes])
+  @user.credit_card(user_params[:credit_card])
+
   if @user.save
   # ログインするための情報を保管
     session[:id] = @user.id
