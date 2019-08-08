@@ -28,7 +28,7 @@
 |first_name|string|null: false|
 |family_name_kana|string|null: false|
 |first_name_kana|string|null: false|
-|phone_number|string|null: false, unique: true|
+|phone_number|integer|null: false, unique: true|
 |user|references|null: false, foreign_key: true|
 
 ### Association
