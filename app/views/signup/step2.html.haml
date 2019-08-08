@@ -1,0 +1,9 @@
+%h2 phone
+= form_for @user, url: step3_signup_index_path, method: :get do |f|
+  .field
+    = f.fields_for :profile do |p|
+      phone number
+      .field
+        = p.text_field :phone_number, autofocus: true
+  .actions
+    = f.submit "次へ"
