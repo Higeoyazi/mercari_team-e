@@ -10,11 +10,15 @@ class User < ApplicationRecord
   # Association
   has_one :profile, dependent: :destroy
   accepts_nested_attributes_for :profile
+
   has_one :address, dependent: :destroy
   accepts_nested_attributes_for :address
+
+  has_one :credit_card, dependent: :destroy
+  # has_many :credit_cards, dependent: :destroy
+  accepts_nested_attributes_for :credit_card
+
   has_one_attached :avatar
-  has_many :credit_cards, dependent: :destroy
-  accepts_nested_attributes_for :credit_cards
   has_many :orders
   has_many :products
   has_many :comments

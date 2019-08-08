@@ -8,11 +8,13 @@ end
 def step2
   @user = User.new
   @user.build_profile
+  session[:user_params] = user_params
   # @profile = Profile.new
-  session[:nickname] = user_params[:nickname]
-  session[:email] = user_params[:email]
-  session[:password] = user_params[:password]
-  session[:password_confirmation] = user_params[:password_confirmation]
+  # session[:nickname] = user_params[:nickname]
+  # session[:email] = user_params[:email]
+  # session[:password] = user_params[:password]
+  # session[:password_confirmation] = user_params[:password_confirmation]
+  # binding.pry
 end
 
 def step3
@@ -26,7 +28,8 @@ end
 
 def step4
   @user = User.new
-  @credit_card = CreditCard.new
+  @user.build_credit_card
+  # @credit_card = CreditCard.new
 
   #session for profile
   session[:family_name] = user_params[:profile_attributes][:family_name]
@@ -44,7 +47,7 @@ end
 
 
 def create
-  @user = User.new(
+  @user = User.new(#session[:user_params]
     nickname: session[:nickname],
     email: session[:email],
     password: session[:password],
@@ -52,8 +55,8 @@ def create
   )
   @user.build_profile(user_params[:profile_attributes])
   @user.build_address(user_params[:address_attributes])
-  @user.credit_card(user_params[:credit_card])
-
+  @user.build_credit_card(user_params[:credit_card_attributes])
+  binding.pry
   if @user.save
   # ログインするための情報を保管
     session[:id] = @user.id
@@ -90,7 +93,7 @@ end
           :block,
           :building
         ],
-        credit_card: [
+        credit_card_attributes: [
           :id,
           :number,
           :expiration_date_month,
