@@ -2,9 +2,6 @@
   -# %a{href:""}
   %figure.product__photo
     = image_tag product.product_images.last.image_url, size: "213x220"
-    -# - product.product_images.each do |image|
-    -#   = image_tag image.image_url, size: "213x220"
-      -# = image_tag image.image_url.order("created_at DESC").first, size: "213x220"
   .product__body
     %h3.product__body__name
       = product.name
