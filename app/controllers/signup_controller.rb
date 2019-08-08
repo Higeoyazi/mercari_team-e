@@ -1,5 +1,10 @@
 class SignupController < ApplicationController
 
+  before_action :validates_step1, only: :step2
+  # before_action :validates_step2, only: :step3
+  before_action :validates_step3, only: :step4
+  before_action :validates_step4, only: :step4
+  before_action :validates_step5, only: :create
 
 def step1
   @user = User.new
@@ -21,8 +26,35 @@ end
 def step4
   @user = User.new
   @user.build_credit_card
-  session[:profile_attributes] = user_params[:profile_attributes] 
-  session[:address_attributes] = user_params[:address_attributes] 
+  session[:profile_attributes] = user_params[:profile_attributes]
+  session[:address_attributes] = user_params[:address_attributes]
+end
+
+def validates_step1 #for User
+  @user = User.new(user_params)
+  render '/signup/step1' unless @user.valid?(:validates_step1)
+end
+
+# def validates_step2 #for phone_number ここは個別でバリデーションをかける必要があるから後回し
+#   @profile = Profile.new( phone_number: user_params[:profile_attributes][:phone_number])
+#   # binding.pry
+#   render '/signup/step2' if @profile.phone_number.nil? || unless @profile.phone_number.valid?
+# end
+
+def validates_step3 #for Profile
+  user_params[:profile_attributes][:phone_number] = session[:phone_number]
+  @user = User.new(user_params)
+  @profile = Profile.new(user_params[:profile_attributes])
+  render '/signup/step3' unless @profile.valid?(:validates_step3)
+end
+
+def validates_step4 #for Address
+
+
+end
+
+def validates_step5 #for CreditCard
+
 end
 
 

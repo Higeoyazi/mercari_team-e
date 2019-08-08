@@ -1,13 +1,16 @@
 <h2>phone</h2>
 
+<%# <% @user = User.new unless @user %>
 <%= form_for @user, url: step3_signup_index_path, method: :get do |f| %>
 
+<div class="field">
   <%= f.fields_for :profile do |p| %>
       phone number
       <div class="field">
         <%= p.text_field :phone_number, autofocus: true %>
       </div>
   <% end %>
+</div>
 
   <div class="actions">
     <%= f.submit "次へ" %>
