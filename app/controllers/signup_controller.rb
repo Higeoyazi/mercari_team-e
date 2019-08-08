@@ -1,26 +1,33 @@
 class SignupController < ApplicationController
-  # 各アクションごとに新規インスタンスを作成します
-  # 各アクションごとに、遷移元のページのデータをsessionに保管していきます
+
+
 def step1
-  @user = User.new # 新規インスタンス作成
+  @user = User.new
 end
 
 def step2
-  # step1で入力された値をsessionに保存
+  @user = User.new
+  @user.build_profile
+  # @profile = Profile.new
   session[:nickname] = user_params[:nickname]
-
-
-
-  @user = User.new # 新規インスタンス作成
+  session[:email] = user_params[:email]
+  session[:password] = user_params[:password]
+  session[:password_confirmation] = user_params[:password_confirmation]
 end
 
 def step3
-  @user = User.new # 新規インスタンス作成
+  # @profile = Profile.new
+  # @address = Address.new
+  @user = User.new
+  @user.build_profile
+  @user.build_address
   session[:email] = user_params[:email]
 end
 
 def step4
-  @user = User.new # 新規インスタンス作成
+  @user = User.new
+  #@user.build_credit_card
+  @credit_card = CreditCard.new
   session[:password] = user_params[:password]
   session[:password_confirmation] = user_params[:password_confirmation]
 end

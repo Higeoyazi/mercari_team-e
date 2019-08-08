@@ -2,24 +2,29 @@
 
 <%= form_for @user, url: signup_index_path, method: :post do |f| %>
 
-  <div class="field">
-    <%= f.label :カード番号 %><br />
-    <%= f.text_field :number, autofocus: true %>
-  </div>
+  <%= f.fields_for :credit_card, @credit_card do |c| %>
 
-  <div class="field">
-    <%= f.label :有効期限 %> <br />
-    <%= f.text_field :expiration_date_month %>
-    <%= f.text_field :expiration_date_year %>
-  </div>
+    <div class="field">
+      <%= c.label :カード番号 %><br />
+      <%= c.text_field :number, autofocus: true %>
+    </div>
 
-  <div class="field">
-    <%= f.label :セキュリティコード %><br />
-    <%= f.text_field :security_code %>
-  </div>
+    <div class="field">
+      <%= c.label :有効期限 %> <br />
+      <%= c.text_field :expiration_date_month %>月<br />
+      <%= c.text_field :expiration_date_year %>年<br />
+    </div>
+
+    <div class="field">
+      <%= c.label :セキュリティコード %><br />
+      <%= c.text_field :security_code %>
+    </div>
+
+  <% end %>
 
 
   <div class="actions">
     <%= f.submit "登録" %>
   </div>
+
 <% end %>

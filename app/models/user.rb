@@ -9,6 +9,7 @@ class User < ApplicationRecord
 
   # Association
   has_one :profile, dependent: :destroy
+  accepts_nested_attributes_for :profile
   has_one :address, dependent: :destroy
   accepts_nested_attributes_for :address
   has_one_attached :avatar
