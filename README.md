@@ -45,7 +45,7 @@
 |prefecture|string|null: false|
 |city|string|null: false|
 |block|string|null: false|
-|building|string|null: false|
+|building|string||
 |user|references|null: false, foreign_key: true|
 
 ### Association

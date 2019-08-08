@@ -32,31 +32,35 @@ def step4
   # @credit_card = CreditCard.new
 
   #session for profile
-  session[:family_name] = user_params[:profile_attributes][:family_name]
-  session[:first_name] = user_params[:profile_attributes][:first_name]
-  session[:family_name_kana] = user_params[:profile_attributes][:family_name_kana]
-  session[:first_name_kana] = user_params[:profile_attributes][:first_name_kana]
+  session[:profile_attributes] = user_params[:profile_attributes] 
+  # session[:family_name] = user_params[:profile_attributes][:family_name]
+  # session[:first_name] = user_params[:profile_attributes][:first_name]
+  # session[:family_name_kana] = user_params[:profile_attributes][:family_name_kana]
+  # session[:first_name_kana] = user_params[:profile_attributes][:first_name_kana]
 
   #session for address
-  session[:postal_code] = user_params[:address_attributes][:postal_code]
-  session[:prefecture] = user_params[:address_attributes][:prefecture]
-  session[:city] = user_params[:address_attributes][:city]
-  session[:block] = user_params[:address_attributes][:block]
-  session[:building] = user_params[:address_attributes][:building]
+  session[:address_attributes] = user_params[:address_attributes] 
+  # session[:postal_code] = user_params[:address_attributes][:postal_code]
+  # session[:prefecture] = user_params[:address_attributes][:prefecture]
+  # session[:city] = user_params[:address_attributes][:city]
+  # session[:block] = user_params[:address_attributes][:block]
+  # session[:building] = user_params[:address_attributes][:building]
 end
 
 
 def create
-  @user = User.new(#session[:user_params]
-    nickname: session[:nickname],
-    email: session[:email],
-    password: session[:password],
-    password_confirmation: session[:password_confirmation],
+  @user = User.new(session[:user_params]
+    # nickname: session[:nickname],
+    # email: session[:email],
+    # password: session[:password],
+    # password_confirmation: session[:password_confirmation],
   )
-  @user.build_profile(user_params[:profile_attributes])
-  @user.build_address(user_params[:address_attributes])
+  
+  session[:profile_attributes][:phone_number] = session[:phone_number]
+  @user.build_profile(session[:profile_attributes])
+  @user.build_address(session[:address_attributes])
   @user.build_credit_card(user_params[:credit_card_attributes])
-  binding.pry
+  # binding.pry
   if @user.save
   # ログインするための情報を保管
     session[:id] = @user.id
