@@ -20,7 +20,7 @@ class SignupController < ApplicationController
     new_user
     @user.build_profile
     @user.build_address
-    session[:phone_number] = user_params[:profile_attributes][:phone_number]
+    # session[:phone_number] = user_params[:profile_attributes][:phone_number]
   end
 
   def step4

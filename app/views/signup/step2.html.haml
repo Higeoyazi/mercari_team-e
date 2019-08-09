@@ -2,7 +2,7 @@
 = form_for @user, url: step3_signup_index_path, method: :get do |f|
   .field
     = f.fields_for :profile do |p|
-      phone number
+      電話番号認証
       .field
         = p.text_field :phone_number, autofocus: true
   .actions
