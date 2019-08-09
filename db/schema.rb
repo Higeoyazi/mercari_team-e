@@ -10,16 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_06_050231) do
+ActiveRecord::Schema.define(version: 2019_08_08_070542) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "prefecture", null: false
     t.string "city", null: false
     t.string "block", null: false
-    t.string "building", null: false
+    t.string "building"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "postal_code"
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
@@ -50,11 +51,12 @@ ActiveRecord::Schema.define(version: 2019_08_06_050231) do
 
   create_table "credit_cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "number", null: false
-    t.integer "expiration_date", null: false
+    t.integer "expiration_date_year", null: false
     t.integer "security_code", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "expiration_date_month"
     t.index ["user_id"], name: "index_credit_cards_on_user_id"
   end
 
@@ -92,16 +94,25 @@ ActiveRecord::Schema.define(version: 2019_08_06_050231) do
   end
 
   create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.text "profile", null: false
+    t.text "profile"
     t.string "family_name", null: false
     t.string "first_name", null: false
     t.string "family_name_kana", null: false
     t.string "first_name_kana", null: false
-    t.string "phone_number", null: false
+    t.integer "phone_number", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
+  create_table "sns_credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "provider"
+    t.string "uid"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sns_credentials_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -129,4 +140,5 @@ ActiveRecord::Schema.define(version: 2019_08_06_050231) do
   add_foreign_key "product_images", "products"
   add_foreign_key "products", "users"
   add_foreign_key "profiles", "users"
+  add_foreign_key "sns_credentials", "users"
 end
