@@ -57,7 +57,7 @@ class SignupController < ApplicationController
   def validates_step5
     new_user_with_params
     @credit_card = CreditCard.new(user_params[:credit_card_attributes])
-    render '/signup/step4' unless @credit_card.valid?(:validates_step4)
+    render '/signup/step4' unless @credit_card.valid?(:validates_step5)
   end
 
   def create
