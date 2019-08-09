@@ -1,6 +1,6 @@
 class CreditCard < ApplicationRecord
   # Association
-  belongs_to :user#, optional: true
+  belongs_to :user, optional: true
 
   # Validation
   validates :number,                uniqueness: true,
