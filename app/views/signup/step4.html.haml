@@ -1,22 +1,43 @@
-%h2 支払い方法
-= form_for @user, url: signup_index_path, method: :post do |f|
-  = f.fields_for :credit_card do |c|
+%h2 User profile
+= form_for @user, url: step4_signup_index_path, method: :get do |f|
+  = f.fields_for :profile do |p|
     .field
-      = c.label :カード番号
+      = p.label :お名前
       %br/
-      = c.text_field :number, autofocus: true
+      = p.text_field :family_name, autofocus: true
+      %br/
+      = p.text_field :first_name, autofocus: true
     .field
-      = c.label :有効期限
+      = p.label :お名前カナ
       %br/
-      = c.text_field :expiration_date_month
-      月
+      = p.text_field :family_name_kana, autofocus: true
       %br/
-      = c.text_field :expiration_date_year
-      年
-      %br/
+      = p.text_field :first_name_kana, autofocus: true
+  = f.fields_for :address do |a|
     .field
-      = c.label :セキュリティコード
+      = a.label :郵便番号
       %br/
-      = c.text_field :security_code
+      = a.text_field :postal_code
+    .field
+      = a.label :都道府県
+      %br/
+      = a.text_field :prefecture
+    .field
+      = a.label :市区町村
+      %br/
+      = a.text_field :city
+    .field
+      = a.label :番地
+      %br/
+      = a.text_field :block
+    .field
+      = a.label :建物
+      %br/
+      = a.text_field :building
+  = f.fields_for :profile do |p|
+    .field
+      = p.label :電話
+      %br/
+      = p.text_field :phone_number    
   .actions
-    = f.submit "登録"
+    = f.submit "次へ"
