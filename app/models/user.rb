@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
+
   # Association
   has_one :profile, dependent: :destroy
   accepts_nested_attributes_for :profile
@@ -32,7 +33,7 @@ class User < ApplicationRecord
 
 
 
-  # Sign_up & Login with FB or Google
+  # Sign_up OR Login with FB or Google
   def self.find_oauth(auth)
     uid = auth.uid
     provider = auth.provider

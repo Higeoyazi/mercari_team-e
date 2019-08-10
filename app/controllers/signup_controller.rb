@@ -59,16 +59,16 @@ class SignupController < ApplicationController
   def create
 
     @user = User.new(session[:user_params])
-    # @user.sns_credential(session[:provider_data])
     @user.build_profile(session[:profile_attributes])
     @user.build_address(session[:address_attributes])
     @user.build_credit_card(user_params[:credit_card_attributes])
 
-    if session[:provider_data]
+    unless session[:provider_data] == {}
+      @user.sns_credentials.build(
+        uid: session[:provider_data]["uid"],
+        provider: session[:provider_data]["provider"]
+      )
     end
-
-
-    
 
     if @user.save
       session[:id] = @user.id
