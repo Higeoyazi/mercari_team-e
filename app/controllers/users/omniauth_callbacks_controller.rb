@@ -17,7 +17,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     else
       session["devise.#{provider}_data"] = request.env["omniauth.auth"].except("extra")
-      redirect_to new_user_registration_path
+      # redirect_to new_user_registration_path
+      render '/signup/step2'
     end
   end
 
