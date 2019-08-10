@@ -25,15 +25,15 @@ class SignupController < ApplicationController
   end
 
   def step5
-    @user.build_credit_card
     new_user
+    @user.build_credit_card
     session[:profile_attributes] = user_params[:profile_attributes]
     session[:address_attributes] = user_params[:address_attributes]
   end
 
   def validates_step1
     new_user_with_params
-    render '/signup/step1' unless @user.valid?(:validates_step1)
+    render '/signup/step2' unless @user.valid?(:validates_step1)
   end
 
 
@@ -46,18 +46,17 @@ class SignupController < ApplicationController
   def validates_step3
     new_user_with_params
     @address = Address.new(user_params[:address_attributes])
-    render '/signup/step3' unless @address.valid?(:validates_step3)
+    render '/signup/step4' unless @address.valid?(:validates_step3)
   end
 
   def validates_step4
     new_user_with_params
     @credit_card = CreditCard.new(user_params[:credit_card_attributes])
-    render '/signup/step4' unless @credit_card.valid?(:validates_step4)
+    render '/signup/step5' unless @credit_card.valid?(:validates_step4)
   end
 
   def create
 
-    session[:profile_attributes][:phone_number] = session[:phone_number]
     @user = User.new(session[:user_params])
     @user.build_profile(session[:profile_attributes])
     @user.build_address(session[:address_attributes])
