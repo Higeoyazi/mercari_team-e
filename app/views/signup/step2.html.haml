@@ -1,5 +1,6 @@
 %h2 User profile
 = form_for @user, url: step3_signup_index_path, method: :get do |f|
+  = render "devise/shared/error_messages", resource: @user
   .field
     = f.label :nickname
     %br/
