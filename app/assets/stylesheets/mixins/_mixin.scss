@@ -1,0 +1,26 @@
+@mixin clearfix {
+  &:after {
+    content: “”;
+    clear: both;
+    display: block;
+  }
+ }
+ @mixin changeLink{
+  text-align: right;
+  font-size: 14px;
+  color: #00bfff;
+ }
+ @mixin confirmationWidth {
+  width: 700px;
+ }
+ @mixin fontWeight {
+  font-weight: 600;
+ }
+ @mixin marginCenter{
+  margin-left: auto;
+  margin-right: auto;
+ }
+ @mixin borderBottom{
+  border-bottom: solid 1px #f5f5f5;
+ }
+ 

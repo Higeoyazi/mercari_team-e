@@ -1,0 +1,120 @@
+.product-show {
+  height: 100%;
+  width: 100%;
+  background-color: $white;
+
+  .contents {
+    @include confirmationWidth;
+    height: 1250px;
+    text-align: center;
+    margin: 0 auto;
+    padding: 24px 40px 40px;
+    background-color: $white;
+    
+    .product-name{
+      font-size: 24px;
+      text-align: center;
+    }
+    
+    .main {
+      @include confirmationWidth;
+      height:400px;
+      display:flex;
+        &__image__size {
+            width:350px;
+            height:300px;
+        }
+        &__ditail__table {
+          margin-left: 30px;
+          width:350px;
+          height:400px;
+            tbody {
+              border-style:hidden;
+                th{
+                  font-weight: 400;
+                  background: $white;
+                  font-weight: 400;
+                }
+            }
+        }
+    }
+  
+  .price__and__button {
+    @include confirmationWidth;
+    .price{
+      margin: 24px 0 0;
+      margin: 0 16px 0 0;
+    }
+    .price__figure{
+      @include fontWeight;
+      text-align:center;
+      font-size: 50px;
+      margin: 0 16px 0 0;
+    }
+    .button__btn {
+      @include confirmationWidth;
+      @include fontWeight;
+      font-size: 24px;
+      margin: 16px 0 0;
+      background: $red;
+      color: $white;
+      height:50px;
+    }
+  }
+
+  .description {
+    @include confirmationWidth;
+    text-align:center;
+    &__inner {
+      white-space: pre-wrap;
+    }
+  }
+  
+  .comment {
+    @include confirmationWidth;
+    text-align:center;
+    margin:30px;
+      &__form__textarea {
+        @include confirmationWidth;
+        height: 100px;
+      }
+      &__form__submit__btn {
+          @include confirmationWidth;
+          height: 50px;
+          background: $gray;
+          color: $white;
+        }
+  }
+
+  .product-space {
+    height:30px;
+  }
+
+  .sns__box {
+    @include confirmationWidth;
+    height:115px;
+    text-align:center;
+    display: block;
+    margin: 24px auto;
+    padding: 32px 0 24px;
+    background: $white;
+      &__btns{
+        display:flex;
+      }
+      &__facebook {
+        color:blue;
+        float:left;
+        padding: 20px 40px;
+      }
+      &__Twitter {
+        color:skyblue;
+        padding: 20px 40px;
+      }
+      &__LINE {
+        color:green;
+        float:right;
+        padding: 20px 40px;
+      }
+    }
+  }
+}
