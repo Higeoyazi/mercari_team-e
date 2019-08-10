@@ -10,6 +10,7 @@ class SignupController < ApplicationController
 
   def step2
     new_user
+    session[:provider_data] = {} #メールアドレスで登録する場合、sns_credentialsを保存しないようにするため
   end
 
   def step3
@@ -58,9 +59,16 @@ class SignupController < ApplicationController
   def create
 
     @user = User.new(session[:user_params])
+    # @user.sns_credential(session[:provider_data])
     @user.build_profile(session[:profile_attributes])
     @user.build_address(session[:address_attributes])
     @user.build_credit_card(user_params[:credit_card_attributes])
+
+    if session[:provider_data]
+    end
+
+
+    
 
     if @user.save
       session[:id] = @user.id

@@ -52,13 +52,12 @@ class User < ApplicationRecord
         user = User.new(
           nickname: auth.info.name,
           email:    auth.info.email,
-          # password: Devise.friendly_token[0, 20],
           )
-        SnsCredential.new(
-          uid: uid,
-          provider: provider,
-          user_id: user.id
-          )
+        # SnsCredential.create(
+        #   uid: uid,
+        #   provider: provider,
+        #   user_id: user.id
+        # )
       end
     end
 
