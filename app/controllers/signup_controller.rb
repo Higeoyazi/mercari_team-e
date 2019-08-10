@@ -10,7 +10,7 @@ class SignupController < ApplicationController
 
   def step2
     new_user
-    session[:provider_data] = {} #メールアドレスで登録する場合、sns_credentialsを保存しないようにするため
+    session[:provider_data] = {} #戻ってメールアドレスで登録する場合、sns_credentialsを保存しないようにするため
   end
 
   def step3
@@ -66,8 +66,7 @@ class SignupController < ApplicationController
     unless session[:provider_data] == {}
       @user.sns_credentials.build(
         uid: session[:provider_data]["uid"],
-        provider: session[:provider_data]["provider"]
-      )
+        provider: session[:provider_data]["provider"])
     end
 
     if @user.save

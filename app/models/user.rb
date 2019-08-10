@@ -54,14 +54,8 @@ class User < ApplicationRecord
           nickname: auth.info.name,
           email:    auth.info.email,
           )
-        # SnsCredential.create(
-        #   uid: uid,
-        #   provider: provider,
-        #   user_id: user.id
-        # )
       end
     end
-
 
     return user
   end
