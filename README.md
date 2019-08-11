@@ -58,7 +58,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|number|integer|null: false, unique: true|
+|number|string|null: false, unique: true|
 |expiration_date_month|integer|null: false|
 |expiration_date_year|integer|null: false|
 |security_code|integer|null: false, unique: true|
@@ -67,12 +67,24 @@
 - belongs_to :user
 
 
+## Sns_credentials table
+|Column|Type|Options|
+|------|----|-------|
+|uid|string|null: false|
+|provider|string|null: false|
+|user|references|null: false, foreign_key: true|
+### Association
+- belongs_to :user
+- belongs_to :product
+
+
 
 
 ## Orders table
 |Column|Type|Options|
 |------|----|-------|
-|user|references|null: false, foreign_key: true|
+|saler|references|null: false, foreign_key: true|
+|buyer|references|null: false, foreign_key: true|
 |product|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
@@ -166,4 +178,5 @@
 
 
 ## ER図
-<img width="902" alt="ERforMercari" src="https://user-images.githubusercontent.com/49634472/62509731-40bfa100-b847-11e9-87e5-344adb5ec4a8.png">
+<img width="902" alt="ERforMercari" src="https://camo.githubusercontent.com/11ed57fe45739c107c559936ce8003f848ddfb5b/68747470733a2f2f692e6779617a6f2e636f6d2f61313166376335326332303061363661363233323166356361623136386637382e706e67">
+
