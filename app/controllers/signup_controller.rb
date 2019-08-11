@@ -120,10 +120,8 @@ class SignupController < ApplicationController
       ],
       credit_card_attributes: [
         :id,
-        :number,
-        :expiration_date_month,
-        :expiration_date_year,
-        :security_code
+        :customer_id,
+        :card_id
       ])
   end
 end
