@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
+
   # Association
   has_one :profile, dependent: :destroy
   accepts_nested_attributes_for :profile
@@ -24,19 +25,20 @@ class User < ApplicationRecord
 
   # Validation
   VALID_EMAIL_REGEX =  /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :nickname,              presence: true, length: {maximum: 20}, on: :validates_step1
+  validates :nickname,              presence: true, length: {maximum: 20}, on: :validates_step2
   validates :email,                 presence: true, uniqueness: true,
-                                    format: { with: VALID_EMAIL_REGEX }, on: :validates_step1
-  validates :password,              presence: true, length: {minimum: 6, maximum: 128}, on: :validates_step1
-  validates :password_confirmation, presence: true, length: {minimum: 6, maximum: 128}, on: :validates_step1
+                                    format: { with: VALID_EMAIL_REGEX }, on: :validates_step2
+  validates :password,              presence: true, length: {minimum: 6, maximum: 128}, on: :step2
+  validates :password_confirmation, presence: true, length: {minimum: 6, maximum: 128}, on: :step2
 
 
 
-  # Sign_up & Login with FB or Google
+  # Sign_up OR Login with FB or Google
   def self.find_oauth(auth)
     uid = auth.uid
     provider = auth.provider
     snscredential = SnsCredential.where(uid: uid, provider: provider).first
+
     if snscredential.present?
       user = User.where(id: snscredential.user_id).first
     else
@@ -48,19 +50,13 @@ class User < ApplicationRecord
           user_id: user.id
           )
       else
-        user = User.create(
+        user = User.new(
           nickname: auth.info.name,
           email:    auth.info.email,
-          password: Devise.friendly_token[0, 20],
-          # birthday: 19920101
-          )
-        SnsCredential.create(
-          uid: uid,
-          provider: provider,
-          user_id: user.id
           )
       end
     end
+
     return user
   end
 end

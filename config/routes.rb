@@ -9,8 +9,8 @@ Rails.application.routes.draw do
       get 'step2'
       get 'step3'
       get 'step4'
-      #get 'step5'# ここで、入力の全てが終了する
-      get 'done' # 登録完了後のページ
+      get 'step5'
+      get 'done'
     end
   end
   root 'products#index'

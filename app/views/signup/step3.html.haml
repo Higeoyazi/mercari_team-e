@@ -1,38 +1,9 @@
-%h2 User profile
+%h2 phone
 = form_for @user, url: step4_signup_index_path, method: :get do |f|
-  = f.fields_for :profile do |p|
-    .field
-      = p.label :お名前
-      %br/
-      = p.text_field :family_name, autofocus: true
-      %br/
-      = p.text_field :first_name, autofocus: true
-    .field
-      = p.label :お名前カナ
-      %br/
-      = p.text_field :family_name_kana, autofocus: true
-      %br/
-      = p.text_field :first_name_kana, autofocus: true
-  = f.fields_for :address do |a|
-    .field
-      = a.label :郵便番号
-      %br/
-      = a.text_field :postal_code
-    .field
-      = a.label :都道府県
-      %br/
-      = a.text_field :prefecture
-    .field
-      = a.label :市区町村
-      %br/
-      = a.text_field :city
-    .field
-      = a.label :番地
-      %br/
-      = a.text_field :block
-    .field
-      = a.label :建物
-      %br/
-      = a.text_field :building
+  .field
+    = f.fields_for :profile do |p|
+      電話番号認証
+      .field
+        = p.text_field :phone_number, autofocus: true
   .actions
     = f.submit "次へ"

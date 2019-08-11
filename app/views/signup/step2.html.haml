@@ -1,9 +1,28 @@
-%h2 phone
-= form_for @user, url: step3_signup_index_path, method: :get do |f|
+%h2 User profile
+= form_for @user, builder: CustomFormBuilder, url: step3_signup_index_path, method: :get do |f|
+  -# = render "devise/shared/error_messages", resource: @user
   .field
-    = f.fields_for :profile do |p|
-      phone number
-      .field
-        = p.text_field :phone_number, autofocus: true
+    %br/
+    = f.label :nickname
+    %br/
+    = f.text_field :nickname, autofocus: true, autocomplete: "nickname"
+  .field
+    %br/
+    = f.label :email
+    %br/
+    = f.email_field :email, autocomplete: "email"
+  .field
+    %br/
+    = f.label :password
+    %br/
+    - if @minimum_password_length
+      %em
+        (#{@minimum_password_length} characters minimum)
+    = f.password_field :password, autocomplete: "new-password"
+  .field
+    %br/
+    = f.label :password_confirmation
+    %br/
+    = f.password_field :password_confirmation, autocomplete: "new-password"
   .actions
     = f.submit "次へ"
