@@ -72,7 +72,8 @@
 ## Orders table
 |Column|Type|Options|
 |------|----|-------|
-|user|references|null: false, foreign_key: true|
+|saler|references|null: false, foreign_key: true|
+|buyer|references|null: false, foreign_key: true|
 |product|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
