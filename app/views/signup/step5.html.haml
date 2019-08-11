@@ -1,5 +1,5 @@
 %h2 支払い方法
-= form_for @user, url: signup_index_path, method: :post do |f|
+= form_for @user,  builder: CustomFormBuilder, url: signup_index_path, method: :post do |f|
   = f.fields_for :credit_card do |c|
     .field
       = c.label :カード番号
@@ -8,11 +8,9 @@
     .field
       = c.label :有効期限
       %br/
-      = c.text_field :expiration_date_month
-      月
+      = c.text_field :expiration_date_month, placeholder: "月"
       %br/
-      = c.text_field :expiration_date_year
-      年
+      = c.text_field :expiration_date_year, placeholder: "年"
       %br/
     .field
       = c.label :セキュリティコード

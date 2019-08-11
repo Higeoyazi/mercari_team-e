@@ -1,5 +1,5 @@
 %h2 phone
-= form_for @user, builder: CustomFormBuilder, url: step4_signup_index_path, method: :get do |f|
+= form_for @user, url: step4_signup_index_path, method: :get do |f|
   .field
     = f.fields_for :profile do |p|
       電話番号認証

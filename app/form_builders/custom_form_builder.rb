@@ -1,4 +1,9 @@
 class CustomFormBuilder < ActionView::Helpers::FormBuilder
+
+  def field_for(method, options = {})
+    super + error(method)
+  end
+
   def text_field(method, options = {})
     super + error(method)
   end
@@ -11,21 +16,7 @@ class CustomFormBuilder < ActionView::Helpers::FormBuilder
     super + error(method)
   end
 
-  def number_field(method, options = {})
-    super + error(method)
-  end
 
-  def telephone_field(method, options = {})
-    super + error(method)
-  end
-
-  def collection_select(method, collection, value_method, text_method, options = {}, html_options = {})
-    super + error(method)
-  end
-
-  def collection_radio_buttons(method, collection, value_method, text_method, options = {}, html_options = {}, &block)
-    super + error(method)
-  end
 
   private
 
@@ -38,10 +29,10 @@ class CustomFormBuilder < ActionView::Helpers::FormBuilder
   end
 
   def error_html(msg)
-    # return "" unless msg.present?
+    return "" unless msg.present?
 
     @template.content_tag(:div, class: "has-error") do
-      @template.concat (@template.content_tag(:span, class: "help-block") do
+      @template.concat(@template.content_tag(:span, class: "help-block") do
         msg
       end)
     end

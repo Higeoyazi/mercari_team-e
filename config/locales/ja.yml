@@ -15,8 +15,8 @@ ja:
         phone_number: 電話番号
       address:
         postal_code: 郵便番号
-        prefecture: 県
-        city: 市町村
+        prefecture: 都道府県
+        city: 市区町村
         block: 番地
         building: 建物名
       credit_card:

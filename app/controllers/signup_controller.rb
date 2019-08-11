@@ -5,6 +5,10 @@ class SignupController < ApplicationController
   before_action :validates_step3, only: :step5
   before_action :validates_step4, only: :create
 
+  def index
+    render '/signup/step5'
+  end
+
   def step1
   end
 
@@ -37,23 +41,19 @@ class SignupController < ApplicationController
     render '/signup/step2' unless @user.valid?(:validates_step1)
   end
 
-
   def validates_step2
     new_user_with_params
-    @profile = Profile.new(user_params[:profile_attributes])
-    render '/signup/step3' unless @profile.valid?(:validates_step2)
+    render '/signup/step4' unless @user.profile.valid?(:validates_step2)
   end
 
   def validates_step3
     new_user_with_params
-    @address = Address.new(user_params[:address_attributes])
-    render '/signup/step4' unless @address.valid?(:validates_step3)
+    render '/signup/step4' unless @user.address.valid?(:validates_step3)
   end
 
   def validates_step4
     new_user_with_params
-    @credit_card = CreditCard.new(user_params[:credit_card_attributes])
-    render '/signup/step5' unless @credit_card.valid?(:validates_step4)
+    render '/signup/step5' unless @user.credit_card.valid?(:validates_step4)
   end
 
   def create
