@@ -1,0 +1,75 @@
+.product-show
+  = breadcrumb :products
+  .contents.clearfix
+    %h1.product-name COACH  オールドコーチ ショルダーバッグ ブラック アメリカ製
+    .main.clearfix
+      =image_tag "https://static.mercdn.net/item/detail/orig/photos/m45072547148_1.jpg?1563181264", class: "main__image__size" do
+        .main__image__angles
+      %table.main__ditail__table
+        %tbody
+          %tr
+            %th 出品者
+            %td 岡本凌
+          %tr
+            %th カテゴリー
+            %td バッグ
+          %tr
+            %th ブランド
+            %td コーチ
+          %tr
+            %th 商品の状態
+            %td 目立った傷や汚れなし
+          %tr
+            %th 配送料の負担
+            %td 送料込み(出品者負担)
+          %tr
+            %th 配送の方法
+            %td らくらくメルカリ便
+          %tr
+            %th 配送元地域
+            %td 大阪
+          %tr
+            %th 発送日の目安
+            %td 1~2日で発送
+    .price__and__button
+      .price
+        %span.price__figure ¥ 11,900
+        %span.price__tax (税込)
+        %span.price__shipping__fee 送料込み
+      .button
+        %button{type: "submit", class: "button__btn"}
+          %span 購入画面に進む
+    .description.clearfix
+      %p.description__inner
+        オールドコーチのショルダーバックです。
+        定期的にオイルメンテナンスしてます。
+        W   22cm
+        H    20cm
+        D    6cm
+        ブラック
+        アメリカ製
+        ショルダー  111〜122cm
+    .comment
+      .comment__boby
+        .comment__form.clearfix
+          %form.comment__form
+            %textarea{type: "text", class: "comment__form__textarea"}
+          %button{type: "submit", class: "comment__form__submit__btn"}
+            %span コメントする
+
+    .product-space
+
+    .sns__box.clearfix
+      %ul{class: "sns__box__btns"}
+        %li
+        =link_to "" ,{class: "sns__box__facebook"} do
+          %i.fab.fa-facebook.fa-2x
+        %li
+        =link_to "" ,{class: "sns__box__Twitter"} do
+          %i.fab.fa-twitter.fa-2x
+        %li
+        =link_to "" ,{class: "sns__box__LINE"} do
+          %i.fab.fa-line.fa-2x
+          
+    .product-space
+

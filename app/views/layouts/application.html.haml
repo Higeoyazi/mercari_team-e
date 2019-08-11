@@ -8,6 +8,7 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     %link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css")
+    = breadcrumbs pretext: "You are here: ", separator: " &rsaquo; "
   %body
     = link_to 'ログアウト',  destroy_user_session_path, method: :delete #マージする前に消す
     = render 'layouts/exhibit-btn'
