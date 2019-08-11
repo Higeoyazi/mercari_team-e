@@ -17,17 +17,18 @@ class CustomFormBuilder < ActionView::Helpers::FormBuilder
   end
 
 
-
   private
 
   def error(method)
     error_html(error_message(method))
   end
 
+  #全部出したい時には最後をallにすれば良い
   def error_message(method)
     (@object.errors[method].size > 0) ? I18n.t("activerecord.attributes.#{@object.model_name.singular}.#{method}") + @object.errors[method].first: ""
   end
 
+  #エラーメッセがなければ空を返す
   def error_html(msg)
     return "" unless msg.present?
 

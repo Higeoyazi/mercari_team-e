@@ -1,5 +1,7 @@
 %h2 支払い方法
-= form_for @user,  builder: CustomFormBuilder, url: signup_index_path, method: :post do |f|
+-# - @user ||= User.new
+-# - @user.build_credit_card ||= @user.build_credit_card #リロード後エラーになるので、その対策用、完璧ではない、後日。
+= form_for @user, builder: CustomFormBuilder, url: signup_index_path, method: :post do |f|
   = f.fields_for :credit_card do |c|
     .field
       = c.label :カード番号
