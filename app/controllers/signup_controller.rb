@@ -56,12 +56,6 @@ class SignupController < ApplicationController
     render '/signup/step5' unless @user.credit_card.valid?(:step5)
   end
 
-  #validateのリファクタリング用、どうしても変数呼べず、後日。
-  # def validation(step, name)
-  #   new_user_with_params
-  #   render "/signup/#{step}" unless @user."#{name}".valid?(:"#{step}")
-  # end
-
 
   def create
 
@@ -70,7 +64,7 @@ class SignupController < ApplicationController
     @user.build_address(session[:address_attributes])
     @user.build_credit_card(user_params[:credit_card_attributes])
 
-     #step1でFB or Googleのリンク経由でないと保存されない、セッションに残る場合はメールアドレスリンクで空になる
+    #step1でFB or Googleのリンク経由でないと保存されない、セッションに残る場合はメールアドレスリンクで空になる
     unless session[:provider_data] == {}
       @user.sns_credentials.build(
         uid: session[:provider_data]["uid"],
