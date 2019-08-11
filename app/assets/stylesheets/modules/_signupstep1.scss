@@ -1,0 +1,104 @@
+.user-devise-container{
+  .devise-header{
+    height: 128px;
+    text-align: center;
+    background-color:#f5f5f5;
+    &__logo {
+      margin: 40px 0 0;
+      width: 185px; 
+      height: 49px;
+      line-height: 49px;
+      display: inline-block;
+    }
+  }
+  .user-new-main{
+    background-color: #f5f5f5;
+    height: 408px;
+    .main__entry{
+      width: 700px;
+      height: 100%;
+      margin: 0 auto;
+      .login-new_user{
+        box-sizing: border-box;
+        height: 97px;
+        padding: 40px 64px;
+        background-color: white;
+        border-bottom: solid;
+        border-color: #f5f5f5;
+        p{
+          text-align: center;
+          color: #333;
+          font-weight: bold;
+          font-size: 22px;
+        }
+      }
+      .login-main {
+        display: block;
+        &__container {
+          width: 700px;
+          margin: 0 auto;
+          background-color: $white;
+          &__inner {
+            text-align: center;
+            border-top: 1px solid #f5f5f5;
+            padding: 64px;
+            &__content {
+              max-width: 320px;
+              margin: 0 auto;
+              a {
+                width: 100%;
+                line-height: 48px;
+                margin: 10px 0 0;
+                display: flex;
+                justify-content: center;
+                position: relative;
+                &.facebook {
+                  background: #385185;
+                }
+                i {
+                  padding-top: 15px;
+                  padding-right: 5px;
+                  position: absolute;
+                  left: 16px;
+                  font-size: 20px;
+                }
+              }
+              .contents__btn{
+                display: block;
+                font-size: 14px;
+                color:$white;
+                text-decoration: none;
+                text-align: center;
+                line-height: 48px;
+                &__mail{
+                  position: relative;
+                  background:#ea352d;
+                  color: white;
+                }
+                &__facebook{
+                  position: relative;
+                  margin: 16px 0 0;
+                  background: #385185;
+                  color: $white;
+                }
+                &__google{
+                  position: relative;
+                  margin: 16px 0 0;
+                  border: #979797 solid 1px;
+                  color: #333;
+                  &__logo {
+                    position: absolute;
+                    top: 50%;
+                    left: 16px;
+                    -webkit-transform: translate(0, -50%);
+                    transform: translate(0, -50%);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }  
+    }
+  }
+}
