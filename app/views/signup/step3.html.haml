@@ -62,10 +62,11 @@
               = a.label '建物名', class: 'third-main-wrapper__form--label'
               %span.third-main-wrapper__form--option 任意
               = a.text_field :building, class: 'third-main-wrapper__form--input', placeholder: '例) 柳ビル103'
-            -# .third-main-wrapper__form
-            -#   = a.label '電話', class: 'third-main-wrapper__form--label'
-            -#   %span.third-main-wrapper__form--option 任意
-            -#   = a.text_field :phone_number, class: 'third-main-wrapper__form--input', placeholder: '09012345678'
+          = f.fields_for :profile do |p|
+            .third-main-wrapper__form
+              = p.label '電話', class: 'third-main-wrapper__form--label'
+              %span.third-main-wrapper__form--option 任意
+              = p.text_field :phone_number, class: 'third-main-wrapper__form--input', placeholder: '09012345678'
             = f.submit '次へ進む', class: 'third-main-wrapper__form--btn'
 
 
@@ -79,42 +80,3 @@
       = image_tag '//www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?863303983', alt: 'logo', class: 'devise-header__content__link__image', height: '65', width: '80'
     .devise-footer__content__copyright
       %small &copy; 2019 Mercari
-
--# %h2 User profile
--# = form_for @user, url: step4_signup_index_path, method: :get do |f|
--#   = f.fields_for :profile do |p|
--#     .field
--#       = p.label :お名前
--#       %br/
--#       = p.text_field :family_name, autofocus: true
--#       %br/
--#       = p.text_field :first_name, autofocus: true
--#     .field
--#       = p.label :お名前カナ
--#       %br/
--#       = p.text_field :family_name_kana, autofocus: true
--#       %br/
--#       = p.text_field :first_name_kana, autofocus: true
--#   = f.fields_for :address do |a|
--#     .field
--#       = a.label :郵便番号
--#       %br/
--#       = a.text_field :postal_code
--#     .field
--#       = a.label :都道府県
--#       %br/
--#       = a.text_field :prefecture
--#     .field
--#       = a.label :市区町村
--#       %br/
--#       = a.text_field :city
--#     .field
--#       = a.label :番地
--#       %br/
--#       = a.text_field :block
--#     .field
--#       = a.label :建物
--#       %br/
--#       = a.text_field :building
--#   .actions
--#     = f.submit "次へ"

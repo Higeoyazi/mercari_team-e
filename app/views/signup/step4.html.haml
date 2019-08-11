@@ -34,19 +34,19 @@
               = c.text_field :number, autofocus: true, class: 'forth-main-wrapper__form--input', placeholder: '半角数字のみ'
               %ul.creditcard-types
                 %li.creditcard-types__image-top
-                  = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/visa.svg?1905591235', width: '49', height: '20'
+                  = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/visa.svg?1905591235'
                 %li.creditcard-types__image-latter
-                  = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/master-card.svg?1905591235', width: '34', height: '20'
+                  = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/master-card.svg?1905591235'
                 %li.creditcard-types__image-latter
-                  = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/saison-card.svg?1905591235', width: '30', height: '20'
+                  = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/saison-card.svg?1905591235'
                 %li.creditcard-types__image-latter
-                  = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/jcb.svg?1905591235', width: '32', height: '20'
+                  = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/jcb.svg?1905591235'
                 %li.creditcard-types__image-latter
-                  = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/american_express.svg?1905591235', width: '21', height: '20'
+                  = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/american_express.svg?1905591235'
                 %li.creditcard-types__image-latter
-                  = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/dinersclub.svg?1905591235', width: '32', height: '20'
+                  = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/dinersclub.svg?1905591235'
                 %li.creditcard-types__image-latter
-                  = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/discover.svg?1905591235', width: '32', height: '20'
+                  = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/discover.svg?1905591235'
             .forth-main-wrapper__form
               = c.label '有効期限', class: 'forth-main-wrapper__form--label'
               %span.forth-main-wrapper__form--require 必須
@@ -79,26 +79,3 @@
       = image_tag '//www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?863303983', alt: 'logo', class: 'devise-header__content__link__image', height: '65', width: '80'
     .devise-footer__content__copyright
       %small &copy; 2019 Mercari
-
--# %h2 User profile
--# = form_for @user, url: signup_index_path, method: :post do |f|
--#   = f.fields_for :credit_card do |c|
--#     .field
--#       = c.label :カード番号
--#       %br/
--#       = c.text_field :number, autofocus: true
--#     .field
--#       = c.label :有効期限
--#       %br/
--#       = c.text_field :expiration_date_month
--#       月
--#       %br/
--#       = c.text_field :expiration_date_year
--#       年
--#       %br/
--#     .field
--#       = c.label :セキュリティコード
--#       %br/
--#       = c.text_field :security_code
--#   .actions
--#     = f.submit "登録"
