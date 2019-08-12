@@ -14,4 +14,13 @@ Rails.application.routes.draw do
     end
   end
   root 'products#index'
+
+  resources :mypages do
+    collection do
+      get 'profile'
+      get 'logout'
+      get 'edit'
+      get 'identification'
+    end
+  end
 end
