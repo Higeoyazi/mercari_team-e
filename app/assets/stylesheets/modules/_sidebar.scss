@@ -1,0 +1,35 @@
+.logout-content-sidebar{
+  float: left;
+  width: 280px;
+  margin: 0 40px 0 0;
+  height:100%;
+  .mypage-nav{
+    &__bar{
+      list-style: none;
+      &__list {
+        border-top: 1px solid #eee;
+        &__item{
+          position: relative;
+          display: block;
+          padding: 16px;
+          background: $white;
+          font-size: 14px;
+          color: #333;
+          text-decoration: none;
+          touch-action: manipulation;
+          .fa-chevron-right{
+            color: #ccc;
+            position: absolute;
+            right: 16px;
+            top: 50%;
+          }
+        }
+      }
+    }
+    .mypage-nav-head {
+      margin: 40px 0 0;
+      font-weight: bold;
+      font-size: 16px;
+    }
+  }
+}

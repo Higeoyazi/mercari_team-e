@@ -14,4 +14,8 @@ Rails.application.routes.draw do
     end
   end
   root 'products#index'
+  get "mypages/profile", to:"mypages#profile"
+  get "mypages/logout", to:"mypages#logout"
+  get "mypages/edition", to: "mypages#edition"
+  get "mypages/identification", to: "mypages#identification"
 end
