@@ -65,7 +65,7 @@ class SignupController < ApplicationController
 
 
   def create
-
+    binding.pry
     @user = User.new(session[:user_params])
     @user.build_profile(session[:profile_attributes])
     @user.build_address(session[:address_attributes])
@@ -99,6 +99,10 @@ class SignupController < ApplicationController
 
   def new_user_with_params
     @user = User.new(user_params)
+  end
+
+  def credit_card_params
+    params.permit(:payjp_token)
   end
 
 

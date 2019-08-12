@@ -1,8 +1,8 @@
 $(document).on('turbolinks:load', function() {
-  var form = $("#charge-form");
-  Payjp.setPublicKey('pk_test_0383a1b8f91e8a6e3ea0e2a9');
+  var form = $(".forth-main-wrapper__box");
+  Payjp.setPublicKey('pk_test_288043db98dbe0bc37e135c6');
 
-  $("#charge-form").on("click", "#submit-button", function(e) {
+  $(".forth-main-wrapper__box").on("click", "#signup--btn", function(e) {
     e.preventDefault();
     form.find("input[type=submit]").prop("disabled", true);
     var card = {
@@ -23,8 +23,8 @@ $(document).on('turbolinks:load', function() {
         $(".exp_year").removeAttr("name");
 
         var token = response.id;
-        $("#charge-form").append($('<input type="hidden" name="payjp_token" class="payjp-token" />').val(token));
-        $("#charge-form").get(0).submit();
+        $(".forth-main-wrapper__box").append($('<input type="hidden" name="payjp_token" class="payjp-token" />').val(token));
+        $(".forth-main-wrapper__box").get(0).submit();
       }
     });
   });
