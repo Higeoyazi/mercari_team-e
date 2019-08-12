@@ -1,32 +1,4 @@
-%h2 User profile
 = form_for @user, builder: CustomFormBuilder, url: step3_signup_index_path, method: :get do |f|
-  -# = render "devise/shared/error_messages", resource: @user
-  .field
-    %br/
-    = f.label :nickname
-    %br/
-    = f.text_field :nickname, autofocus: true, autocomplete: "nickname"
-  .field
-    %br/
-    = f.label :email
-    %br/
-    = f.email_field :email, autocomplete: "email"
-  .field
-    %br/
-    = f.label :password
-    %br/
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    = f.password_field :password, autocomplete: "new-password"
-  .field
-    %br/
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .actions
-    = f.submit "次へ"
-= form_for @user, url: step3_signup_index_path, method: :get do |f|
   .user-container#step2
     %header.header__registration
       .header__registration__box
@@ -86,4 +58,4 @@
             .input_content__form__box
               = image_tag "https://i.gyazo.com/aeb4855b41254a0b7ba721820a02a0dc.png",alt:"Image from Gyazo" ,width: "306"
             = f.submit :次へ進む ,{class:"form-button",id:"button__step1"}
-    = render "shared/devise-footer
+    = render "shared/devise-footer"

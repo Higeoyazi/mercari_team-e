@@ -25,13 +25,13 @@
   .forth-main
     %section.forth-main-wrapper
       .forth-main-wrapper__title 支払い方法
-      = form_for @user, url: signup_index_path, method: :post, html: {class: 'forth-main-wrapper__box'} do |f|
+      = form_for @user, builder: CustomFormBuilder, url: signup_index_path, method: :post, html: {class: 'forth-main-wrapper__box'} do |f|
         .forth-main-wrapper__box--inner
           = f.fields_for :credit_card do |c|
             .forth-main-wrapper__form--top
               = c.label 'カード番号', class: 'forth-main-wrapper__form--label'
               %span.forth-main-wrapper__form--require 必須
-              = c.text_field :number, autofocus: true, class: 'forth-main-wrapper__form--input', placeholder: '半角数字のみ'
+              = c.text_field :card_id, autofocus: true, class: 'forth-main-wrapper__form--input', placeholder: '半角数字のみ'
               %ul.creditcard-types
                 %li.creditcard-types__image-top
                   = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/visa.svg?1905591235'
@@ -52,17 +52,17 @@
               %span.forth-main-wrapper__form--require 必須
               .expiration-date-wrapper
                 .expiration-date-wrapper__box
-                  = c.text_field :expiration_date_month, class: 'expiration-date-wrapper__box--inner'
+                  = c.text_field :customer_id, class: 'expiration-date-wrapper__box--inner'
                   %i.fas.fa-chevron-down.expiration-date-wrapper__box--arrow
                   %span.expiration-date-wrapper__box--detail 月
                 .expiration-date-wrapper__box--bottom
-                  = c.text_field :expiration_date_year, class: 'expiration-date-wrapper__box--inner'
+                  = c.text_field :customer_id, class: 'expiration-date-wrapper__box--inner'
                   %i.fas.fa-chevron-down.expiration-date-wrapper__box--arrow
                   %span.expiration-date-wrapper__box--detail 年
             .forth-main-wrapper__form
               = c.label 'セキュリティコード', class: 'forth-main-wrapper__form--label'
               %span.forth-main-wrapper__form--require 必須
-              = c.text_field :security_code, class: 'forth-main-wrapper__form--input', placeholder: 'カード背面4桁もしくは3桁の番号'
+              = c.text_field :user_id, class: 'forth-main-wrapper__form--input', placeholder: 'カード背面4桁もしくは3桁の番号'
             .forth-main-wrapper__question
               %span.forth-main-wrapper__question--mark ?
               カード裏面の番号とは？
