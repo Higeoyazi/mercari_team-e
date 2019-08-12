@@ -30,7 +30,7 @@
           .forth-main-wrapper__form--top
             = f.label 'カード番号', class: 'forth-main-wrapper__form--label'
             %span.forth-main-wrapper__form--require 必須
-            = f.text_field name: "number", id: "payment_card_no", class: 'forth-main-wrapper__form--input', placeholder: '半角数字のみ', maxlength: "16"
+            = f.text_field :number, id: 'payment_card_no', class: 'forth-main-wrapper__form--input number', placeholder: '半角数字のみ', maxlength: "16"
             -# %ul.creditcard-types
             -#   %li.creditcard-types__image-top
             -#     = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/visa.svg?1905591235'
@@ -51,19 +51,17 @@
             %span.forth-main-wrapper__form--require 必須
             .expiration-date-wrapper
               .expiration-date-wrapper__box
-
-                = f.text_field :customer_id, class: 'expiration-date-wrapper__box--inner'
+                = f.text_field :exp_month, class: 'expiration-date-wrapper__box--inner exp_month', id: 'payment_card_expire_mm', length: '2', placeholder: '2桁'
                 %i.fas.fa-chevron-down.expiration-date-wrapper__box--arrow
                 %span.expiration-date-wrapper__box--detail 月
               .expiration-date-wrapper__box--bottom
-              
-                = f.text_field :customer_id, class: 'expiration-date-wrapper__box--inner'
+                = f.text_field :exp_year, class: 'expiration-date-wrapper__box--inner exp_year', id: 'payment_card_expire_yy', length: '4', placeholder: '4桁'
                 %i.fas.fa-chevron-down.expiration-date-wrapper__box--arrow
                 %span.expiration-date-wrapper__box--detail 年
           .forth-main-wrapper__form
             = f.label 'セキュリティコード', class: 'forth-main-wrapper__form--label'
             %span.forth-main-wrapper__form--require 必須
-            = f.text_field :user_id, class: 'forth-main-wrapper__form--input', placeholder: 'カード背面4桁もしくは3桁の番号'
+            = f.text_field :cvc, class: 'forth-main-wrapper__form--input cvc', id: "payment_card_security_code", placeholder: 'カード背面4桁もしくは3桁の番号'
           .forth-main-wrapper__question
             %span.forth-main-wrapper__question--mark ?
             カード裏面の番号とは？
