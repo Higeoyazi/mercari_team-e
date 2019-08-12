@@ -56,6 +56,14 @@ class SignupController < ApplicationController
     render '/signup/step5' unless @user.credit_card.valid?(:step5)
   end
 
+# 下記でバリデーションのリファクタリングいけるかも！後で試す
+  # def validation(model_name, num)
+  #   new_user_with_params
+  #   model_name = @user.model_name
+  #   render "/signup/step#{num}" unless model_name.valid?(:step"#{num}")
+  # end
+
+
 
   def create
 
@@ -120,10 +128,8 @@ class SignupController < ApplicationController
       ],
       credit_card_attributes: [
         :id,
-        :number,
-        :expiration_date_month,
-        :expiration_date_year,
-        :security_code
+        :customer_id,
+        :card_id
       ])
   end
 end

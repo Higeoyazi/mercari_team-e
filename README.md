@@ -58,10 +58,8 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|number|string|null: false, unique: true|
-|expiration_date_month|integer|null: false|
-|expiration_date_year|integer|null: false|
-|security_code|integer|null: false, unique: true|
+|customer_id|string|null: false|
+|card_id|string|null: false|
 |user|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
