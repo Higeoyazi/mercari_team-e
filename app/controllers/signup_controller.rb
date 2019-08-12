@@ -65,11 +65,13 @@ class SignupController < ApplicationController
 
 
   def create
-    binding.pry
+    # binding.pry
     @user = User.new(session[:user_params])
     @user.build_profile(session[:profile_attributes])
     @user.build_address(session[:address_attributes])
     # @user.build_credit_card(user_params[:credit_card_attributes])
+
+
 
     #step1でFB or Googleのリンク経由でないと保存されない、セッションに残る場合はメールアドレスリンクで空になる
     unless session[:provider_data] == {}
@@ -90,6 +92,13 @@ class SignupController < ApplicationController
     sign_in User.find(session[:id]) unless user_signed_in?
   end
 
+
+
+
+
+
+
+  
 
   private
 
