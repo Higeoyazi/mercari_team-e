@@ -1,6 +1,24 @@
-%h2 新規会員登録
-= link_to 'メールアドレスで登録する',  step2_signup_index_path, method: :get
-%br/
-= link_to 'Facebookで登録する',  user_facebook_omniauth_authorize_path, method: :post
-%br/
-= link_to 'Googleで登録する',  user_google_oauth2_omniauth_authorize_path, method: :post
+.user-devise-container
+  .devise-header
+    %h1.devise-header__logo
+      = link_to do
+        =image_tag "https://www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?128691313", alt: "mercari", class: "mercari-logo"
+  %main.user-new-main
+    .main__entry
+      .login-new_user
+        %p
+          新規会員登録
+      .login-main
+        .login-main__container
+          .login-main__container__inner
+            .login-main__container__inner__content
+              =link_to step2_signup_index_path, method: :get, class: "contents__btn contents__btn__mail" do
+                %i.fas.fa-envelope
+                メールアドレスで登録
+              = link_to user_facebook_omniauth_authorize_path, method: :post, class: "contents__btn contents__btn__facebook" do
+                %i.fab.fa-facebook
+                Facebookで登録
+              = link_to user_google_oauth2_omniauth_authorize_path, method: :post, class: "contents__btn contents__btn__google" do
+                %i.fab.fa-google
+                Googleで登録
+  = render "shared/devise-footer"
