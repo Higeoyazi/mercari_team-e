@@ -8,6 +8,17 @@
 @import 'modules/footer';
 @import 'modules/exhibit-btn';
 @import 'products';
+@import 'devise-session';
+@import 'modules/signupstep1';
+@import 'modules/signupstep2';
+@import 'modules/signupstep3';
+@import 'modules/signupstep4';
+@import 'modules/signupstep5';
+@import 'modules/signup-done';
+@import 'modules/devise-footer';
+@import 'modules/devise-header';
+
+
 body{
   position: relative;
   min-height: 100%;
