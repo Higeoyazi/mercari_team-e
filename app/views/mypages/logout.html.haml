@@ -1,0 +1,8 @@
+.wrapper-mypage
+  .container-mypage
+    = render partial:"shared/sidebar"
+    .logout-content
+      .logout-content__chapter
+        %form.logout-content__chapter__form
+          .logout-content__chapter__form__btn
+            = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'logout-content__chapter__form__btn__red' 
