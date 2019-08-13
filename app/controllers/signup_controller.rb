@@ -2,7 +2,7 @@ class SignupController < ApplicationController
 
   before_action :validates_user, only: :step3
   before_action :validates_profile, :validates_address, only: :step5
-  before_action :validates_credit_card, only: :create
+  # before_action :validates_credit_card, only: :create
 
   def index
     render '/signup/step5'
@@ -29,8 +29,6 @@ class SignupController < ApplicationController
   end
 
   def step5
-    new_user
-    @user.build_credit_card
     session[:profile_attributes] = user_params[:profile_attributes]
     session[:address_attributes] = user_params[:address_attributes]
   end
@@ -50,12 +48,13 @@ class SignupController < ApplicationController
     render '/signup/step4' unless @user.address.valid?(:step4)
   end
 
-  def validates_credit_card
-    new_user_with_params
-    render '/signup/step5' unless @user.credit_card.valid?(:step5)
-  end
+  #jqueryのプラグイン導入のcredit_cardのバリデーション実装の時以下を使うかも
+  # def validates_credit_card
+  #   new_user_with_params
+  #   render '/signup/step5' unless @user.credit_card.valid?(:step5)
+  # end
 
-# 下記でバリデーションのリファクタリングいけるかも！後で試す
+  #下記でバリデーションのリファクタリングいけるかも！後で試す
   # def validation(model_name, num)
   #   new_user_with_params
   #   model_name = @user.model_name
@@ -69,7 +68,7 @@ class SignupController < ApplicationController
     @user = User.new(session[:user_params])
     @user.build_profile(session[:profile_attributes])
     @user.build_address(session[:address_attributes])
-    @user.build_credit_card(user_params[:credit_card_attributes])
+    resister_payjp_customer(@user)
 
     #step1でFB or Googleのリンク経由でないと保存されない、セッションに残る場合はメールアドレスリンクで空になる
     unless session[:provider_data] == {}
@@ -100,6 +99,10 @@ class SignupController < ApplicationController
   def new_user_with_params
     @user = User.new(user_params)
   end
+
+  # def credit_card_params
+  #   params.permit(:payjp_token)
+  # end
 
 
 
