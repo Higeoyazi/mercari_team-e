@@ -69,6 +69,9 @@ class SignupController < ApplicationController
     @user = User.new(session[:user_params])
     @user.build_profile(session[:profile_attributes])
     @user.build_address(session[:address_attributes])
+
+    resister_payjp_customer
+    # redirect_to controller: :credit_cards, action: :resister
     # @user.build_credit_card(user_params[:credit_card_attributes])
 
 
@@ -98,7 +101,7 @@ class SignupController < ApplicationController
 
 
 
-  
+
 
   private
 
