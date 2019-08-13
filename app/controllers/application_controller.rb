@@ -12,25 +12,23 @@ class ApplicationController < ActionController::Base
     new_user_session_path
   end
 
-  def resister_payjp_customer
-    Payjp.api_key = Rails.application.credentials.development[:payjp_private_key] #ここを呼び出すところから明日スタート！
-    binding.pry
-    if params['payjp-token'].blank?
+  def resister_payjp_customer(user)#ユーザー登録時以外で登録するときは変数userが空だったら、で条件分岐する
+    Payjp.api_key = Rails.application.credentials.development[:payjp_private_key]
+    if params['payjp_token'].blank?
       redirect_to action: "new"
     else
       customer = Payjp::Customer.create(
-      description: '登録テスト', #なくてもOK
-      email: current_user.email, #なくてもOK
-      card: params['payjp-token'],
-      metadata: {user_id: current_user.id}
+      card: params['payjp_token']
+      # metadata: {user_id: current_user.id}
       ) #念の為metadataにuser_idを入れましたがなくてもOK
-      @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
-      if @card.save
-        redirect_to action: "show"
-      else
-        redirect_to action: "pay"
-      end
-    end   
+      @credit_card = user.build_credit_card(customer_id: customer.id, card_id: customer.default_card)
+      # if @card.save
+      #   redirect_to action: "show" and return
+      # else
+      #   redirect_to action: "pay" and return
+      # end
+    end 
+    return @credit_card
   end
 
 end

@@ -68,9 +68,9 @@ class SignupController < ApplicationController
     # binding.pry
     @user = User.new(session[:user_params])
     @user.build_profile(session[:profile_attributes])
-    @user.build_address(session[:address_attributes])
-
-    resister_payjp_customer
+    build=  @user.build_address(session[:address_attributes])
+    resister_payjp_customer(@user)
+    
     # redirect_to controller: :credit_cards, action: :resister
     # @user.build_credit_card(user_params[:credit_card_attributes])
 
@@ -85,9 +85,9 @@ class SignupController < ApplicationController
 
     if @user.save
       session[:id] = @user.id
-      redirect_to done_signup_index_path
+      redirect_to done_signup_index_path && return
     else
-      render '/signup/step1'
+      render '/signup/step1' && return
     end
   end
 
