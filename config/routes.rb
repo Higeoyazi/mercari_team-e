@@ -13,5 +13,5 @@ Rails.application.routes.draw do
       get 'done' # 登録完了後のページ
     end
   end
-  root 'tweets#index'
+  root 'products#index'
 end
