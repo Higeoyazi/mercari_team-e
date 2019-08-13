@@ -12,8 +12,8 @@ class User < ApplicationRecord
   has_one :address, dependent: :destroy
   accepts_nested_attributes_for :address
 
-  has_one :credit_card, dependent: :destroy
-  accepts_nested_attributes_for :credit_card
+  has_many :credit_cards, dependent: :destroy
+  # accepts_nested_attributes_for :credit_card
 
   has_one_attached :avatar
   has_many :orders

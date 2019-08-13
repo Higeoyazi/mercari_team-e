@@ -128,11 +128,11 @@ class SignupController < ApplicationController
         :city,
         :block,
         :building
-      ],
-      credit_card_attributes: [
-        :id,
-        :customer_id,
-        :card_id
-      ])
+      ]#,
+      # credit_card_attributes: [
+      #   :id,
+      #   :customer_id,
+      #   :card_id]
+    )
   end
 end
