@@ -12,7 +12,9 @@ class ApplicationController < ActionController::Base
     new_user_session_path
   end
 
-  def resister_payjp_customer(user)#ユーザー登録時以外で登録するときは変数userが空だったら、で条件分岐する、かつこのアクション内で保存できるようにする
+  #以下のコードはcredentialに環境変数を入力しないとエラーになる
+  #ユーザー登録時以外で登録するときは変数userが空だったら、で条件分岐する、かつこのアクション内で保存できるようにする
+  def resister_payjp_customer(user)
     Payjp.api_key = Rails.application.credentials.development[:payjp_private_key]
     if params['payjp_token'].blank?
       redirect_to action: "new"
