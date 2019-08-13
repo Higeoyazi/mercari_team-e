@@ -2,12 +2,13 @@
 @import 'font-awesome';
 @import 'config/colors';
 @import 'mixins/mixin';
+@import 'new';
 @import 'modules/product-show';
 @import 'modules/wrapper';
 @import 'modules/header';
 @import 'modules/footer';
 @import 'modules/exhibit-btn';
-@import 'products';
+@import 'modules/products';
 @import 'devise-session';
 @import 'modules/signupstep1';
 @import 'modules/signupstep2';
@@ -24,6 +25,7 @@
 @import 'modules/sidebar';
 
 
+// ページ全体の基本のfontや背景色
 body{
   position: relative;
   min-height: 100%;
