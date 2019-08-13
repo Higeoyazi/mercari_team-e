@@ -2,7 +2,7 @@ class SignupController < ApplicationController
 
   before_action :validates_user, only: :step3
   before_action :validates_profile, :validates_address, only: :step5
-  before_action :validates_credit_card, only: :create
+  # before_action :validates_credit_card, only: :create
 
   def index
     render '/signup/step5'
