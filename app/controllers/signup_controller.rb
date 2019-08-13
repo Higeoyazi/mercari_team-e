@@ -48,10 +48,10 @@ class SignupController < ApplicationController
     render '/signup/step4' unless @user.address.valid?(:step4)
   end
 
-  def validates_credit_card
-    new_user_with_params
-    render '/signup/step5' unless @user.credit_card.valid?(:step5)
-  end
+  # def validates_credit_card
+  #   new_user_with_params
+  #   render '/signup/step5' unless @user.credit_card.valid?(:step5)
+  # end
 
 # 下記でバリデーションのリファクタリングいけるかも！後で試す
   # def validation(model_name, num)
@@ -68,7 +68,7 @@ class SignupController < ApplicationController
     @user.build_profile(session[:profile_attributes])
     @user.build_address(session[:address_attributes])
     resister_payjp_customer(@user)
-    
+
     #step1でFB or Googleのリンク経由でないと保存されない、セッションに残る場合はメールアドレスリンクで空になる
     unless session[:provider_data] == {}
       @user.sns_credentials.build(
