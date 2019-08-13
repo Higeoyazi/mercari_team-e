@@ -3,13 +3,13 @@
   %head
     %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title MercariTeamE
-    %script{src: "https://js.pay.jp/", type: "text/javascript"}
-    = csrf_meta_tags
-    = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = csrf_meta_tags
+    = csp_meta_tag
     %link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css")
     = breadcrumbs pretext: "You are here: ", separator: " &rsaquo; "
+    %script{src: "https://js.pay.jp/", type: "text/javascript"}
   %body
     = render 'shared/header'
     = render 'layouts/exhibit-btn'
