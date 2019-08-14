@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
+  root 'products#index'
+
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
+  
   resources :products
+
   resources :signup do
     collection do
       get 'step1'
@@ -13,8 +17,6 @@ Rails.application.routes.draw do
       get 'done'
     end
   end
-  
-  root 'products#index'
 
   resources :mypages do
     collection do
