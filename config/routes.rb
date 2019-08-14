@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
+  root 'products#index'
+
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
+  
   resources :products, only:[:new, :show, :edit, :create, :update,:destroy] do
     collection do
       get 'end'
@@ -12,6 +15,7 @@ Rails.application.routes.draw do
       get 'confirm'
     end
   end
+
   resources :signup do
     collection do
       get 'step1'
@@ -23,9 +27,16 @@ Rails.application.routes.draw do
     end
   end
 
-  root 'products#index'
-  get "mypages/profile", to:"mypages#profile"
-  get "mypages/logout", to:"mypages#logout"
-  get "mypages/edition", to: "mypages#edition"
-  get "mypages/identification", to: "mypages#identification"
+  resources :mypages do
+    collection do
+      get 'profile'
+      get 'logout'
+      get 'edition'
+      get 'identification'
+
+      resources :credit_cards, only: [:index, :new, :create, :destroy]
+      #payアクションはproductの中にネストさせてルーティング作るかも、もしくは単独。後日。
+    end
+  end
 end
+

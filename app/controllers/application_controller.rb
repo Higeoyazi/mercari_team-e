@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+
   require "payjp"
   before_action :configure_permitted_parameters, if: :devise_controller?
   
@@ -20,15 +21,11 @@ class ApplicationController < ActionController::Base
       redirect_to action: "new"
     else
       customer = Payjp::Customer.create(card: params['payjp_token'])
-      @credit_card = user.build_credit_card(customer_id: customer.id, card_id: customer.default_card)
-      #ユーザー登録時以外のカード登録の際以下をコードを参照
-      # if @card.save
-      #   redirect_to action: "show" and return
-      # else
-      #   redirect_to action: "pay" and return
-      # end
+      @credit_card = user.credit_cards.build(customer_id: customer.id, card_id: customer.default_card)
     end 
+
     return @credit_card
+
   end
 
 end
