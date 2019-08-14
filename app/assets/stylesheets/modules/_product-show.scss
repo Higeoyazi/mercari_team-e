@@ -1,7 +1,7 @@
 .product-show {
   height: 100%;
   width: 100%;
-  background-color: $white;
+  padding: 20px 40px 40px;
 
   .contents {
     @include confirmationWidth;
@@ -13,29 +13,43 @@
     
     .product-name{
       font-size: 24px;
+      margin-bottom: 30px;
       text-align: center;
     }
     
     .main {
       @include confirmationWidth;
       height:400px;
-      display:flex;
         &__image__size {
-            width:350px;
-            height:300px;
+          width:225px;
+          height:300px;
+          margin:0 60px;
+          float:left;
         }
         &__ditail__table {
-          margin-left: 30px;
-          width:350px;
+          width:280px;
           height:400px;
+          margin-right:40px;
+          float:right;
             tbody {
-              border-style:hidden;
+              border: solid 1px;
                 th{
                   font-weight: 400;
                   background: $white;
                   font-weight: 400;
                 }
             }
+        }
+        .sub-image{
+          height:60px;
+          width:300px;
+          padding-top:300px;
+          margin-left:30px;
+          &__size{
+            width:60px;
+            height:60px;
+            float:left;
+          }
         }
     }
   
@@ -73,7 +87,7 @@
   .comment {
     @include confirmationWidth;
     text-align:center;
-    margin:30px;
+    margin-top:30px;
       &__form__textarea {
         @include confirmationWidth;
         height: 100px;
@@ -118,3 +132,4 @@
     }
   }
 }
+
