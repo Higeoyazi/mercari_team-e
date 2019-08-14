@@ -1,24 +1,28 @@
 .product-show
-  = breadcrumb :products
   .contents.clearfix
-    %h1.product-name COACH  オールドコーチ ショルダーバッグ ブラック アメリカ製
-    .main.clearfix
-      =image_tag "https://static.mercdn.net/item/detail/orig/photos/m45072547148_1.jpg?1563181264", class: "main__image__size" do
-        .main__image__angles
+    %h1.product-name
+      = @product.name
+    .main
+      = image_tag @product.product_images.first.image_url, class: "main__image__size"
       %table.main__ditail__table
         %tbody
           %tr
             %th 出品者
-            %td 岡本凌
+            %td 
+              =@product.user.nickname
           %tr
             %th カテゴリー
-            %td バッグ
+            %td
+              - @product.category_genres.each do |category_genres|
+                = category_genres.name
           %tr
             %th ブランド
-            %td コーチ
+            %td 
+              = @product.brand_name
           %tr
             %th 商品の状態
-            %td 目立った傷や汚れなし
+            %td 
+              = @product.quality
           %tr
             %th 配送料の負担
             %td 送料込み(出品者負担)
@@ -27,13 +31,19 @@
             %td らくらくメルカリ便
           %tr
             %th 配送元地域
-            %td 大阪
+            %td
+              =@product.delivery_origin
           %tr
             %th 発送日の目安
             %td 1~2日で発送
+      .sub-image
+        - @product.product_images.drop(1).each do |n|
+          = image_tag "#{n.image_url}",class:"sub-image__size"
+
     .price__and__button
       .price
-        %span.price__figure ¥ 11,900
+        %span.price__figure
+          =@product.price
         %span.price__tax (税込)
         %span.price__shipping__fee 送料込み
       .button
@@ -41,14 +51,7 @@
           %span 購入画面に進む
     .description.clearfix
       %p.description__inner
-        オールドコーチのショルダーバックです。
-        定期的にオイルメンテナンスしてます。
-        W   22cm
-        H    20cm
-        D    6cm
-        ブラック
-        アメリカ製
-        ショルダー  111〜122cm
+        =@product.description
     .comment
       .comment__boby
         .comment__form.clearfix
