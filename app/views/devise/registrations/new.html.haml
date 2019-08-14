@@ -1,27 +1,25 @@
-.user-devise-container
-  .devise-header
-    %h1.devise-header__logo
-      = link_to do
-        =image_tag "https://www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?128691313", alt: "mercari", class: "mercari-logo"
-  .login-main
-    .login-panel
-      .login-no-account
-        %p アカウントをお持ちでない方はこちら
-        = link_to "新規会員登録", step1_signup_index_path
-      .login-form-inner
-        = link_to user_facebook_omniauth_authorize_path, class: "facebook-login" do
-          %i.fab.fa-facebook
-          .content-box Facebookで登録
-        = link_to user_google_oauth2_omniauth_authorize_path, class: "google-login" do
-          %i.fab.fab.fa-google
-          .content-box Googleで登録
-      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-        .login-form-inner
-          .field
-            = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", class: 'login_field'
-          .field
-            = f.password_field :password, autocomplete: "current-password", placeholder: "パスワード", class: 'login_field'
-          .actions
-            = f.submit "ログイン", class: 'login_btn'
-            = link_to "パスワードをお忘れの方へ", new_password_path(resource_name), class: 'forgot-password'
-  = render "shared/devise-footer"
+%h2 Sign up
+= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+  = render "devise/shared/error_messages", resource: resource
+  .field
+    = f.label :nickname
+    %br/
+    = f.text_field :nickname, autofocus: true, autocomplete: "nickname"
+  .field
+    = f.label :email
+    %br/
+    = f.email_field :email, autocomplete: "email"
+  .field
+    = f.label :password
+    - if @minimum_password_length
+      %em
+        (#{@minimum_password_length} characters minimum)
+    %br/
+    = f.password_field :password, autocomplete: "new-password"
+  .field
+    = f.label :password_confirmation
+    %br/
+    = f.password_field :password_confirmation, autocomplete: "new-password"
+  .actions
+    = f.submit "Sign up"
+= render "devise/shared/links"
