@@ -13,9 +13,19 @@ Rails.application.routes.draw do
       get 'done'
     end
   end
+  
   root 'products#index'
-  get "mypages/profile", to:"mypages#profile"
-  get "mypages/logout", to:"mypages#logout"
-  get "mypages/edition", to: "mypages#edition"
-  get "mypages/identification", to: "mypages#identification"
+
+  resources :mypages do
+    collection do
+      get 'profile'
+      get 'logout'
+      get 'edition'
+      get 'identification'
+
+      resources :credit_cards, only: [:index, :new, :create, :destroy]
+      #payアクションはproductの中にネストさせてルーティング作るかも、もしくは単独。後日。
+    end
+  end
 end
+
