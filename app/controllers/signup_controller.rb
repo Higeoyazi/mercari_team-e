@@ -87,7 +87,6 @@ class SignupController < ApplicationController
 
   def done
     sign_in User.find(session[:id]) unless user_signed_in?
-    # session[:user_params] = {}
   end
 
 
@@ -100,11 +99,6 @@ class SignupController < ApplicationController
   def new_user_with_params
     @user = User.new(user_params)
   end
-
-  # def credit_card_params
-  #   params.permit(:payjp_token)
-  # end
-
 
 
   def user_params
@@ -128,11 +122,6 @@ class SignupController < ApplicationController
         :city,
         :block,
         :building
-      ]#,
-      # credit_card_attributes: [
-      #   :id,
-      #   :customer_id,
-      #   :card_id]
-    )
+      ])
   end
 end
