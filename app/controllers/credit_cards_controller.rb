@@ -28,7 +28,7 @@ class CreditCardsController < ApplicationController
   def delete #PayjpとCredit_cardのデータを削除、destroyとは何が違うのか後で検証
     credit_card = CreditCard.find(params[:id])
     unless credit_card.blank?
-      Payjp.api_key = Rails.application.credentials.development[:payjp_private_key]
+      gets_key
       customer = Payjp::Customer.retrieve(credit_card.customer_id)
       customer.delete
       credit_card.delete
@@ -39,7 +39,7 @@ class CreditCardsController < ApplicationController
 
   def pay
     @product = Product.find(params[:id]) #ここはparamsの引数の値間違っているかもしれないので後で確認。
-    Payjp.api_key = Rails.application.credentials.development[:payjp_private_key]
+    gets_key
 
     # 実際の挙動見て下記にするか決める
     # Payjp::Charge.create(
@@ -70,8 +70,8 @@ class CreditCardsController < ApplicationController
   private
 
   
-    def gets_key
-      Payjp.api_key = Rails.application.credentials.development[:payjp_private_key]
-    end
+  def gets_key
+    Payjp.api_key = Rails.application.credentials.development[:payjp_private_key]
+  end
 
 end
