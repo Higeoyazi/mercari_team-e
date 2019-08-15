@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_14_100557) do
+ActiveRecord::Schema.define(version: 2019_08_15_044055) do
+
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "prefecture", null: false
@@ -25,18 +26,11 @@ ActiveRecord::Schema.define(version: 2019_08_14_100557) do
   end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "product_id", null: false
-    t.bigint "category_genre_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["category_genre_id"], name: "index_categories_on_category_genre_id"
-    t.index ["product_id"], name: "index_categories_on_product_id"
-  end
-
-  create_table "category_genres", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "ancestry"
+    t.index ["ancestry"], name: "index_categories_on_ancestry"
   end
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -87,6 +81,8 @@ ActiveRecord::Schema.define(version: 2019_08_14_100557) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "category_id"
+    t.index ["category_id"], name: "index_products_on_category_id"
     t.string "delivery_cost"
     t.string "prep_days"
     t.index ["name"], name: "index_products_on_name"
@@ -130,14 +126,13 @@ ActiveRecord::Schema.define(version: 2019_08_14_100557) do
   end
 
   add_foreign_key "addresses", "users"
-  add_foreign_key "categories", "category_genres"
-  add_foreign_key "categories", "products"
   add_foreign_key "comments", "products"
   add_foreign_key "comments", "users"
   add_foreign_key "credit_cards", "users"
   add_foreign_key "orders", "products"
   add_foreign_key "orders", "users"
   add_foreign_key "product_images", "products"
+  add_foreign_key "products", "categories"
   add_foreign_key "products", "users"
   add_foreign_key "profiles", "users"
   add_foreign_key "sns_credentials", "users"

@@ -20,6 +20,7 @@ class CreditCardsController < ApplicationController
   end
   #シンプルにcredit_cardのレコードを作成するためのものであって、
   #トークンは別に作る、もしかしたら別のjsファイル必要かも,
+  
   def create
     resister_payjp_customer(current_user)
     # 本物は上記の後フラッシュ[success]と共にaction: 'show'に飛ばす
