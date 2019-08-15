@@ -15,7 +15,6 @@ class ProductsController < ApplicationController
   end
 
   def create
-    # @product = Product.new(product_params)
     @product = current_user.products.build(product_params)
     unless @product.valid?
       render "/products/new"
@@ -23,8 +22,6 @@ class ProductsController < ApplicationController
       @product.save
       redirect_to root_path
     end
-    # binding.pry
-    # @product.save
   end
 
 private
