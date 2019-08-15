@@ -131,14 +131,18 @@
 
 
 
-## category table
+## categories table
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
+|ancestry|string||
 
 ### Association
 - has_many :products
 - has_ancestry
+
+## index
+- add_index categories, :ancestry
 
 
 
