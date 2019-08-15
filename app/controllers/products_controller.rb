@@ -40,4 +40,8 @@ private
       categories_attributes: [:id, :name]
     )
   end
+
+  def search
+    @products = Product.where('name LIKE(?)', "%#{params[:keyword]}%")
+  end
 end

@@ -1,0 +1,10 @@
+= render 'shared/header'
+.main
+  .slide
+  .products-container
+    %h2.products-container__head
+      %span検索結果
+    -@products.each do |product|
+      %p= product.name
+    .products-container__content
+= render 'shared/footer' 

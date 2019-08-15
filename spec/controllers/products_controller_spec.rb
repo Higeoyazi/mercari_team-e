@@ -15,4 +15,16 @@ describe ProductsController, type: :controller do
     end
   end
 
+  describe 'GET #search' do
+    it "populates search" do
+      products = create_list(:product, 3) 
+      get :search
+    end
+
+    it "renders the :index template" do
+      get :search
+      expect(response).to render_template  :search
+    end
+  end
+
 end
