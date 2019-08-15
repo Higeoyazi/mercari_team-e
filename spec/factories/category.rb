@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :category_genre do
+  factory :category do
     
   end
 end

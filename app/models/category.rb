@@ -1,4 +1,4 @@
-class CategoryGenre < ApplicationRecord
+class Category < ApplicationRecord
   # Association
   # has_many :categories
   # has_many :products, through: :categories
