@@ -100,11 +100,6 @@ class SignupController < ApplicationController
     @user = User.new(user_params)
   end
 
-  # def credit_card_params
-  #   params.permit(:payjp_token)
-  # end
-
-
 
   def user_params
     params.require(:user).permit(
@@ -127,11 +122,6 @@ class SignupController < ApplicationController
         :city,
         :block,
         :building
-      ],
-      credit_card_attributes: [
-        :id,
-        :customer_id,
-        :card_id
       ])
   end
 end
