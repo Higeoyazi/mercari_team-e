@@ -176,5 +176,5 @@
 
 
 ## ER図
-<img width="902" alt="ERforMercari" src="https://github.com/jinugasachio/mercari_team-e/issues/44">
+<img width="902" alt="ERforMercari" src="https://camo.githubusercontent.com/24ce8ad59272d3b240ef06b9db43be73f4c11823/68747470733a2f2f692e6779617a6f2e636f6d2f38373663306332663636313661386134633133353435313738346262383135642e706e67">
 
