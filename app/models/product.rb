@@ -6,7 +6,7 @@ class Product < ApplicationRecord
 
   # has_many :categories
   # has_many :category_genres, through: :categories
-  has_many :category_genres
+  belongs_to :category_genre
 
   has_many :comments, dependent: :destroy
 end
