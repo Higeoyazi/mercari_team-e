@@ -25,6 +25,10 @@ class ProductsController < ApplicationController
     end
   end
 
+  def search
+    @products = Product.where('name LIKE(?)', "%#{params[:keyword]}%")
+  end
+
 private
   def product_params
     params.require(:product).permit(
@@ -40,4 +44,5 @@ private
       categories_attributes: [:id, :name]
     )
   end
+
 end
