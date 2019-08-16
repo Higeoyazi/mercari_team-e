@@ -65,7 +65,7 @@
 - belongs_to :user
 
 
-## Sns_credentials table
+## sns_credentials table
 |Column|Type|Options|
 |------|----|-------|
 |uid|string|null: false|
@@ -103,15 +103,15 @@
 |delivery_origin|string|null: false|
 |delivery_status|integer|default: 0|
 |user|references|null: false,foreign_key: true|
+|category|references|null: false,foreign_key: true|
 
 
 ### Association
 - belongs_to :user
 - has_one :order
 - has_many :comments, dependent: :destroy
-- has_many :images, dependent: :destroy
-- has_many :categories
-- has_many :category_genres, through: :categories
+- has_many :product_images, dependent: :destroy
+- belongs_to :category
 
 ## index
 - add_index products, :name
@@ -131,27 +131,18 @@
 
 
 
-## category_genres table
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-
-### Association
-- has_many :categories
-- has_many :products, through: :categories
-
-
-
-
 ## categories table
 |Column|Type|Options|
 |------|----|-------|
-|product|references|null: false,foreign_key: true|
-|category_genre|references|null: false,foreign_key: true|
+|name|string|null: false|
+|ancestry|string||
 
 ### Association
-- belongs_to :products
-- belongs_to :category
+- has_many :products
+- has_ancestry
+
+## index
+- add_index categories, :ancestry
 
 
 

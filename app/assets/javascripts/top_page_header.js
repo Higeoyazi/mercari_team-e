@@ -5,7 +5,32 @@ $(function(){
       `<ul class="header-parent">
         <li class="header-parent">
           <h3>
-            <a href="https://www.mercari.com/jp/category/1/">レディース</a>
+            <a href="#">レディース</a>
+          </h3>
+        </li>
+        <li class="header-parent">
+          <h3>
+            <a href="#">レディース</a>
+          </h3>
+        </li>
+        <li class="header-parent">
+          <h3>
+            <a href="#">レディース</a>
+          </h3>
+        </li>
+        <li class="header-parent">
+          <h3>
+            <a href="#">レディース</a>
+          </h3>
+        </li>
+        <li class="header-parent">
+          <h3>
+            <a href="#">レディース</a>
+          </h3>
+        </li>
+        <li class="header-parent">
+          <h3>
+            <a href="#">レディース</a>
           </h3>
         </li>
       </ul>`
@@ -15,7 +40,7 @@ $(function(){
     var html = buildHTML
     $('.option').append(html);
   })
-  $('.option').hover('handlerOut', function(){
-    $('ul .header-parent').remove();
-  })
+  // $('.option').hover(function(){
+  //   $('ul .header-parent').remove();
+  // })
 });

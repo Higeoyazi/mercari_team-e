@@ -9,12 +9,12 @@
         %p アカウントをお持ちでない方はこちら
         = link_to "新規会員登録", new_user_registration_path
       .login-form-inner
-        = link_to '', class: "facebook-login" do
+        = link_to user_facebook_omniauth_authorize_path, class: "facebook-login contents__btn contents__btn__facebook", method: :post do
           %i.fab.fa-facebook
-          .content-box Facebookで登録
-        = link_to '', class: "google-login" do
+          .content-box Facebookでログイン
+        = link_to user_google_oauth2_omniauth_authorize_path, method: :post, class: "google-login contents__btn contents__btn__google" do
           %i.fab.fab.fa-google
-          .content-box Googleで登録
+          .content-box Googleでログイン
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         .login-form-inner
           .field
