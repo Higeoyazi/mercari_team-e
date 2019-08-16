@@ -4,10 +4,10 @@ class Product < ApplicationRecord
   has_one :order
   has_many :product_images, dependent: :destroy
   accepts_nested_attributes_for :product_images, allow_destroy: true
-  has_many :categories
-  accepts_nested_attributes_for :categories
+  has_one :category
+  accepts_nested_attributes_for :category
   has_many :comments, dependent: :destroy
-  #ActiveHashのアソシエーション
+  #ActiveHashのAssociation
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :condition
