@@ -451,7 +451,9 @@
                       line-height: 48px;
                       height: 48px;
                       width: 200px;
-                      display: flex;
+                      .yen{
+                        float: left;
+                      }
                       .input-default{
                         margin:0 0 0 auto;
                         padding: 10px 16px 8px;
@@ -461,7 +463,7 @@
                         font-style: inherit;
                         font-weight: inherit;
                         border-radius: 5px;
-                        
+                        float: right;
                       }
                     }
                   }

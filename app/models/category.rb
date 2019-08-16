@@ -1,5 +1,6 @@
 class Category < ApplicationRecord
   # Association
+
   # has_many :categories
   # has_many :products, through: :categories
   has_many :products
