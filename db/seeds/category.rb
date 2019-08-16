@@ -14,6 +14,7 @@
 #   others: 'その他'
 # }
 
+#後でリファクタリングする！
 # parents.each do |key, value|
 #   Category.create(name: value)
 # end
