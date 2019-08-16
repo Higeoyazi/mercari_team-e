@@ -73,7 +73,7 @@
                         %span.require 必須
                       .select-wrap
                         %i.icon-arrow-bottom
-                        = f.select :delivery_cost, [["送料込み(出品者負担)"],["着払い(購入者負担)"]], {include_blank: "---"}, {class: "select-default"}
+                        = f.select :delivery_cost, Cost.all.collect{|p| [p.name]}, {include_blank: "---"}, {class: "select-default"}
                     .sell-deliver__form__region
                       %label
                         発送元の地域
@@ -87,7 +87,7 @@
                         %span.require 必須
                       .select-wrap
                         %i.icon-arrow-bottom
-                        = f.select :prep_days, [["1~2日で発送"],["2~3日で発送"],["4~7日で発送"]],{include_blank: "---"}, {class: "select-default"}
+                        = f.select :prep_days, Preparation.all.collect{|p| [p.name]},{include_blank: "---"}, {class: "select-default"}
                 .sell-price
                   .sell-price__title 
                     %h3 販売価格(300〜9,999,999)
