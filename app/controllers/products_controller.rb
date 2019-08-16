@@ -12,7 +12,8 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     @product.product_images.build
-    @product.categories.build
+    @product.category.build
+    
   end
 
   def create
