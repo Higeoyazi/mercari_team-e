@@ -1,5 +1,4 @@
 class Category < ApplicationRecord
   # Association
-  belongs_to :products
-  belongs_to :category_genre
+  belongs_to :product
 end
