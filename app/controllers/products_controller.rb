@@ -12,8 +12,9 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     @product.product_images.build
-    @product.category.build
-    
+
+    @product.build_category
+
   end
 
   def create
@@ -24,6 +25,10 @@ class ProductsController < ApplicationController
       @product.save
       redirect_to root_path
     end
+  end
+
+  def search
+    @products = Product.where('name LIKE(?)', "%#{params[:keyword]}%")
   end
 
 private
@@ -41,4 +46,5 @@ private
       categories_attributes: [:id, :name]
     )
   end
+
 end

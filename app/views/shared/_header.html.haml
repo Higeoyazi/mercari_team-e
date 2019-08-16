@@ -5,8 +5,8 @@
         .upper__left__title
           = link_to root_path do
             = image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?863303983", size: "134x36"
-      %form.upper__right
-        %input{type: "search", class:"form", placeholder:"何かお探しですか？"}
+      = form_tag "/products/search", method: :get ,class:"upper__right" do
+        %input{type: "search", class:"form", placeholder:"何かお探しですか？",name:"keyword"}
         %button{type: "submit", class:"mask" }
           = fa_icon "search", class: "mask__search"
     .lower
@@ -30,6 +30,6 @@
           =link_to "", class: "user-nav__menu" do
             = fa_icon "check", class: "user-nav__menu__icon"
             %span やることリスト
-          =link_to "", class: "user-nav__menu" do
+          =link_to profile_mypages_path, class: "user-nav__menu" do
             = fa_icon "edit", class: "user-nav__menu__icon"
             %span マイページ

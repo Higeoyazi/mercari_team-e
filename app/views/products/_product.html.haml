@@ -2,6 +2,7 @@
   -# = link_to  あとで商品詳細へのリンクを貼る。
   %figure.product__photo
     = image_tag("#{product.product_images.last.image_url}", size: "213x220")
+
   .product__body
     %h3.product__body__name
       = product.name

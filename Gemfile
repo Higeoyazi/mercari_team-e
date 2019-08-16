@@ -86,3 +86,5 @@ gem 'omniauth-google-oauth2'
 gem 'gretel'
 gem 'payjp'
 gem 'active_hash'
+gem 'ancestry'
+
