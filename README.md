@@ -1,5 +1,4 @@
 ## users table
-
 |Column|Type|Options|
 |------|----|-------|
 |nickname|string|null: false, unique: true|
@@ -10,7 +9,8 @@
 
 ### Association
 - has_one_attached :avatar
-- has_many :orders
+- has_many :buyer_transactions, class_name: 'Transaction', :foreign_key => 'buyer_id'
+- has_many :seller_transactions, class_name: 'Transaction', :foreign_key => 'seller_id'
 - has_many :products
 - has_many :comments
 - has_one :profile, dependent: :destroy
@@ -38,7 +38,6 @@
 
 
 ## addresses table
-
 |Column|Type|Options|
 |------|----|-------|
 |postal_code|string|null: false|
@@ -55,14 +54,16 @@
 
 
 ## credit_cards table
-
 |Column|Type|Options|
 |------|----|-------|
 |customer_id|string|null: false|
 |card_id|string|null: false|
 |user|references|null: false, foreign_key: true|
+
 ### Association
 - belongs_to :user
+
+
 
 
 ## sns_credentials table
@@ -71,6 +72,7 @@
 |uid|string|null: false|
 |provider|string|null: false|
 |user|references|null: false, foreign_key: true|
+
 ### Association
 - belongs_to :user
 - belongs_to :product
@@ -81,17 +83,19 @@
 ## Orders table
 |Column|Type|Options|
 |------|----|-------|
-|saler|references|null: false, foreign_key: true|
-|buyer|references|null: false, foreign_key: true|
+|saler|class_name|null: false, foreign_key: true|
+|buyer|class_name|null: false, foreign_key: true|
 |product|references|null: false, foreign_key: true|
+
 ### Association
-- belongs_to :user
+- belongs_to :buyer, class_name: 'User', :foreign_key => 'buyer_id'
+- belongs_to :seller, class_name: 'User', :foreign_key => 'seller_id'
 - belongs_to :product
 
 
 
-## products table
 
+## products table
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false, index: true|
@@ -99,12 +103,11 @@
 |price|integer|null: false|
 |size|integer|null: false|
 |brand_name|string|null: false|
-|quality|integer|null: false|
+|quality|string|null: false|
 |delivery_origin|string|null: false|
 |delivery_status|integer|default: 0|
 |user|references|null: false,foreign_key: true|
 |category|references|null: false,foreign_key: true|
-
 
 ### Association
 - belongs_to :user
@@ -118,12 +121,12 @@
 
 
 
+
 ## products_images table
 |Column|Type|Options|
 |------|----|-------|
 |image_url|string|null: false|
 |product|references|null: false,foreign_key: true|
-
 
 ### Association
 - belongs_to :product
@@ -158,14 +161,13 @@
 - belongs_to :user
 - belongs_to :product
 
-
-
 ## enum
 - enum products, :size
 - enum products, :quality
 - enum products, :delivery_status
 
 
-## ER図
-<img width="902" alt="ERforMercari" src="https://camo.githubusercontent.com/24ce8ad59272d3b240ef06b9db43be73f4c11823/68747470733a2f2f692e6779617a6f2e636f6d2f38373663306332663636313661386134633133353435313738346262383135642e706e67">
 
+
+## ER図
+<img width="902" alt="ERforMercari" src="https://camo.githubusercontent.com/5a2985f6181823767228ada398f322c44438db1e/68747470733a2f2f692e6779617a6f2e636f6d2f66623038663561333339333964346231623165666662383063633238343264342e706e67">
