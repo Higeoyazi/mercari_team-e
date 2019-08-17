@@ -13,7 +13,8 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :address
 
   has_one_attached :avatar
-  has_many :orders
+  has_many :buyer_orders, class_name: 'Order', :foreign_key => 'buyer_id'
+  has_many :saler_orders, class_name: 'Order', :foreign_key => 'saler_id'
   has_many :products
   has_many :comments
   has_many :sns_credentials
