@@ -3,18 +3,17 @@
     %h1.product-name
       = @product.name
     .main
-      = image_tag @product.product_images.first.image_url, class: "main__image__size"
+      = image_tag("#{@product.product_images.first.image_url}", class: "main__image__size")
       %table.main__ditail__table
         %tbody
           %tr
             %th 出品者
             %td 
-              =@product.user.nickname
+              = @product.user.nickname
           %tr
             %th カテゴリー
             %td
-              - @product.category_genres.each do |category_genres|
-                = category_genres.name
+              = @product.category.name
           %tr
             %th ブランド
             %td 
