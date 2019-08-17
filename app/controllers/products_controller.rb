@@ -13,8 +13,6 @@ class ProductsController < ApplicationController
     @product = Product.new
     @product.product_images.build
 
-    @product.build_category
-
   end
 
   def create
@@ -42,8 +40,8 @@ private
       :delivery_status,
       :delivery_cost,
       :prep_days,
-      product_images_attributes: [:id, :image_url],
-      categories_attributes: [:id, :name]
+      :category_id,
+      product_images_attributes: [:id, :image_url]
     )
   end
 
