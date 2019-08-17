@@ -1,12 +1,11 @@
 class ProductsController < ApplicationController
-
+  bofore_action :set_product, only: [:show, :destroy]
 
   def index
     @products = Product.all.order("created_at DESC").limit(4)
   end
 
   def show
-    @product = Product.find(params[:id])
   end
   
   def new
@@ -30,7 +29,6 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    @product = Product.find(params[:id])
     @product.destroy
     redirect_to root_path
   end
@@ -51,4 +49,7 @@ private
     )
   end
 
+  def set_product
+    @product = Product.find(params[:id])
+  end
 end
