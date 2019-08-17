@@ -1,12 +1,11 @@
 class ProductsController < ApplicationController
-
+  bofore_action :set_product, only: [:show, :destroy]
 
   def index
     @products = Product.all.order("created_at DESC").limit(4)
   end
 
   def show
-    @product = Product.find(params[:id])
   end
   
   def new
@@ -29,6 +28,11 @@ class ProductsController < ApplicationController
     @products = Product.where('name LIKE(?)', "%#{params[:keyword]}%")
   end
 
+  def destroy
+    @product.destroy
+    redirect_to root_path
+  end
+
 private
   def product_params
     params.require(:product).permit(
@@ -45,4 +49,7 @@ private
     )
   end
 
+  def set_product
+    @product = Product.find(params[:id])
+  end
 end
