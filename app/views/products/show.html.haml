@@ -1,10 +1,11 @@
+= render 'shared/header'
 .product-show
   .contents.clearfix
     %h1.product-name
       = @product.name
     .main
-      = image_tag @product.product_images.first.image_url, class: "main__image__size"
-      %table.main__ditail__table
+      = image_tag("#{@product.product_images.last.image_url}", class:"main__image__size")
+      %table.main__detail__table
         %tbody
           %tr
             %th 出品者
@@ -13,19 +14,20 @@
           %tr
             %th カテゴリー
             %td
-              - @product.category_genres.each do |category_genres|
-                = category_genres.name
-          %tr
-            %th ブランド
-            %td 
-              = @product.brand_name
+              = @product.category.name
+          -#見た目の便宜上一旦コメントアウト
+          -# %tr
+          -#   %th ブランド
+          -#   %td 
+          -#     = @product.brand_name
           %tr
             %th 商品の状態
             %td 
               = @product.quality
           %tr
             %th 配送料の負担
-            %td 送料込み(出品者負担)
+            %td
+              =@product.delivery_cost
           %tr
             %th 配送の方法
             %td らくらくメルカリ便
@@ -35,7 +37,8 @@
               =@product.delivery_origin
           %tr
             %th 発送日の目安
-            %td 1~2日で発送
+            %td 
+              =@product.prep_days
       .sub-image
         - @product.product_images.drop(1).each do |n|
           = image_tag "#{n.image_url}",class:"sub-image__size"
@@ -46,9 +49,15 @@
           =@product.price
         %span.price__tax (税込)
         %span.price__shipping__fee 送料込み
-      .button
-        %button{type: "submit", class: "button__btn"}
-          %span 購入画面に進む
+
+      - if @product.user_id == current_user.id
+        = link_to edit_product_path(@product.id), class: "edit-btn" do
+          編集画面へ進む
+        = form_for @product do |f|
+          = f.submit "この商品を削除する", class: "btn-default.btn-gray__link", method: :delete
+      - else
+        %button{type: "submit", class: "buy-btn"}
+          購入画面に進む
     .description.clearfix
       %p.description__inner
         =@product.description
@@ -76,3 +85,4 @@
           
     .product-space
 
+= render 'shared/footer' 
