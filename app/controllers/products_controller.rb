@@ -7,6 +7,12 @@ class ProductsController < ApplicationController
 
   def show
   end
+
+  def confirm
+    set_product
+    @address = current_user.address
+    @profile = current_user.profile
+  end
   
   def new
     @product = Product.new
@@ -69,7 +75,4 @@ private
     )
   end
 
-  def set_product
-    @product = Product.find(params[:id])
-  end
 end
