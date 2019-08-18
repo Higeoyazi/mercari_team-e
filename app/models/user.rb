@@ -12,15 +12,15 @@ class User < ApplicationRecord
   has_one :address, dependent: :destroy
   accepts_nested_attributes_for :address
 
-  has_many :bought, through: :bought_orders, source: :product
   has_many :bought_orders, class_name: 'Order',
                            foreign_key: 'buyer_id',
                            dependent: :destroy
-
-  has_many :sold, through: :sold_orders, source: :product
   has_many :sold_orders, class_name: 'Order',
-                           foreign_key: 'seller_id',
-                           dependent: :destroy
+                         foreign_key: 'seller_id',
+                         dependent: :destroy
+
+  has_many :bought, through: :bought_orders, source: :product
+  has_many :sold, through: :sold_orders, source: :product
 
   has_one_attached :avatar
   has_many :products
