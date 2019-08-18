@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:edit, :show, :destroy, :update]
 
   def index
+    binding.pry
     @products = Product.all.order("created_at DESC").limit(4)
   end
 
