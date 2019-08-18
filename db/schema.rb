@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2019_08_18_042509) do
-
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "prefecture", null: false
@@ -57,8 +55,8 @@ ActiveRecord::Schema.define(version: 2019_08_18_042509) do
     t.bigint "product_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "seller_id"
     t.bigint "buyer_id"
+    t.bigint "seller_id"
     t.index ["buyer_id"], name: "index_orders_on_buyer_id"
     t.index ["product_id", "seller_id", "buyer_id"], name: "index_orders_on_product_id_and_seller_id_and_buyer_id", unique: true
     t.index ["product_id"], name: "index_orders_on_product_id"
