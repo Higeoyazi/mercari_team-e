@@ -28,16 +28,15 @@ class ProductsController < ApplicationController
 
   def update
     if @product.user_id == current_user.id
-      # binding.pry
       @product.update(product_params)
       redirect_to product_path(@product.id)
     end
   end
 
   def destroy
-    if @product.user_id == current_user.id
-      @tweet.destroy
-    end
+    # if @product.user_id == current_user.id
+    #   @product.destroy
+    # end
   end
 
   def search
