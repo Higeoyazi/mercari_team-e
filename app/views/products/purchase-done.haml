@@ -1,0 +1,8 @@
+.wrapper-mypage
+  .container-mypage
+    = render partial:"shared/sidebar"
+    .logout-content
+      .logout-content__chapter
+        %form.logout-content__chapter__form
+          .logout-content__chapter__form__btn
+            = link_to "購入完了", root_path, class: 'logout-content__chapter__form__btn__red' 
