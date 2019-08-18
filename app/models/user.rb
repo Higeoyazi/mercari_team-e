@@ -66,7 +66,7 @@ class User < ApplicationRecord
     return user
   end
 
-  
+
   # buy product
   def buy(product)
     buyer = self

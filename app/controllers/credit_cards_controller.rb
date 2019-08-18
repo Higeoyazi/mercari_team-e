@@ -3,7 +3,7 @@ class CreditCardsController < ApplicationController
   require 'payjp'
 
   def index #ユーザーの全てのクレジットカードを全て出す
-    credit_card = CreditCard.where(user_id: current_user.id).first
+    credit_cards = CreditCard.where(user_id: current_user.id)
     if credit_cards.blank?
       redirect_to  action: 'new'
     else
@@ -50,17 +50,21 @@ class CreditCardsController < ApplicationController
     #   currency: 'jpy'
     # )
     # redirect_to action: 'done'
+    if current_user.buy(@product) #ちゃんと購入できたら(payアクションが最後まで実行されたらの意味)
+      credit_card = CreditCard.where(user_id: current_user.id)
+      pay = Payjp::Charge.new(
+        amount: @product.price, # 買う商品の値段
+        customer: credit_card.customer_id, # payjpに登録されているどの顧客情報(カード情報)を使うか。
+        currency: 'jpy'
+      )
 
-    pay = Payjp::Charge.new(
-      amount: @product.price, # 買う商品の値段
-      customer: credit_card.customer_id, # payjpに登録されているどの顧客情報(カード情報)を使うか。
-      currency: 'jpy'
-    )
-
-    if pay.save
-      redirect_to action: 'done'
+      if pay.save
+        redirect_to action: 'done'
+      # else
+        # ここに購入画面のビューをリダイレクト
+      end
     # else
-      # ここに購入画面のビューをリダイレクト
+      # そのページにリダイレクトもしくはレンダーさせる
     end
   end
 
