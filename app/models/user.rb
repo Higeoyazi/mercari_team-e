@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_one :address, dependent: :destroy
   accepts_nested_attributes_for :address
 
+  ## ユーザーの売買履歴を出力する
   has_many :bought_orders, class_name: 'Order',
                            foreign_key: 'buyer_id',
                            dependent: :destroy
@@ -19,6 +20,7 @@ class User < ApplicationRecord
                          foreign_key: 'seller_id',
                          dependent: :destroy
 
+  ## ユーザーが買った商品、売った商品を出力する
   has_many :bought, through: :bought_orders, source: :product
   has_many :sold, through: :sold_orders, source: :product
 
@@ -63,7 +65,22 @@ class User < ApplicationRecord
           )
       end
     end
-
     return user
+  end
+
+  def buy(product)
+    buyer = current_user
+    seller = product.user
+    unless buyer == seller && product.status == 1
+      bought_orders.create(product_id: product.id, seller_id: seller.id)
+        product.status = 1
+        #  もしかしたら下いらないかも
+        bought << product
+        seller.sold << product
+    end
+
+  end
+
+  def cancel
   end
 end
