@@ -6,11 +6,12 @@
     .main
       = image_tag("#{@product.product_images.last.image_url}", class:"main__image__size")
       %table.main__detail__table
+
         %tbody
           %tr
             %th 出品者
             %td 
-              =@product.user.nickname
+              = @product.user.nickname
           %tr
             %th カテゴリー
             %td
@@ -20,6 +21,7 @@
           -#   %th ブランド
           -#   %td 
           -#     = @product.brand_name
+
           %tr
             %th 商品の状態
             %td 
@@ -60,6 +62,18 @@
     .description.clearfix
       %p.description__inner
         =@product.description
+
+      
+    %button.comment__form__submit__btn#modal-open-btn この商品を削除する
+    = link_to "", product_path, method: :delete, id: 'item-delete-btn'
+    #overlay
+      #modalWindow
+        .modal-message-box
+          %div 確認
+          %div 本当に削除しますか？
+        %button#modal-close-btn キャンセル
+        %button#delete-comformation-btn 削除する
+
     .comment
       .comment__boby
         .comment__form.clearfix
