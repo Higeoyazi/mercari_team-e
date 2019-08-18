@@ -130,7 +130,7 @@
                       = link_to "加盟店規約", "/jp/seller_terms/"
                       に同意したことになります。
                   .sell-btn
-                    = f.submit "出品する", class:"btn-red"
+                    = f.submit "変更する", class:"btn-red", method: :patch
                     -#要リファクタリング
                     %label.btn-default.btn-gray
                       = link_to root_path,class:"btn-default.btn-gray__link"  do
