@@ -1,7 +1,10 @@
 class Product < ApplicationRecord
   # Association
   belongs_to :user
+
   has_one :order
+  # 0は購入可の状態、1は購入不可の状態
+  enum status: {sell: 0, sold: 1}
   
   has_many :product_images, dependent: :destroy
   accepts_nested_attributes_for :product_images, allow_destroy: true

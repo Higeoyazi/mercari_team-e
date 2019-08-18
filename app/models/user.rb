@@ -12,8 +12,19 @@ class User < ApplicationRecord
   has_one :address, dependent: :destroy
   accepts_nested_attributes_for :address
 
+  ## ユーザーの売買履歴を出力する
+  has_many :bought_orders, class_name: 'Order',
+                           foreign_key: 'buyer_id',
+                           dependent: :destroy
+  has_many :sold_orders, class_name: 'Order',
+                         foreign_key: 'seller_id',
+                         dependent: :destroy
+
+  ## ユーザーが買った商品、売った商品を出力する
+  has_many :bought, through: :bought_orders, source: :product
+  has_many :sold, through: :sold_orders, source: :product
+
   has_one_attached :avatar
-  has_many :orders
   has_many :products
   has_many :comments
   has_many :sns_credentials
@@ -36,7 +47,6 @@ class User < ApplicationRecord
     uid = auth.uid
     provider = auth.provider
     snscredential = SnsCredential.where(uid: uid, provider: provider).first
-
     if snscredential.present?
       user = User.where(id: snscredential.user_id).first
     else
@@ -50,11 +60,27 @@ class User < ApplicationRecord
       else
         user = User.new(
           nickname: auth.info.name,
-          email:    auth.info.email,
-          )
+          email:    auth.info.email,)
       end
     end
-
     return user
   end
+
+
+  # buy product
+  def buy(product)
+    buyer = self
+    seller = product.user
+    unless buyer == seller
+      unless product.status == 'sold'
+        bought_orders.create(product_id: product.id, seller_id: seller.id)
+        product.status = 'sold'
+        product.save
+      end
+    end
+  end
+
+  # def cancel
+  # end
+
 end
