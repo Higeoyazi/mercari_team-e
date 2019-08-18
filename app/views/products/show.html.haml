@@ -53,8 +53,7 @@
       - if @product.user_id == current_user.id
         = link_to edit_product_path(@product.id), class: "edit-btn" do
           編集画面へ進む
-        = form_for @product do |f|
-          = f.submit "この商品を削除する", class: "btn-default.btn-gray__link", method: :delete
+        
       - else
         %button{type: "submit", class: "buy-btn"}
           購入画面に進む
