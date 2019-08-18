@@ -52,7 +52,7 @@
                       %div
                         .select-wrap
                           %i.icon-arrow-bottom
-                          = f.collection_select :category_id, Category.where(id:1..13), :id,:name, {include_blank: "---"}, class: "select-default"
+                          = f.collection_select :category_id, Category.where(ancestry: nil), :id,:name, {include_blank: "---"}, class: "select-default"
 
                     .sell-detail__form__status
                       %label
@@ -60,7 +60,7 @@
                         %span.require 必須
                       .select-wrap
                         %i.icon-arrow-bottom
-                        = f.select :quality, Condition.all.collect {|p| [p.name]}, {include_blank: "---"},{class: "select-default"}
+                        = f.select :quality, Condition.all.collect{|p| [p.name]}, {include_blank: "---"},{class: "select-default"}
 
                 .sell-deliver
                   .sell-deliver__title 
@@ -131,6 +131,7 @@
                       に同意したことになります。
                   .sell-btn
                     = f.submit "出品する", class:"btn-red"
+                    -#要リファクタリング
                     %label.btn-default.btn-gray
                       = link_to root_path,class:"btn-default.btn-gray__link"  do
                         もどる
