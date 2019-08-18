@@ -47,7 +47,6 @@ class User < ApplicationRecord
     uid = auth.uid
     provider = auth.provider
     snscredential = SnsCredential.where(uid: uid, provider: provider).first
-
     if snscredential.present?
       user = User.where(id: snscredential.user_id).first
     else
@@ -61,26 +60,27 @@ class User < ApplicationRecord
       else
         user = User.new(
           nickname: auth.info.name,
-          email:    auth.info.email,
-          )
+          email:    auth.info.email,)
       end
     end
     return user
   end
 
+  
+  # buy product
   def buy(product)
-    buyer = current_user
+    buyer = self
     seller = product.user
-    unless buyer == seller && product.status == 1
-      bought_orders.create(product_id: product.id, seller_id: seller.id)
-        product.status = 1
-        #  もしかしたら下いらないかも
-        bought << product
-        seller.sold << product
+    unless buyer == seller
+      unless product.status == 'sold'
+        bought_orders.create(product_id: product.id, seller_id: seller.id)
+        product.status = 'sold'
+        product.save
+      end
     end
-
   end
 
-  def cancel
-  end
+  # def cancel
+  # end
+
 end
