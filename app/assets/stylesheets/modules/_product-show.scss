@@ -1,13 +1,12 @@
 // 要リファクタリング
 .product-show {
   height: 100%;
-  width: 100%;
-  padding: 20px 40px 40px;
+  width: 100vw;
 
   .contents {
     @include confirmationWidth;
     height: 1250px;
-    margin: 0 auto;
+    margin: 20px auto 40px;
     padding: 24px 40px 40px;
     background-color: $white;
     box-sizing: border-box;
@@ -98,7 +97,7 @@
 
   .description {
     width: 100%;
-
+    padding: 32px 0 20px;
     &__inner {
       font-size: 18px;
       white-space: pre-wrap;
@@ -189,28 +188,27 @@
   .sns__box {
     width: 100%;
     height:115px;
-    text-align:center;
-    display: block;
     margin: 24px auto;
     padding: 32px 0 24px;
-    background: $white;
-      &__btns{
-        display:flex;
-      }
+    &__btns{
+      display:flex;
+      justify-content: center;
       &__facebook {
         color:blue;
-        float:left;
-        padding: 20px 40px;
+        font-size: 30px;
+        padding: 0 10px;
       }
       &__Twitter {
         color:skyblue;
-        padding: 20px 40px;
+        font-size: 30px;
+        padding: 0 10px;
       }
       &__LINE {
         color:green;
-        float:right;
-        padding: 20px 40px;
+        font-size: 30px;
+        padding: 0 10px;
       }
+    }
     }
   }
 }
