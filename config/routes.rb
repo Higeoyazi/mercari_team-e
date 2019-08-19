@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     member do
       get 'preview'
       get 'confirm'
+      post 'pay'
+      get 'pay_done'
     end
   end
 
@@ -35,7 +37,6 @@ Rails.application.routes.draw do
       get 'identification'
 
       resources :credit_cards, only: [:index, :new, :create, :destroy]
-      #payアクションはproductの中にネストさせてルーティング作るかも、もしくは単独。後日。
     end
   end
 end

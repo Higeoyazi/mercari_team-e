@@ -39,40 +39,6 @@ class CreditCardsController < ApplicationController
   end
 
 
-  def pay
-    @product = Product.find(params[:id]) #ここはparamsの引数の値間違っているかもしれないので後で確認。
-    gets_key
-
-    # 実際の挙動見て下記にするか決める
-    # Payjp::Charge.create(
-    #   amount: @product.price, # 買う商品の値段
-    #   customer: credit_card.customer_id, # payjpに登録されているどの顧客情報(カード情報)を使うか。
-    #   currency: 'jpy'
-    # )
-    # redirect_to action: 'done'
-    if current_user.buy(@product) #ちゃんと購入できたら(payアクションが最後まで実行されたらの意味)
-      credit_card = CreditCard.where(user_id: current_user.id)
-      pay = Payjp::Charge.new(
-        amount: @product.price, # 買う商品の値段
-        customer: credit_card.customer_id, # payjpに登録されているどの顧客情報(カード情報)を使うか。
-        currency: 'jpy'
-      )
-
-      if pay.save
-        redirect_to action: 'done'
-      # else
-        # ここに購入画面のビューをリダイレクト
-      end
-    # else
-      # そのページにリダイレクトもしくはレンダーさせる
-    end
-  end
-
-
-  def done #完了画面
-  end
-
-
   private
 
 
