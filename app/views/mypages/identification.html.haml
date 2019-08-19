@@ -22,39 +22,39 @@
               %label.infomation-name
                 お名前
               .infomation-text
-                = @profile.family_name 
-                = @profile.first_name
+                = current_user.profile.family_name 
+                = current_user.profile.first_name
             .from-group
               %label.infomation-name
                 お名前カナ
               .infomation-text
-                = @profile.family_name_kana 
-                = @profile.first_name_kana
+                = current_user.profile.family_name_kana 
+                = current_user.profile.first_name_kana
             .from-group
               %label.infomation-name
                 郵便番号
               .infomation-text
-                = @address.postal_code
+                = current_user.address.postal_code
             .from-group
               %label.infomation-name
                 都道府県
               .infomation-text
-                = @address.prefecture
+                = current_user.address.prefecture
             .from-group
               %label.infomation-name
                 市区町村
               .infomation-text
-                = @address.city
+                = current_user.address.city
             .from-group
               %label.infomation-name
                 番地
               .infomation-text
-                = @address.block
+                = current_user.address.block
             .from-group
               %label.infomation-name
                 建物名
               .infomation-text
-                = @address.building
+                = current_user.address.building
               %button.btn-red.input-default
                 登録する
               %p.infomation-font.info-right-bottom
