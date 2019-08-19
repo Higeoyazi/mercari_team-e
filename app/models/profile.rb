@@ -4,7 +4,7 @@ class Profile < ApplicationRecord
   belongs_to :user, optional: true
 
   # Validation
-  VALID_PHONE_REGEX = /\A\d{10}$|^\d{11}\z/ # 0桁か11桁の数字(ハイフンなし)
+  VALID_PHONE_REGEX = /\A\d{10}$|^\d{11}\z/ # 10桁か11桁の数字(ハイフンなし)
   VALID_NAME_REGEX = /\A[ぁ-んァ-ン一-龥]/ #全角ひらがな、全角、漢字
   VALID_NAME_KANA_REGEX = /[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+/ # 全角カタカナのみ
 
@@ -18,5 +18,5 @@ class Profile < ApplicationRecord
                                format: { with: VALID_NAME_KANA_REGEX }
   validates :phone_number,     presence: true, on: :step4,
                                uniqueness: true,
-                               format: { with: VALID_EMAIL_REGEX }
+                               format: { with: VALID_PHONE_REGEX }
 end

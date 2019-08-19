@@ -4,7 +4,11 @@ class Address < ApplicationRecord
   belongs_to :user, optional: true
 
   # Validation
-  validates :postal_code, presence: true, on: :step4
+  VALID_POSTAL_REGEX = /\A\d{7}\z/ # ハイフンなし7桁
+  VALID_PREFECTURE_REGEX = 
+
+  validates :postal_code, presence: true, on: :step4,
+                          format: { with: VALID_POSTAL_REGEX }
   validates :prefecture,  presence: true, on: :step4
   validates :city,        presence: true, on: :step4
   validates :block,       presence: true, on: :step4

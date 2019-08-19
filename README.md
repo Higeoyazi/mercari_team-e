@@ -104,6 +104,7 @@
 |delivery_status|integer|default: 0|
 |user|references|null: false,foreign_key: true|
 |category|references|null: false,foreign_key: true|
+|status|integer|null: false,default: 0|
 
 
 ### Association
@@ -115,6 +116,9 @@
 
 ## index
 - add_index products, :name
+
+## enum
+- enum products, :status
 
 
 
@@ -159,9 +163,6 @@
 - belongs_to :product
 
 
-
-## enum
-- enum products, :status
 
 
 
