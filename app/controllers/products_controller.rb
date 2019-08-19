@@ -67,7 +67,7 @@ class ProductsController < ApplicationController
                             customer: credit_card.customer_id,
                             currency: 'jpy')
 
-        current_user.buy(product) #ちゃんと支払いができたら購入のアクションを実行
+        current_user.buy(product) #支払いが無事できたら購入のアクションを実行
         redirect_to action: 'pay_done' # 決済完了画面へ
     else
         redirect_to action: 'confirm' #クレジットカードエラー or payjp側のエラーの時
@@ -75,7 +75,7 @@ class ProductsController < ApplicationController
   end
 
 
-  def pay_done #購入完了画面
+  def pay_done #購入完了画面へ
   end
 
 
