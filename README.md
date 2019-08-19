@@ -161,9 +161,8 @@
 
 
 ## enum
-- enum products, :size
-- enum products, :quality
-- enum products, :delivery_status
+- enum products, :status
+
 
 
 ## ER図
