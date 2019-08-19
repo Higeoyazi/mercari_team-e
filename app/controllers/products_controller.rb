@@ -63,11 +63,10 @@ class ProductsController < ApplicationController
     Payjp.api_key = Rails.application.credentials.development[:payjp_private_key]
 
     redirect_to controller: 'credit_cards', action: 'new' if credit_card.blank? #持ってないなら登録させる
-binding.pry
     if Payjp::Charge.create(  amount: product.price,
                             customer: credit_card.customer_id,
                             currency: 'jpy')
-binding.pry
+
         current_user.buy(product) #ちゃんと支払いができたら購入のアクションを実行
         redirect_to action: 'pay_done' # 決済完了画面へ
     else
