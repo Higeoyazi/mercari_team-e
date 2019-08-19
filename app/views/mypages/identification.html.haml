@@ -1,68 +1,63 @@
-.wrapper-mypage
-  .container-mypage
-    = render "shared/sidebar"
-    .card
-      %section.card-chapter
-        %h2.card-chapter__font
-          本人情報の登録
-        .card-signle
-          .infomation
-            %p.infomation-font
-              お客さまの本人情報をご登録ください。
-              %br
-              登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
-            %p.infomation-font.info-right
-              = link_to '', class: 'infomation-link' do
-                本人確認書類のアップロードについて
-                = fa_icon 'chevron-right', class: "card-icon"
-          .from-group
-            %label.infomation-name
-              お名前
-            .infomation-text
-              高崎優作
-          .from-group
-            %label.infomation-name
-              お名前カナ
-            .infomation-text
-              タカサキユウサク
-          .from-group
-            %label.infomation-name
-              生年月日
-            .infomation-text
-              1995/07/22
-          .from-group
-            %label.infomation-name
-              郵便番号
-            %span.infomation-good
-              任意
-            %input{placeholder:'例））1234567', type:'text', class:'input-default'}
-          .from-group
-            %label.infomation-name
-              都道府県
-            %span.infomation-good
-              任意
-            %input{placeholder:'北海道', type:'text', class:'input-default'}
-          .from-group
-            %label.infomation-name
-              市区町村
-            %span.infomation-good
-              任意
-            %input{placeholder:'例））横浜市緑区', type:'text', class:'input-default'}
-          .from-group
-            %label.infomation-name
-              番地
-            %span.infomation-good
-              任意
-            %input{placeholder:'例））青山1-1', type:'text', class:'input-default'}
-          .from-group
-            %label.infomation-name
-              建物名
-            %span.infomation-good
-              任意
-            %input{placeholder:'例））ビル101', type:'text', class:'input-default'}
-            %button.btn-red.input-default
-              登録する
-            %p.infomation-font.info-right-bottom
-              = link_to '', class: "infomation-link-bottom" do
-                本人情報の登録について
-                = fa_icon 'chevron-right', class: "card-icon"
+.wrapper
+  = render 'shared/header'
+  = render 'shared/exhibit-btn'  
+  .wrapper-mypage
+    .container-mypage
+      = render "shared/sidebar"
+      .card
+        %section.card-chapter
+          %h2.card-chapter__font
+            本人情報の登録
+          .card-signle
+            .infomation
+              %p.infomation-font
+                お客さまの本人情報をご登録ください。
+                %br
+                登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
+              %p.infomation-font.info-right
+                = link_to '', class: 'infomation-link' do
+                  本人確認書類のアップロードについて
+                  = fa_icon 'chevron-right', class: "card-icon"
+            .from-group
+              %label.infomation-name
+                お名前
+              .infomation-text
+                = current_user.profile.family_name 
+                = current_user.profile.first_name
+            .from-group
+              %label.infomation-name
+                お名前カナ
+              .infomation-text
+                = current_user.profile.family_name_kana 
+                = current_user.profile.first_name_kana
+            .from-group
+              %label.infomation-name
+                郵便番号
+              .infomation-text
+                = current_user.address.postal_code
+            .from-group
+              %label.infomation-name
+                都道府県
+              .infomation-text
+                = current_user.address.prefecture
+            .from-group
+              %label.infomation-name
+                市区町村
+              .infomation-text
+                = current_user.address.city
+            .from-group
+              %label.infomation-name
+                番地
+              .infomation-text
+                = current_user.address.block
+            .from-group
+              %label.infomation-name
+                建物名
+              .infomation-text
+                = current_user.address.building
+              %button.btn-red.input-default
+                登録する
+              %p.infomation-font.info-right-bottom
+                = link_to '', class: "infomation-link-bottom" do
+                  本人情報の登録について
+                  = fa_icon 'chevron-right', class: "card-icon"
