@@ -28,7 +28,7 @@
         .buy-confirmation__main__price__display
           .buy-confirmation__main__price__display__fee
             = "¥#{@product.price}"
-      = form_with model: @product, url: root_path, method: :get do |f|  
+      = form_with model: @product, url:  pay_product_path, method: :post do |f|  
         -# = form_tag pay_credit_cards_path(@product) do
         -# %button.red_btn{type: "submit"} 購入する
         = f.submit '購入する', class: 'red_btn'

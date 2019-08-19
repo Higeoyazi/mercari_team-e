@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       get 'preview'
       get 'confirm'
       post 'pay'
+      get 'pay_done'
     end
   end
 
