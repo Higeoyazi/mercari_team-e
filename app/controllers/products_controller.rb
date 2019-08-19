@@ -100,5 +100,4 @@ private
       product_images_attributes: [:id, :image_url]
     )
   end
-
 end
