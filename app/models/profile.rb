@@ -5,7 +5,7 @@ class Profile < ApplicationRecord
 
   # Validation
   VALID_PHONE_REGEX = /\A\d{10}$|^\d{11}\z/ # 10桁か11桁の数字(ハイフンなし)
-  VALID_NAME_REGEX = /\A[ぁ-んァ-ン一-龥]/ #全角ひらがな、全角、漢字
+  VALID_NAME_REGEX = /\A[ぁ-んァ-ン一-龥]/ #全角ひらがな、全角カタカナ、漢字
   VALID_NAME_KANA_REGEX = /[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+/ # 全角カタカナのみ
 
   validates :family_name,      presence: true, on: :step4,

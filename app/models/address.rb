@@ -5,7 +5,6 @@ class Address < ApplicationRecord
 
   # Validation
   VALID_POSTAL_REGEX = /\A\d{7}\z/ # ハイフンなし7桁
-  VALID_PREFECTURE_REGEX = 
 
   validates :postal_code, presence: true, on: :step4,
                           format: { with: VALID_POSTAL_REGEX }
