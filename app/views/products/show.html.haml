@@ -48,14 +48,22 @@
     .price__and__button
       .price
         %span.price__figure
-          =@product.price
+          = "¥ #{@product.price}"
         %span.price__tax (税込)
         %span.price__shipping__fee 送料込み
 
       - if @product.user_id == current_user.id
         = link_to edit_product_path(@product.id), class: "edit-btn" do
           編集画面へ進む
-        
+        %button.comment__form__submit__btn#modal-open-btn この商品を削除する
+        = link_to "", product_path(@product.id), method: :delete, id: 'item-delete-btn'
+        #overlay
+          #modalWindow
+            .modal-message-box
+              %div 確認
+              %div 本当に削除しますか？
+            %button#modal-close-btn キャンセル
+            %button#delete-comformation-btn 削除する
       - else
         = link_to confirm_product_path(@product), class: "buy-btn" do
           購入画面へ進む      
@@ -65,16 +73,6 @@
       %p.description__inner
         =@product.description
 
-      
-    %button.comment__form__submit__btn#modal-open-btn この商品を削除する
-    = link_to "", product_path, method: :delete, id: 'item-delete-btn'
-    #overlay
-      #modalWindow
-        .modal-message-box
-          %div 確認
-          %div 本当に削除しますか？
-        %button#modal-close-btn キャンセル
-        %button#delete-comformation-btn 削除する
 
     .comment
       .comment__boby
@@ -87,15 +85,15 @@
     .product-space
 
     .sns__box.clearfix
-      %ul{class: "sns__box__btns"}
+      %ul.sns__box__btns
         %li
-        =link_to "" ,{class: "sns__box__facebook"} do
+        =link_to "" ,{class: "sns__box__btns__facebook"} do
           %i.fab.fa-facebook.fa-2x
         %li
-        =link_to "" ,{class: "sns__box__Twitter"} do
+        =link_to "" ,{class: "sns__box__btns__Twitter"} do
           %i.fab.fa-twitter.fa-2x
         %li
-        =link_to "" ,{class: "sns__box__LINE"} do
+        =link_to "" ,{class: "sns__box__btns__LINE"} do
           %i.fab.fa-line.fa-2x
           
     .product-space
