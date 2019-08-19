@@ -48,6 +48,7 @@ class ProductsController < ApplicationController
   end
 
   def search
+    binding.pry
     @products = Product.where('name LIKE(?)', "%#{params[:keyword]}%")
   end
 
