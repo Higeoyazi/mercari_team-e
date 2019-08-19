@@ -55,8 +55,8 @@
       - if @product.user_id == current_user.id
         = link_to edit_product_path(@product.id), class: "edit-btn" do
           編集画面へ進む
-        %button.comment__form__submit__btn#modal-open-btn この商品を削除する
-        = link_to "", product_path(@product.id), method: :delete, id: 'item-delete-btn'
+        %button.delete-product-btn#modal-open-btn この商品を削除する
+        = link_to "", product_path(@product.id), method: :delete
         #overlay
           #modalWindow
             .modal-message-box
