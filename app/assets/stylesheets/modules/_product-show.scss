@@ -80,6 +80,14 @@
       margin: 16px 0 0;
       text-decoration: none;
     }
+    .delete-product-btn{
+      width: 50%;
+      height: 50px;
+      background: $gray;
+      color: $white;
+      font-size: 14px;
+      margin: 16px 0 0;
+    }
     .buy-btn{
       display: block;
       width: 100%;
@@ -153,15 +161,6 @@
         width: 50%;
         height: 60px;
       }
-    }
-    
-    .item-delete-btn {
-    //削除ボタンの非表示
-      width: 0;
-      height: 0;
-      margin: 0;
-      padding: 0;
-      border: 0;
     }
 
   .comment {
