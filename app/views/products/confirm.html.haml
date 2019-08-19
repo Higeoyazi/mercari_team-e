@@ -4,6 +4,7 @@
   .header-buy
     .header-buy__title
       購入内容の確認
+      
   .buy-confirmation
     .buy-confirmation__main
       .buy-confirmation__main__content-item
@@ -27,8 +28,10 @@
         .buy-confirmation__main__price__display
           .buy-confirmation__main__price__display__fee
             = "¥#{@product.price}"
-      = form_tag root_path do
-        %button.red_btn{type: "submit"} 購入する
+      = form_with model: @product, url: root_path, method: :get do |f|  
+        -# = form_tag pay_credit_cards_path(@product) do
+        -# %button.red_btn{type: "submit"} 購入する
+        = f.submit '購入する', class: 'red_btn'
   .send-confirmation
     .send-confirmation__adress
       .send-confirmation__adress__box

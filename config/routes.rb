@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     member do
       get 'preview'
       get 'confirm'
+      post 'pay'
     end
   end
 

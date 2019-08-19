@@ -10,7 +10,9 @@ class ProductsController < ApplicationController
   end
 
   def confirm
+    binding.pry
     set_product
+    binding.pry
     @address = current_user.address
     @profile = current_user.profile
   end
