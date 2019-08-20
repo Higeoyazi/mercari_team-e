@@ -51,15 +51,14 @@
                         %span.require 必須
                       %div
                         .select-wrap
-                          %i.icon-arrow-bottom
-                          = f.collection_select :category_id, Category.where(ancestry: nil), :id,:name, {include_blank: "---"}, class: "select-default"
+
+                          = f.collection_select :category_id, Category.where(ancestry: nil), :id,:name, {include_blank: "---"}, {class: "select-default"}
 
                     .sell-detail__form__status
                       %label
                         商品の状態
                         %span.require 必須
                       .select-wrap
-                        %i.icon-arrow-bottom
                         = f.select :quality, Condition.all.collect{|p| [p.name]}, {include_blank: "---"},{class: "select-default"}
 
                 .sell-deliver
@@ -72,21 +71,18 @@
                         配送料の負担
                         %span.require 必須
                       .select-wrap
-                        %i.icon-arrow-bottom
                         = f.select :delivery_cost, Cost.all.collect{|p| [p.name]}, {include_blank: "---"}, {class: "select-default"}
                     .sell-deliver__form__region
                       %label
                         発送元の地域
                         %span.require 必須
                       .select-wrap
-                        %i.icon-arrow-bottom
-                        = f.select :delivery_origin, Prefecture.all.collect {|p| [p.name]}, {include_blank: "---" }, {class: "select-default"}
+                        = f.select :delivery_origin, Prefecture.all.collect{|p| [p.name]},{include_blank: "---" }, {class: "select-default"}
                     .sell-deliver__form__day
                       %label
                         発送までの日数
                         %span.require 必須
                       .select-wrap
-                        %i.icon-arrow-bottom
                         = f.select :prep_days, Preparation.all.collect{|p| [p.name]},{include_blank: "---"}, {class: "select-default"}
                 .sell-price
                   .sell-price__title 
@@ -101,14 +97,14 @@
                         %label.l-right
                           .yen
                             ¥
-                          = f.number_field :price, class: "input-default", placeholder: "例）300"
+                          = f.number_field :price, class: "input-price", placeholder: "例）300"
                       %li.sell-price__form__lists__fee
-                        .l-left
+                        .sell-price__form__lists__fee__left
                           販売手数料 (10%)
-                        .l-right -
+                        .sell-price__form__lists__fee__right -
                       %li.sell-price__form__lists__benefit
-                        %label.l-left 販売利益
-                        %label.l-right -
+                        %label.sell-price__form__lists__benefit__left 販売利益
+                        %label.sell-price__form__lists__benefit__right -
                 .modal{:role => "dialog", :tabindex => "-1"}
                   .modal-inner
                 .sell-btn-box

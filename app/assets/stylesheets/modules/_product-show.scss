@@ -167,17 +167,17 @@
     width: 100%;
     text-align:center;
     margin-top:30px;
-      &__form__textarea {
-        width: 100%;
-        height: 100px;
-      }
-      &__form__submit__btn {
-          width: 100%;
-          height: 50px;
-          background: $gray;
-          color: $white;
-          font-size: 14px;
-        }
+    &__form__textarea {
+      width: 100%;
+      height: 100px;
+    }
+    &__form__submit__btn {
+      width: 100%;
+      height: 50px;
+      background: $gray;
+      color: $white;
+      font-size: 14px;
+    }
   }
 
   .product-space {

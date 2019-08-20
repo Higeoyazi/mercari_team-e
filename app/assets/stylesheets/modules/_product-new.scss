@@ -4,7 +4,7 @@
     width: 100%;
     height: 128px;
     text-align: center;
-    background: #f5f5f5;
+    background: none;
     &__icon{
       display: inline-block;
       margin: 40px 0 0;
@@ -15,7 +15,6 @@
   }
   .sell-main{
     box-sizing: border-box;
-    background-repeat: no-repeat;
     margin: 0;
     padding: 0;
     border-style: solid;
@@ -25,7 +24,7 @@
     &__container{
       width: 700px;
       margin: 0 auto;
-      background: #fff;
+      background:white;
       box-sizing: inherit;
       .sell-product{
         &__container{
@@ -48,10 +47,10 @@
                   margin: 0 0 0 8px;
                   padding: 2px 4px;
                   border-radius: 2px;
-                  color: #fff;
+                  color:white;
                   font-size: 12px;
                   vertical-align: top;
-                  background: #ea352d;
+                  background: $red;
                 }
               }
               p{
@@ -67,7 +66,7 @@
                 &__file{
                   position: relative;
                   min-height: 162px;
-                  background: #f5f5f5;
+                  background: $light_gray;
                   border: 1px dashed #ccc;
                   font-size: 0;
                   text-align: center;
@@ -113,10 +112,10 @@
                     margin: 0 0 0 8px;
                     padding: 2px 4px;
                     border-radius: 2px;
-                    color: #fff;
+                    color:white;
                     font-size: 12px;
                     vertical-align: top;
-                    background: #ea352d;
+                    background: $red;
                   }
                 }
                 &__form{
@@ -127,7 +126,7 @@
                   padding: 10px 16px 8px;
                   border-radius: 4px;
                   border: 1px solid #ccc;
-                  background: #fff;
+                  background:white;
                   line-height: 1.5;
                   font-size: 16px;
                 }
@@ -143,10 +142,10 @@
                     margin: 0 0 0 8px;
                     padding: 2px 4px;
                     border-radius: 2px;
-                    color: #fff;
+                    color:white;
                     font-size: 12px;
                     vertical-align: top;
-                    background: #ea352d;
+                    background: $red;
                   }
                 }
                 &__form{
@@ -156,7 +155,7 @@
                   min-height: 104px;
                   padding: 10px;
                   border: 1px solid #ccc;
-                  background: #fff;
+                  background:white;
                   font-size: 16px;
                   line-height: 1.5;
                   touch-action: manipulation;
@@ -187,19 +186,16 @@
                       margin: 0 0 0 8px;
                       padding: 2px 4px;
                       border-radius: 2px;
-                      color: #fff;
+                      color:white;
                       font-size: 12px;
                       vertical-align: top;
-                      background: #ea352d;   
+                      background: $red;   
                     }
                   }
                   .select-wrap{
                     margin: 8px 0;
                     position: relative;
-                    background: #fff;
-                    .icon-arrow-bottom{
-                      border: none;
-                    }
+                    background: white;
                     .select-default{
                       width: 100%;
                       height: 48px;
@@ -228,19 +224,16 @@
                       margin: 0 0 0 8px;
                       padding: 2px 4px;
                       border-radius: 2px;
-                      color: #fff;
+                      color:white;
                       font-size: 12px;
                       vertical-align: top;
-                      background: #ea352d;   
+                      background: $red;   
                     }
                   }
                   .select-wrap{
                     margin: 8px 0 0;
                     position: relative;
-                    background: #fff;
-                    .icon-arrow-bottom{
-                      border: none;
-                    }
+                    background:white;
                     .select-default{
                       width: 100%;
                       height: 48px;
@@ -275,7 +268,7 @@
                   height: 14px;
                   border-radius: 50%;
                   background: #0099e8;
-                  color: #fff;
+                  color:white;
                   line-height: 14px;
                   font-size: 12px;
                   text-align: center;
@@ -295,19 +288,16 @@
                       margin: 0 0 0 8px;
                       padding: 2px 4px;
                       border-radius: 2px;
-                      color: #fff;
+                      color:white;
                       font-size: 12px;
                       vertical-align: top;
-                      background: #ea352d;
+                      background: $red;
                     }
                   }
                   .select-wrap{
                     margin: 8px 0 0;
                     position: relative;
-                    background: #fff;
-                    .icon-arrow-bottom{
-                      border: none;
-                    }
+                    background:white;
                     .select-default{
                       width: 100%;
                       height: 48px;
@@ -336,16 +326,16 @@
                       margin: 0 0 0 8px;
                       padding: 2px 4px;
                       border-radius: 2px;
-                      color: #fff;
+                      color:white;
                       font-size: 12px;
                       vertical-align: top;
-                      background: #ea352d;
+                      background: $red;
                     }
                   }
                   .select-wrap{
-                    .icon-arrow-bottom{
-
-                    }
+                    margin: 8px 0 0;
+                    position: relative;
+                    background:white;
                     .select-default{
                       width: 100%;
                       height: 48px;
@@ -374,16 +364,16 @@
                       margin: 0 0 0 8px;
                       padding: 2px 4px;
                       border-radius: 2px;
-                      color: #fff;
+                      color:white;
                       font-size: 12px;
                       vertical-align: top;
-                      background: #ea352d;
+                      background: $red;
                     }
                   }
                   .select-wrap{
-                    .icon-arrow-bottom{
-
-                    }
+                    margin: 8px 0 0;
+                    position: relative;
+                    background:white;
                     .select-default{
                       width: 100%;
                       height: 48px;
@@ -418,7 +408,7 @@
                   height: 14px;
                   border-radius: 50%;
                   background: #0099e8;
-                  color: #fff;
+                  color:white;
                   line-height: 14px;
                   font-size: 12px;
                   text-align: center;
@@ -441,10 +431,10 @@
                         margin: 0 0 0 8px;
                         padding: 2px 4px;
                         border-radius: 2px;
-                        color: #fff;
+                        color:white;
                         font-size: 12px;
                         vertical-align: top;
-                        background: #ea352d;
+                        background: $red;
                       }
                     }
                     .l-right{
@@ -454,7 +444,7 @@
                       .yen{
                         float: left;
                       }
-                      .input-default{
+                      .input-price{
                         margin:0 0 0 auto;
                         padding: 10px 16px 8px;
                         color: inherit;
@@ -471,10 +461,10 @@
                     padding: 24px 0;
                     border-top: 1px solid #ccc;
                     display: flex;
-                    .l-left{
+                    &__left{
                       width: 50%;
                     }
-                    .l-right{
+                    &__right{
                       width: 50%;
                       text-align: right;
                     }
@@ -486,10 +476,10 @@
                     font-weight: 600;
                     font-size: 16px;
                     display: flex;
-                    .l-left{
+                    &__left{
                       width: 50%;
                     }
-                    .l-right{
+                    &__right{
                       width: 50%;
                       text-align: right;
                     }
@@ -519,7 +509,7 @@
                 position: relative;
                 overflow: hidden;
                 margin: 8px auto;
-                background: #fff;
+                background:white;
               }
             }
             .sell-btn-box{
@@ -546,9 +536,9 @@
                   width: 100%;
                   font-size: 14px;
                   margin: 0 auto ;
-                  background: #ea352d;
+                  background: $red;
                   border: 1px solid #aaa;
-                  color: #fff;
+                  color:white;
                   cursor: pointer;
                 }
                 .btn-gray{
@@ -557,10 +547,10 @@
                   margin: 24px auto 0;
                   background: #aaa;
                   border: 1px solid #aaa;
-                  color: #fff;
-                  a:link {color: #fff;text-decoration: none;}
-                  a:visited{color: #fff;text-decoration: none;}
-                  a:hover {color: #fff;text-decoration: none;}
+                  color:white;
+                  a:link {color:white;text-decoration: none;}
+                  a:visited{color:white;text-decoration: none;}
+                  a:hover {color:white;text-decoration: none;}
                   &__link{
 
                   }
