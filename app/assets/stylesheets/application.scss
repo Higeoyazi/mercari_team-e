@@ -25,6 +25,7 @@
 @import 'modules/mypages-profile';
 @import 'modules/mypages-edition';
 @import 'modules/sidebar';
+@import 'modules/validation_error';
 
 
 // ページ全体の基本のfontや背景色
@@ -36,15 +37,4 @@ body{
   font-size: 14px;
   color: #333;
   line-height: 1;
-}
-
-// signup/step1~5までのバリデーション用
-.has-error{
-  color: #ea352de8;
-  line-height: 1.8;
-}
-.field_with_errors{
-  input{
-  border-color: #ea352de8 !important; 
-  }
 }

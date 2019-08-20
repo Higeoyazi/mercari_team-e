@@ -25,12 +25,12 @@
   .forth-main
     %section.forth-main-wrapper
       .forth-main-wrapper__title 支払い方法
-      = form_with url: signup_index_path, method: :post, html: {class: 'forth-main-wrapper__box'} do |f|
+      = form_with url: signup_index_path, method: :post, html: {class: 'forth-main-wrapper__box', id: 'qwertyu'} do |f|
         .forth-main-wrapper__box--inner
           .forth-main-wrapper__form--top
             = f.label 'カード番号', class: 'forth-main-wrapper__form--label'
             %span.forth-main-wrapper__form--require 必須
-            = f.text_field :number, id: 'payment_card_no', class: 'forth-main-wrapper__form--input number', placeholder: '半角数字のみ(最大16桁)', maxlength: "16"
+            = f.text_field :number, id: 'payment_card_no', class: 'forth-main-wrapper__form--input number', placeholder: '半角数字のみ(ハイフンなし最大16桁)' #, maxlength: "16"
             %ul.creditcard-types
               %li.creditcard-types__image-top
                 = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/visa.svg?1905591235', width: '49', height: '20'
