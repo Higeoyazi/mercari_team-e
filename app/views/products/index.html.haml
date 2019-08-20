@@ -5,53 +5,69 @@
     .slide
     .products-container
       %h2.products-container__head
-        %span 商品一覧
+        %span ピックアップカテゴリー
       .products-container__content
-        .products-box#ladies
+        .products-container__content__head
+          = "#{Category.find(1).name}新着アイテム"
+        .products-container__content__box#ladies
           = render partial: "product", collection: @products_ladies
-        .products-view-all
+        .products-container__content__view-all
           = link_to "すべての商品を見る"
 
-        .products-box#mens
+        .products-container__content__head
+          = "#{Category.find(200).name}新着アイテム"
+        .products-container__content__box#mens
           = render partial: "product", collection: @products_mens
-        .products-view-all
+        .products-container__content__view-all
           = link_to "すべての商品を見る"
 
-        .products-box#kids
+        .products-container__content__head
+          = "#{Category.find(346).name}新着アイテム"
+        .products-container__content__box#kids
           = render partial: "product", collection: @products_kids
-        .products-view-all
+        .products-container__content__view-all
           = link_to "すべての商品を見る"
 
-        .products-box#inteior
+        .products-container__content__head
+          = "#{Category.find(481).name}新着アイテム"
+        .products-container__content__box#interior
           = render partial: "product", collection: @products_interior
-        .products-view-all
+        .products-container__content__view-all
           = link_to "すべての商品を見る"
 
-        .products-box#entertainment
+        .products-container__content__head
+          = "#{Category.find(623).name}新着アイテム"
+        .products-container__content__box#entertainment
           = render partial: "product", collection: @products_hobby
-        .products-view-all
+        .products-container__content__view-all
           = link_to "すべての商品を見る"
 
-        .products-box#hobby
+        .products-container__content__head
+          = "#{Category.find(682).name}新着アイテム"
+        .products-container__content__box#hobby
           = render partial: "product", collection: @products_toy
-        .products-view-all
+        .products-container__content__view-all
           = link_to "すべての商品を見る"
         
-        .products-box#cosmetic
+        .products-container__content__head
+          = "#{Category.find(795).name}新着アイテム"
+        .products-container__content__box#cosmetic
           = render partial: "product", collection: @products_cosmetic
-        .products-view-all
+        .products-container__content__view-all
           = link_to "すべての商品を見る"
 
-        .products-box#electric
+        .products-container__content__head
+          = "#{Category.find(895).name}新着アイテム"
+        .products-container__content__box#electric
           = render partial: "product", collection: @products_electric
-        .products-view-all
+        .products-container__content__view-all
           = link_to "すべての商品を見る"
-        -# = render partial: "products-box"
-        -# = render partial: "products-box"
-        -# = render partial: "products-box"
-        -# = render partial: "products-box"
-        -# = render partial: "products-box"
-        -# = render partial: "products-box"
-        -# = render partial: "products-box"
-        -# = render partial: "products-box"
+        -# = render partial: .products-container__content__box"
+        -# = render partial: .products-container__content__box"
+        -# = render partial: .products-container__content__box"
+        -# = render partial: .products-container__content__box"
+        -# = render partial: .products-container__content__box"
+        -# = render partial: .products-container__content__box"
+        -# = render partial: .products-container__content__box"
+        -# = render partial: .products-container__content__box"
   = render 'shared/footer' 
