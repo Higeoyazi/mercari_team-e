@@ -22,6 +22,7 @@ class ProductsController < ApplicationController
   end
 
   def create
+    binding.pry
     @product = current_user.products.build(product_params)
     unless @product.valid?
       render "/products/new"
