@@ -30,13 +30,12 @@ class ProductsController < ApplicationController
   end
 
   def create
-    binding.pry
     @product = current_user.products.build(product_params)
-    if @product.valid?
+    @product.product_images.build
+    if @product.valid? && @product.product_images.valid?
       @product.save
       redirect_to root_path
     else
-      @product.product_images.build
       render new_product_path(@product)
     end
   end
