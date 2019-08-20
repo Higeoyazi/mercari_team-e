@@ -16,7 +16,6 @@ class Profile < ApplicationRecord
                                format: { with: VALID_NAME_KANA_REGEX }
   validates :first_name_kana,  presence: true, on: :step4,
                                format: { with: VALID_NAME_KANA_REGEX }
-  validates :phone_number,     presence: true, on: :step4,
-                               uniqueness: true,
+  validates :phone_number,     uniqueness: true, allow_blank: true,
                                format: { with: VALID_PHONE_REGEX }
 end
