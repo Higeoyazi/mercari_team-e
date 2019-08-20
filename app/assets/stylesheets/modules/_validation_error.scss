@@ -1,0 +1,23 @@
+// signup/step1~5までのバリデーション用
+.has-error{
+  color: #ea352de8;
+  line-height: 1.8;
+}
+.field_with_errors{
+  input{
+  border-color: #ea352de8 !important; 
+  }
+}
+.forth-main-wrapper__box{
+  .error{
+    border-color: #ea352de8 !important;
+  }
+  #payment_card_security_code-error{
+    color: #ea352de8;
+    line-height: 1.8;    
+  }
+  #payment_card_no-error{
+    color: #ea352de8;
+    line-height: 1.8;    
+  }
+}

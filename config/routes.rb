@@ -7,11 +7,9 @@ Rails.application.routes.draw do
   
   resources :products, only:[:new, :show, :edit, :create, :update,:destroy] do
     collection do
-      get 'end'
       get 'search'
     end
     member do
-      get 'preview'
       get 'confirm'
       post 'pay'
       get 'pay_done'
