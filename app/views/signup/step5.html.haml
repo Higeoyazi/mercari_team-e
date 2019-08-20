@@ -51,11 +51,13 @@
             %span.forth-main-wrapper__form--require 必須
             .expiration-date-wrapper
               .expiration-date-wrapper__box
-                = f.text_field :exp_month, class: 'expiration-date-wrapper__box--inner exp_month', id: 'payment_card_expire_mm', length: '2', placeholder: '2桁'
+                = f.select :exp_month, ExpMonth.all.collect {|p| [p.name]}, {include_blank: "---"}, class: 'expiration-date-wrapper__box--inner exp_month', id: 'payment_card_expire_mm', length: '2', placeholder: '2桁'
+                -# = f.text_field :exp_month, class: 'expiration-date-wrapper__box--inner exp_month', id: 'payment_card_expire_mm', length: '2', placeholder: '2桁'
                 %i.fas.fa-chevron-down.expiration-date-wrapper__box--arrow
                 %span.expiration-date-wrapper__box--detail 月
               .expiration-date-wrapper__box--bottom
-                = f.text_field :exp_year, class: 'expiration-date-wrapper__box--inner exp_year', id: 'payment_card_expire_yy', length: '4', placeholder: '4桁'
+                = f.select :exp_year,  ExpYear.all.collect {|p| [p.name]}, {include_blank: "---"}, class: 'expiration-date-wrapper__box--inner exp_year', id: 'payment_card_expire_yy', length: '4', placeholder: '4桁'
+                -# = f.text_field :exp_year, class: 'expiration-date-wrapper__box--inner exp_year', id: 'payment_card_expire_yy', length: '4', placeholder: '4桁'
                 %i.fas.fa-chevron-down.expiration-date-wrapper__box--arrow
                 %span.expiration-date-wrapper__box--detail 年
           .forth-main-wrapper__form
