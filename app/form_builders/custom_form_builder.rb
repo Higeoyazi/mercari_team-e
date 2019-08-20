@@ -24,7 +24,15 @@ class CustomFormBuilder < ActionView::Helpers::FormBuilder
     super + error(method)
   end
 
-  def select_field(method, options = {})
+  def select(method, choices= nil, options = {}, html_options = {}, &block)
+    super + error(method)
+  end
+
+  def file_field(method, options = {})
+    super + error(method)
+  end
+
+  def collection_select(method, collection, value_method, text_method, options = {}, html_options = {})
     super + error(method)
   end
 
