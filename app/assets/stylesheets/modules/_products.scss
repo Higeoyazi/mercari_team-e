@@ -28,6 +28,10 @@
           height: 330px;
           width: 213px;
           background: white;
+          text-decoration: none;
+          // a:link {color: black;}
+          // a:visited{color: black;}
+          // a:hover {color: black;}
           &__photo{
             height: 220px;
             width: 100%;
@@ -37,6 +41,7 @@
             box-sizing: border-box;
             height: 110px;
             padding: 16px;
+            color: black;
             &__name{
               height: 48px;
               width: 181px;

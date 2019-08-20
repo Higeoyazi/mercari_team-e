@@ -7,12 +7,51 @@
       %h2.products-container__head
         %span 商品一覧
       .products-container__content
-        = render partial: "products-box"
-        = render partial: "products-box"
-        = render partial: "products-box"
-        = render partial: "products-box"
-        = render partial: "products-box"
-        = render partial: "products-box"
-        = render partial: "products-box"
-        = render partial: "products-box"
+        .products-box#ladies
+          = render partial: "product", collection: @products_ladies
+        .products-view-all
+          = link_to "すべての商品を見る"
+
+        .products-box#mens
+          = render partial: "product", collection: @products_mens
+        .products-view-all
+          = link_to "すべての商品を見る"
+
+        .products-box#kids
+          = render partial: "product", collection: @products_kids
+        .products-view-all
+          = link_to "すべての商品を見る"
+
+        .products-box#inteior
+          = render partial: "product", collection: @products_interior
+        .products-view-all
+          = link_to "すべての商品を見る"
+
+        .products-box#entertainment
+          = render partial: "product", collection: @products_hobby
+        .products-view-all
+          = link_to "すべての商品を見る"
+
+        .products-box#hobby
+          = render partial: "product", collection: @products_toy
+        .products-view-all
+          = link_to "すべての商品を見る"
+        
+        .products-box#cosmetic
+          = render partial: "product", collection: @products_cosmetic
+        .products-view-all
+          = link_to "すべての商品を見る"
+
+        .products-box#electric
+          = render partial: "product", collection: @products_electric
+        .products-view-all
+          = link_to "すべての商品を見る"
+        -# = render partial: "products-box"
+        -# = render partial: "products-box"
+        -# = render partial: "products-box"
+        -# = render partial: "products-box"
+        -# = render partial: "products-box"
+        -# = render partial: "products-box"
+        -# = render partial: "products-box"
+        -# = render partial: "products-box"
   = render 'shared/footer' 

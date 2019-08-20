@@ -4,7 +4,15 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:edit, :show, :destroy, :update]
 
   def index
-    @products = Product.all.order("created_at DESC").limit(4)
+    @products_ladies      = Product.where(category_id: 1).order("created_at DESC").limit(4)
+    @products_mens        = Product.where(category_id: 200).order("created_at DESC").limit(4)
+    @products_kids        = Product.where(category_id: 346).order("created_at DESC").limit(4)
+    @products_interior    = Product.where(category_id: 481).order("created_at DESC").limit(4)
+    @products_hobby       = Product.where(category_id: 623).order("created_at DESC").limit(4)
+    @products_toy         = Product.where(category_id: 682).order("created_at DESC").limit(4)
+    @products_cosmetic    = Product.where(category_id: 795).order("created_at DESC").limit(4)
+    @products_electric    = Product.where(category_id: 895).order("created_at DESC").limit(4)
+
   end
 
   def show
@@ -23,11 +31,12 @@ class ProductsController < ApplicationController
 
   def create
     @product = current_user.products.build(product_params)
-    unless @product.valid?
-      render "/products/new"
-    else
+    if @product.valid?
       @product.save
       redirect_to root_path
+    else
+      @product.product_images.build
+      render new_product_path(@product)
     end
   end
 
