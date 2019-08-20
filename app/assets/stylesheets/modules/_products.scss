@@ -48,6 +48,7 @@
     &__head{
       height: 39px;
       font-size: 28px;
+      font-weight: bold;
       text-align: center;
     }
     &__content{
@@ -55,7 +56,15 @@
       width:940px;
       margin: 0 auto;
       background:none;
-      .products-box{
+      &__head{
+        height: 28px;
+        font-size: 22px;
+        font-weight: bold;
+        text-align: center;
+        color: #0099e8;
+        margin: 20px 0; 
+      }
+      &__box{
         height: 330px;
         background: none;
         display: flex;
@@ -65,9 +74,6 @@
           width: 213px;
           background: white;
           text-decoration: none;
-          // a:link {color: black;}
-          // a:visited{color: black;}
-          // a:hover {color: black;}
           &__photo{
             height: 220px;
             width: 100%;
@@ -92,7 +98,7 @@
           }
         }
       }
-      .products-view-all{
+      &__view-all{
         font-size: 14px;
         padding: 20px 0 30px;
         text-align: right;
