@@ -1,13 +1,12 @@
 // 要リファクタリング
 .product-show {
   height: 100%;
-  width: 100%;
-  padding: 20px 40px 40px;
+  width: 100vw;
 
   .contents {
     @include confirmationWidth;
     height: 1250px;
-    margin: 0 auto;
+    margin: 20px auto 40px;
     padding: 24px 40px 40px;
     background-color: $white;
     box-sizing: border-box;
@@ -68,6 +67,7 @@
         margin: 0 16px 0 0;
       }
     }
+  }
     .edit-btn{
       display: block;
       width: 100%;
@@ -80,6 +80,14 @@
       font-size: 24px;
       margin: 16px 0 0;
       text-decoration: none;
+    }
+    .delete-product-btn{
+      width: 50%;
+      height: 50px;
+      background: $gray;
+      color: $white;
+      font-size: 14px;
+      margin: 16px 0 0;
     }
     .buy-btn{
       display: block;
@@ -94,11 +102,23 @@
       margin: 16px 0 0;
       text-decoration: none;
     }
-  }
+    .soldout-btn{
+      display: block;
+      width: 100%;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      background: $gray;
+      color: $white;
+      @include fontWeight;
+      font-size: 24px;
+      margin: 16px 0 0;
+      text-decoration: none;
+    }
 
   .description {
     width: 100%;
-
+    padding: 32px 0 20px;
     &__inner {
       font-size: 18px;
       white-space: pre-wrap;
@@ -155,15 +175,6 @@
         height: 60px;
       }
     }
-    
-    .item-delete-btn {
-    //削除ボタンの非表示
-      width: 0;
-      height: 0;
-      margin: 0;
-      padding: 0;
-      border: 0;
-    }
 
   .comment {
     width: 100%;
@@ -189,28 +200,27 @@
   .sns__box {
     width: 100%;
     height:115px;
-    text-align:center;
-    display: block;
     margin: 24px auto;
     padding: 32px 0 24px;
-    background: $white;
-      &__btns{
-        display:flex;
-      }
+    &__btns{
+      display:flex;
+      justify-content: center;
       &__facebook {
         color:blue;
-        float:left;
-        padding: 20px 40px;
+        font-size: 30px;
+        padding: 0 10px;
       }
       &__Twitter {
         color:skyblue;
-        padding: 20px 40px;
+        font-size: 30px;
+        padding: 0 10px;
       }
       &__LINE {
         color:green;
-        float:right;
-        padding: 20px 40px;
+        font-size: 30px;
+        padding: 0 10px;
       }
+    }
     }
   }
 }

@@ -1,5 +1,5 @@
 -# %section.product
-= link_to  product_path(product.id), class: "product" do
+= link_to  product_path(product.id),data: {"turbolinks": false}, class: "product" do
   %figure.product__photo
     = image_tag("#{product.product_images.last.image_url}", size: "213x220")
 
@@ -8,4 +8,4 @@
       = product.name
     .product__body__num
       .price
-        = product.price
+      = "¥ #{product.price}"
