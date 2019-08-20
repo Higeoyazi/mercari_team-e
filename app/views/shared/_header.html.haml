@@ -20,16 +20,24 @@
             = fa_icon "tags", class: "option__icon"
             %span ブランドから探す
       .lower__right
-        %ul.user-nav
-          =link_to "", class: "user-nav__menu" do
-            = fa_icon "heart", class: "user-nav__menu__icon"
-            %span いいね！一覧
-          =link_to "", class: "user-nav__menu" do
-            = fa_icon "bell", class: "user-nav__menu__icon"
-            %span お知らせ
-          =link_to "", class: "user-nav__menu" do
-            = fa_icon "check", class: "user-nav__menu__icon"
-            %span やることリスト
-          =link_to profile_mypages_path, class: "user-nav__menu" do
-            = fa_icon "edit", class: "user-nav__menu__icon"
-            %span マイページ
+        - if user_signed_in?
+          %ul.user-nav
+            =link_to "", class: "user-nav__menu" do
+              = fa_icon "heart", class: "user-nav__menu__icon"
+              %span いいね！一覧
+            =link_to "", class: "user-nav__menu" do
+              = fa_icon "bell", class: "user-nav__menu__icon"
+              %span お知らせ
+            =link_to "", class: "user-nav__menu" do
+              = fa_icon "check", class: "user-nav__menu__icon"
+              %span やることリスト
+            =link_to profile_mypages_path, class: "user-nav__menu" do
+              = fa_icon "edit", class: "user-nav__menu__icon"
+              %span マイページ
+        - else
+          %ul.login-nav
+            %li
+              = link_to '新規会員登録', step1_signup_index_path, class: 'login-nav__signup'
+            %li
+              = link_to 'ログイン', new_user_session_path, class: 'login-nav__signin'
+

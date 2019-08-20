@@ -67,6 +67,7 @@
         margin: 0 16px 0 0;
       }
     }
+  }
     .edit-btn{
       display: block;
       width: 100%;
@@ -101,7 +102,19 @@
       margin: 16px 0 0;
       text-decoration: none;
     }
-  }
+    .soldout-btn{
+      display: block;
+      width: 100%;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      background: $gray;
+      color: $white;
+      @include fontWeight;
+      font-size: 24px;
+      margin: 16px 0 0;
+      text-decoration: none;
+    }
 
   .description {
     width: 100%;

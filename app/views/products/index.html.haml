@@ -2,7 +2,26 @@
   = render 'shared/header'
   = render 'shared/exhibit-btn'
   .main
-    .slide
+    .app-upper-baner
+      .app-upper-baner__content
+        .app-upper-baner__content__inner
+          .app-upper-baner__content__inner__text 
+            %h2 
+              スマホでかんたん
+              %br 
+              フリマアプリ
+            %p  
+              メルカリはスマホカメラからすぐに出品できる
+              %br 
+              購入時も安心な独自システムのアプリです
+          %ul.middle
+            %li
+              = link_to image_tag("//www-mercari-jp.akamaized.net/assets/img/common/common/app-store.svg?206587138", size: "170x50"), "https://itunes.apple.com/jp/app/id667861049?l=ja&amp;mt=8",target: "_blank"
+            %li
+              = link_to image_tag("//www-mercari-jp.akamaized.net/assets/img/common/common/google-play.svg?206587138", size: "170x50"), "https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja",target: "_blank"
+        .app-upper-baner__content__app
+          = image_tag "///www-mercari-jp.akamaized.net/assets/img/common/jp/top/main_content_pc.png?3125985667",id:"sp",height: "390px"
+    
     .products-container
       %h2.products-container__head
         %span ピックアップカテゴリー
