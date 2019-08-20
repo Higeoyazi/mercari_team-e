@@ -5,12 +5,14 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
 
+
   # Association
   has_one :profile, dependent: :destroy
   accepts_nested_attributes_for :profile
 
   has_one :address, dependent: :destroy
   accepts_nested_attributes_for :address
+
 
   ## ユーザーの売買履歴を出力する
   has_many :bought_orders, class_name: 'Order',
@@ -20,9 +22,11 @@ class User < ApplicationRecord
                          foreign_key: 'seller_id',
                          dependent: :destroy
 
+
   ## ユーザーが買った商品、売った商品を出力する
   has_many :bought, through: :bought_orders, source: :product
   has_many :sold, through: :sold_orders, source: :product
+
 
   has_one_attached :avatar
   has_many :products
@@ -31,15 +35,13 @@ class User < ApplicationRecord
   has_many :credit_cards, dependent: :destroy
 
 
-
   # Validation
   VALID_EMAIL_REGEX =  /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :nickname,              presence: true, length: {maximum: 20}, on: :step2
   validates :email,                 presence: true, uniqueness: true,
-                                    format: { with: VALID_EMAIL_REGEX }, on: :validates_step2
+                                    format: { with: VALID_EMAIL_REGEX }, on: :step2
   validates :password,              presence: true, length: {minimum: 6, maximum: 128}, on: :step2
   validates :password_confirmation, presence: true, length: {minimum: 6, maximum: 128}, on: :step2
-
 
 
   # Sign_up OR Login with FB or Google

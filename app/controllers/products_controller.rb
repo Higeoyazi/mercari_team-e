@@ -30,6 +30,7 @@ class ProductsController < ApplicationController
   end
 
   def create
+    binding.pry
     @product = current_user.products.build(product_params)
     if @product.valid?
       @product.save
@@ -110,5 +111,4 @@ private
       product_images_attributes: [:id, :image_url]
     )
   end
-
 end
