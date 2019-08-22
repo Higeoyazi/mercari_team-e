@@ -2,11 +2,11 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def edit
-    @user = User.find(current_user.id)
+    @user = current_user
   end
 
   def update
-    @user = User.find(current_user.id)
+    @user = current_user
     @user.update(user_params)
     redirect_to edit_user_path(current_user.id)
   end
