@@ -33,12 +33,12 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = current_user.products.build(product_params)
+    @product = Product.new(product_params)
     if @product.valid?
       @product.save
       redirect_to root_path
     else
-      @product.product_images.build
+      @product.product_images.build #validに引っかかった際、画像なしの状態の入力データを持ち越してrenderで元の画面に戻るので、もう一度buildしてproductsにproducts_imagesを持たせてあげないと、fields_forによるformが消えてしまう。
       render new_product_path(@product)
     end
   end
@@ -111,6 +111,6 @@ private
       :prep_days,
       :category_id,
       product_images_attributes: [:id, :image_url]
-    )
+    ).merge(user_id: current_user.id)
   end
 end
