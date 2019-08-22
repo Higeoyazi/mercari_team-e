@@ -189,14 +189,25 @@
           margin: 0 0 7px 0;
         }
         &__text{
-          // float: right;
-          // position: relative;
+
           width: calc(100% - 56px);
           padding: 16px;
           background: #eef0f4;
           border-radius: 15px;
           line-height: 1.5;
           word-break: break-all;
+          &__box{}
+          &__time{
+            margin: 8px 0 0 0;
+            color: #aaa;
+            .fa-clock{
+
+            }
+            .fa-flag{
+              float: right;
+              margin-top: 4px;
+            }
+          }
         } 
       }
     }

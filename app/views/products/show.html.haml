@@ -88,6 +88,13 @@
               .comment__body__item__content__text
                 .comment__body__item__content__text__box
                   = simple_format(comment.text)
+                .comment__body__item__content__text__time
+                  %i.far.fa-clock
+                  %time(datetime="#{comment.created_at}")= time_ago_in_words(comment.created_at)
+                  前
+                  %i.far.fa-flag
+                  
+                
 
       .comment__form.clearfix
         = form_with model: @comment, url: comments_path, local: true, class: "comment__form" do |f|
