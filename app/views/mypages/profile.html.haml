@@ -7,7 +7,10 @@
       .my-page-right-content
         .my-page-right-content__top
           .my-page-right-content__top__content
-            = image_tag '//static.mercdn.net/images/member_photo_noimage_thumb.png'
+            - if current_user.avatar?
+              = image_tag "#{current_user.avatar}", size: '40x40'
+            - else
+              = image_tag '//static.mercdn.net/images/member_photo_noimage_thumb.png', size: '40x40'
             %p.username
               #{current_user.nickname}
             %span 評価

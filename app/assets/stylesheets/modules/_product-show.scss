@@ -192,29 +192,24 @@
         width: 100%;
         text-align: left;
         margin: 60px 0;
-        &__user{
-          // float: left;
-        }
         &__nickname{
-          margin: 0 0 7px 0;
+          margin: 0 0 7px 3px;
+        }
+        &__user{
+          border-radius: 50%;
+          .user_avatar{
+            border-radius: 50%;
+          }
         }
         &__text{
-          // float: right;
-          // position: relative;
-          // right: 0;
-          // width: calc(100% - 56px);
           padding: 16px;
           background: #eef0f4;
           border-radius: 15px;
           line-height: 1.5;
           word-break: break-all;
-          &__box{}
           &__time{
             margin: 8px 0 0 0;
             color: #aaa;
-            .fa-clock{
-
-            }
             .fa-flag{
               float: right;
               margin-top: 4px;
@@ -231,6 +226,8 @@
       margin: 48px 0 8px 0;
     }
     &__form__textarea {
+      margin-top: 8px;
+      padding: 10px;
       width: 100%;
       max-width: 100%;
       min-height: 100px;
