@@ -53,7 +53,7 @@
         %span.price__shipping__fee 送料込み
 
     - if @product.status == "sell"
-      - if @product.user_id == current_user.id
+      - if (user_signed_in? && @product.user_id == current_user.id)
         = link_to edit_product_path(@product.id), class: "edit-btn" do
           編集画面へ進む
         %button.delete-product-btn#modal-open-btn この商品を削除する
