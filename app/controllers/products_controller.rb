@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
 
   require 'payjp'
   before_action :set_product, only: [:edit, :show, :destroy, :update]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @products_ladies      = Product.where(category_id: 1).order("created_at DESC").limit(4)
