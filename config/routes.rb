@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       get 'search'
     end
     member do
+      resources :comments, only: [:create]
       get 'confirm'
       post 'pay'
       get 'pay_done'

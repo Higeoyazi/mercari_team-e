@@ -5,7 +5,7 @@
 
   .contents {
     @include confirmationWidth;
-    height: 1250px;
+    height: auto;
     margin: 20px auto 40px;
     padding: 24px 40px 40px;
     background-color: $white;
@@ -180,6 +180,13 @@
     width: 100%;
     text-align:center;
     margin-top:30px;
+    &__form p{
+      padding: 8px;
+      font-size: 14px;
+      background: #fff6de;
+      text-align: left;
+      margin-bottom: 8px;
+    }
     &__form__textarea {
       width: 100%;
       height: 100px;
