@@ -84,7 +84,7 @@
           - @comments.each do |comment|
             %li.comment__body__item__content
               .comment__body__item__content__user
-                - if comment.user.avatar.attached?
+                - if comment.user.avatar?
                   = image_tag comment.user.image.variant(resize:'256x256').processed
                 - else
                   = image_tag "person.png", size: '40x40'
