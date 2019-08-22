@@ -5,9 +5,9 @@
 
   .contents {
     @include confirmationWidth;
-    height: 1250px;
+    height: auto;
     margin: 20px auto 40px;
-    padding: 24px 40px 40px;
+    padding: 24px 20px 20px;
     background-color: $white;
     box-sizing: border-box;
     .product-name{
@@ -177,12 +177,64 @@
     }
 
   .comment {
+    .clearfix:after{
+      content:"";
+      clear: both;
+      display: block;
+    }
     width: 100%;
     text-align:center;
     margin-top:30px;
+    &__body__item{
+      list-style: none;
+      position: relative;
+      &__content{
+        width: 100%;
+        text-align: left;
+        margin: 60px 0;
+        &__user{
+          // float: left;
+        }
+        &__nickname{
+          margin: 0 0 7px 0;
+        }
+        &__text{
+          // float: right;
+          // position: relative;
+          // right: 0;
+          // width: calc(100% - 56px);
+          padding: 16px;
+          background: #eef0f4;
+          border-radius: 15px;
+          line-height: 1.5;
+          word-break: break-all;
+          &__box{}
+          &__time{
+            margin: 8px 0 0 0;
+            color: #aaa;
+            .fa-clock{
+
+            }
+            .fa-flag{
+              float: right;
+              margin-top: 4px;
+            }
+          }
+        } 
+      }
+    }
+    &__form p{
+      padding: 8px;
+      font-size: 14px;
+      background: #fff6de;
+      text-align: left;
+      margin: 48px 0 8px 0;
+    }
     &__form__textarea {
       width: 100%;
-      height: 100px;
+      max-width: 100%;
+      min-height: 100px;
+      text-align: left;
     }
     &__form__submit__btn {
       width: 100%;
