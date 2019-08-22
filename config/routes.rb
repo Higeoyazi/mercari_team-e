@@ -31,11 +31,11 @@ Rails.application.routes.draw do
     collection do
       get 'profile'
       get 'logout'
-      get 'edition'
       get 'identification'
 
       resources :credit_cards, only: [:index, :new, :create, :destroy]
     end
   end
+  resources :users, only: [:edit,:update] 
 end
 

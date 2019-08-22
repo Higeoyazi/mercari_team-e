@@ -28,7 +28,7 @@ class User < ApplicationRecord
   has_many :sold, through: :sold_orders, source: :product
 
 
-  has_one_attached :avatar
+  # has_one_attached :avatar(Active Storageは使わないためコメントアウト)
   has_many :products
   has_many :comments
   has_many :sns_credentials
@@ -84,5 +84,7 @@ class User < ApplicationRecord
 
   # def cancel
   # end
+
+  mount_uploader :avatar, ImageUploader
 
 end
