@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_18_042509) do
+ActiveRecord::Schema.define(version: 2019_08_22_054947) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "prefecture", null: false
@@ -94,7 +94,6 @@ ActiveRecord::Schema.define(version: 2019_08_18_042509) do
   end
 
   create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.text "profile"
     t.string "family_name", null: false
     t.string "first_name", null: false
     t.string "family_name_kana", null: false
@@ -125,6 +124,8 @@ ActiveRecord::Schema.define(version: 2019_08_18_042509) do
     t.datetime "updated_at", null: false
     t.string "nickname"
     t.integer "birthday"
+    t.text "introduce"
+    t.string "avatar"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
