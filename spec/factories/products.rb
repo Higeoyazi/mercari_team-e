@@ -1,12 +1,15 @@
 FactoryBot.define do
   factory :product do
-    name{"NIKE"}
-    description{"NIKE"}
-    price{500}
+    name{Faker::Name.name}
+    description{"ナイキのボーダー長袖Tシャツです。
+    サイズは90です。
+    特に汚れは見当たりません。
+    自宅保管していました。"}
+    price{Faker::Number.within(range: 300..999999)}
     size{"L"}
     brand_name{"NIKE"}
-    quality{1}
-    delivery_cost{"出品者"}
+    quality{"新品、未使用"}
+    delivery_cost{"送料込み(出品者負担)"}
     delivery_origin{"東京"}
     delivery_status{1}
     prep_days{"2~3日で発送"}
