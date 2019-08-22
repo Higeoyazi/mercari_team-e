@@ -85,9 +85,9 @@
             %li.comment__body__item__content
               .comment__body__item__content__user
                 - if comment.user.avatar?
-                  = image_tag comment.user.image, size: '40x40'
+                  = image_tag "#{comment.user.avatar}", size: '40x40', class: 'user_avatar'
                 - else
-                  = image_tag "person.png", size: '40x40'
+                  = image_tag '//static.mercdn.net/images/member_photo_noimage_thumb.png', size: '40x40', class: 'user_avatar'
               .comment__body__item__content__nickname
                 = comment.user.nickname
               .comment__body__item__content__text
