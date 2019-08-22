@@ -8,4 +8,4 @@
       = product.name
     .product__body__num
       .price
-      = "¥ #{product.price}"
+      = "¥ #{product.price.to_s(:delimited)}"
