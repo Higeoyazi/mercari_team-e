@@ -17,7 +17,7 @@ class ProductsController < ApplicationController
 
   def show
     set_product
-    @comment = @product.comments.new
+    @comment = Comment.new
     @comments = @product.comments
   end
 
