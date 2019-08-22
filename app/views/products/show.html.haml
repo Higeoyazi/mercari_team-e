@@ -83,6 +83,11 @@
         %ul.comment__body__item 
           - @comments.each do |comment|
             %li.comment__body__item__content
+              .comment__body__item__content_user
+                - if comment.user.avatar.attached?
+                  = image_tag @user.image.variant(resize:'256x256').processed
+                - else
+                  = image_tag "person.png"            
               .comment__body__item__content__nickname
                 = comment.user.nickname
               .comment__body__item__content__text
