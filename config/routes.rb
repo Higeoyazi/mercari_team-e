@@ -37,5 +37,6 @@ Rails.application.routes.draw do
       resources :credit_cards, only: [:index, :new, :create, :destroy]
     end
   end
+  resources :users, only: [:edit,:update] 
 end
 
