@@ -45,18 +45,18 @@
         - @product.product_images.drop(1).each do |n|
           = image_tag "#{n.image_url}",class:"sub-image__size"
 
-    .price__and__button
-      .price
-        %span.price__figure
-          = "¥ #{@product.price}"
-        %span.price__tax (税込)
-        %span.price__shipping__fee 送料込み
-
+    .price
+      %span.price__figure
+        = "¥ #{@product.price}"
+      %span.price__tax (税込)
+      %span.price__shipping__fee 送料込み
+    
+    .show-btns
     - if @product.status == "sell"
       - if (user_signed_in? && @product.user_id == current_user.id)
         = link_to edit_product_path(@product.id), class: "edit-btn" do
           編集画面へ進む
-        %button.delete-product-btn#modal-open-btn この商品を削除する
+        %button.delete-btn#modal-open-btn この商品を削除する
         = link_to "", product_path(@product.id), method: :delete
         #overlay
           #modalWindow
