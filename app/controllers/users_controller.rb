@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     @user.update(user_params)
+    flash[:notice] = "編集しました"
     redirect_to edit_user_path(current_user.id)
   end
   

@@ -38,9 +38,11 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     if @product.valid?
       @product.save
+      flash[:notice] = "出品しました"
       redirect_to root_path
     else
       @product.product_images.build #validに引っかかった際、画像なしの状態の入力データを持ち越してrenderで元の画面に戻るので、もう一度buildしてproductsにproducts_imagesを持たせてあげないと、fields_forによるformが消えてしまう。
+      flash[:alert] = "出品できませんでした"
       render new_product_path(@product)
     end
   end
@@ -68,6 +70,7 @@ class ProductsController < ApplicationController
 
   def destroy
     @product.destroy
+    flash[:notice] = "削除しました"
     redirect_to root_path
   end
 
