@@ -3,7 +3,6 @@ class SignupController < ApplicationController
   before_action :redirect
   before_action :validates_user, only: :step3
   before_action :validates_profile, :validates_address, only: :step5
-  # before_action :validates_credit_card, only: :create
 
   def index
     render '/signup/step5'
@@ -48,13 +47,6 @@ class SignupController < ApplicationController
     new_user_with_params
     render '/signup/step4' unless @user.address.valid?(:step4)
   end
-
-  #下記でバリデーションのリファクタリングいけるかも！後で試す
-  # def validation(model_name, num)
-  #   new_user_with_params
-  #   model_name = @user.model_name
-  #   render "/signup/step#{num}" unless model_name.valid?(:step"#{num}")
-  # end
 
 
   def create
