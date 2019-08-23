@@ -92,13 +92,13 @@
                   .sell-price__form
                     %ul.sell-price__form__lists
                       %li.sell-price__form__lists__name
-                        %label.l-left
+                        %label.sell-price__form__lists__name__left
                           価格
                           %span.require 必須
-                        %label.l-right
-                          .yen
+                        %label.sell-price__form__lists__name__right
+                          .sell-price__form__lists__name__right__yen
                             ¥
-                          = f.number_field :price, class: "input-price", placeholder: "例）300"
+                          = f.text_field :price, id: "product-price", class: "sell-price__form__lists__name__right__input-price", placeholder: "例）300"
                       %li.sell-price__form__lists__fee
                         .sell-price__form__lists__fee__left
                           販売手数料 (10%)

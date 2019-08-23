@@ -51,16 +51,9 @@ class ProductsController < ApplicationController
   end
 
   def update
-    if @product.user_id == current_user.id
+    if @product.user_id == current_user.id && @product.valid?
       @product.update(product_params)
       redirect_to product_path(@product.id)
-    end
-  end
-
-  def destroy
-    if @product.user_id == current_user.id
-      @product.destroy
-      redirect_to root_path
     end
   end
 
@@ -68,12 +61,12 @@ class ProductsController < ApplicationController
     @products = Product.where('name LIKE(?)', "%#{params[:keyword]}%")
   end
 
+
   def destroy
     @product.destroy
     flash[:notice] = "削除しました"
     redirect_to root_path
   end
-
 
   def category
     @children = Category.find(params[:parent_id]).children
