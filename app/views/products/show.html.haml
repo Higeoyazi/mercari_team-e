@@ -59,15 +59,8 @@
       - if (user_signed_in? && @product.user_id == current_user.id)
         = link_to edit_product_path(@product.id), class: "edit-btn" do
           編集画面へ進む
-        %button.delete-btn#modal-open-btn この商品を削除する
-        = link_to "", product_path(@product.id), method: :delete
-        #overlay
-          #modalWindow
-            .modal-message-box
-              %div 確認
-              %div 本当に削除しますか？
-            %button#modal-close-btn キャンセル
-            %button#delete-comformation-btn 削除する
+        = link_to product_path(@product.id), method: :delete, class: "edit-btn" do
+          この商品を削除する
       - else
         = link_to confirm_product_path(@product), class: "buy-btn" do
           購入画面へ進む      
