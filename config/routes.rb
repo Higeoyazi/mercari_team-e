@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :products, only:[:new, :show, :edit, :create, :update,:destroy] do
     collection do
       get 'search'
+      get 'category'
     end
     member do
       resources :comments, only: [:create]
