@@ -31,7 +31,7 @@ class ProductsController < ApplicationController
   
   def new
     @product = Product.new
-    @product.product_images.build
+    4.times{@product.product_images.build}
   end
 
   def create
@@ -125,7 +125,7 @@ private
       :delivery_cost,
       :prep_days,
       :category_id,
-      product_images_attributes: [:id, :image_url]
+      product_images_attributes: [:id, [:image_url]]
     ).merge(user_id: current_user.id)
   end
 
