@@ -2,6 +2,8 @@ class ProductsController < ApplicationController
 
   require 'payjp'
   before_action :set_product, only: [:edit, :show, :destroy, :update]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_parents, only: [:index, :show,:search]
 
   def index
     @products_ladies      = Product.where(category_id: 1).order("created_at DESC").limit(4)
@@ -16,6 +18,9 @@ class ProductsController < ApplicationController
   end
 
   def show
+    set_product
+    @comment = Comment.new
+    @comments = @product.comments
   end
 
   def confirm
@@ -67,6 +72,15 @@ class ProductsController < ApplicationController
   end
 
 
+  def category
+    @children = Category.find(params[:parent_id]).children
+    respond_to do |format|
+      format.json
+    end
+  end
+
+
+
   def pay
     product = Product.find(params[:id])
     credit_card = CreditCard.find_by(user_id: current_user.id)
@@ -90,6 +104,7 @@ class ProductsController < ApplicationController
 
 
 
+
 private
 
   def set_product
@@ -109,5 +124,9 @@ private
       :category_id,
       product_images_attributes: [:id, :image_url]
     ).merge(user_id: current_user.id)
+  end
+
+  def set_parents
+    @parents = Category.where(ancestry: nil)
   end
 end

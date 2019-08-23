@@ -10,7 +10,4 @@ class MypagesController < ApplicationController
   def identification
   end
 
-  def edition
-  end
-
 end

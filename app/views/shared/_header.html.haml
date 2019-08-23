@@ -7,11 +7,11 @@
             = image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?863303983", size: "134x36"
       = form_tag "/products/search", method: :get ,class:"upper__right" do
         %input{type: "search", class:"form", placeholder:"何かお探しですか？",name:"keyword"}
-        %button{type: "submit", class:"mask" }
+        %button{type: "submit", class:"mask"}
           = fa_icon "search", class: "mask__search"
     .lower
       %ul.lower__left
-        =link_to "", class: "option" do
+        =link_to "", class: "option", id: "search-categories" do
           %h2
             = fa_icon "list", class: "option__icon"
             %span カテゴリーから探す
@@ -20,6 +20,7 @@
             = fa_icon "tags", class: "option__icon"
             %span ブランドから探す
       .lower__right
+
         - if user_signed_in?
           %ul.user-nav
             =link_to "", class: "user-nav__menu" do
@@ -40,4 +41,13 @@
               = link_to '新規会員登録', step1_signup_index_path, class: 'login-nav__signup'
             %li
               = link_to 'ログイン', new_user_session_path, class: 'login-nav__signin'
-
+      
+      .lower__left__categry__box#categry__box
+        .lower__left__categry__list
+          %ul.lower__left__categry__list__parent
+            - @parents.each do |parent|
+              %li.lower__left__categry__list__parent__list
+                %h3
+                  = link_to "#{parent.name}",category_products_path, class: "parent_category",id: "#{parent.id}"
+          %ul.lower__left__categry__list__child
+          %ul.lower__left__categry__list__grandchild

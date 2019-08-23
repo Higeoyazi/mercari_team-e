@@ -45,13 +45,14 @@
         - @product.product_images.drop(1).each do |n|
           = image_tag "#{n.image_url}",class:"sub-image__size"
 
+
     .price__and__button
       .price
         %span.price__figure
           = "¥ #{@product.price.to_s(:delimited)}"
         %span.price__tax (税込)
         %span.price__shipping__fee 送料込み
->>>>>>> Stashed changes
+
     
     .show-btns
     - if @product.status == "sell"
@@ -79,14 +80,35 @@
       %p.description__inner
         =@product.description
 
-
+  .contents.clearfix
     .comment
-      .comment__boby
-        .comment__form.clearfix
-          %form.comment__form
-            %textarea{type: "text", class: "comment__form__textarea"}
-          %button{type: "submit", class: "comment__form__submit__btn"}
-            %span コメントする
+      .comment__boby.clearfix
+        %ul.comment__body__item.clearfix
+          - @comments.each do |comment|
+            %li.comment__body__item__content
+              .comment__body__item__content__user
+                - if comment.user.avatar?
+                  = image_tag "#{comment.user.avatar}", size: '40x40', class: 'user_avatar'
+                - else
+                  = image_tag '//static.mercdn.net/images/member_photo_noimage_thumb.png', size: '40x40', class: 'user_avatar'
+              .comment__body__item__content__nickname
+                = comment.user.nickname
+              .comment__body__item__content__text
+                .comment__body__item__content__text__box
+                  = simple_format(comment.text)
+                .comment__body__item__content__text__time
+                  %i.far.fa-clock
+                  %time(datetime="#{comment.created_at}")= time_ago_in_words(comment.created_at)
+                  前
+                  %i.far.fa-flag
+                  
+                
+
+      .comment__form.clearfix
+        = form_with model: @comment, url: comments_path, local: true, class: "comment__form" do |f|
+          %p.comment__form__text 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+          = f.text_area :text, class: "comment__form__textarea"
+          = f.submit 'コメントする', class: "comment__form__submit__btn"
 
     .product-space
 

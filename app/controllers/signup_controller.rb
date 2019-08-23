@@ -1,5 +1,6 @@
 class SignupController < ApplicationController
 
+  before_action :redirect
   before_action :validates_user, only: :step3
   before_action :validates_profile, :validates_address, only: :step5
   # before_action :validates_credit_card, only: :create
@@ -48,19 +49,12 @@ class SignupController < ApplicationController
     render '/signup/step4' unless @user.address.valid?(:step4)
   end
 
-  #jqueryのプラグイン導入のcredit_cardのバリデーション実装の時以下を使うかも
-  # def validates_credit_card
-  #   new_user_with_params
-  #   render '/signup/step5' unless @user.credit_card.valid?(:step5)
-  # end
-
   #下記でバリデーションのリファクタリングいけるかも！後で試す
   # def validation(model_name, num)
   #   new_user_with_params
   #   model_name = @user.model_name
   #   render "/signup/step#{num}" unless model_name.valid?(:step"#{num}")
   # end
-
 
 
   def create
@@ -87,6 +81,10 @@ class SignupController < ApplicationController
 
   def done
     sign_in User.find(session[:id]) unless user_signed_in?
+  end
+
+  def redirect
+    redirect_to root_path if current_user
   end
 
 

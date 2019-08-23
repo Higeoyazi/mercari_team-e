@@ -118,7 +118,7 @@
 - add_index products, :name
 
 ## enum
-- enum products, :status
+- enum products, :status
 
 
 

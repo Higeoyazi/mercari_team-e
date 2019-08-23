@@ -8,8 +8,10 @@ Rails.application.routes.draw do
   resources :products, only:[:new, :show, :edit, :create, :update,:destroy] do
     collection do
       get 'search'
+      get 'category'
     end
     member do
+      resources :comments, only: [:create]
       get 'confirm'
       post 'pay'
       get 'pay_done'
@@ -31,11 +33,11 @@ Rails.application.routes.draw do
     collection do
       get 'profile'
       get 'logout'
-      get 'edition'
       get 'identification'
 
       resources :credit_cards, only: [:index, :new, :create, :destroy]
     end
   end
+  resources :users, only: [:edit,:update] 
 end
 
