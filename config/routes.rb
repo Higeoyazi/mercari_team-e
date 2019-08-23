@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'products#index'
   get 'products', to: 'products#new'
+  get 'products/:id/comments', to: 'products#show'
+
 
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks'
