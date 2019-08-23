@@ -1,4 +1,7 @@
 class CommentsController < ApplicationController
+
+  before_action  :authenticate_user!
+
   def create
     product = Product.find(params[:id])
     product.comments.create(comment_params)
