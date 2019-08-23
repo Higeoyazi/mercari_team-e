@@ -42,12 +42,12 @@
             %li
               = link_to 'ログイン', new_user_session_path, class: 'login-nav__signin'
       
-      .lower__left__categry__box#categry__box
-        .lower__left__categry__list
-          %ul.lower__left__categry__list__parent
-            - @parents.each do |parent|
-              %li.lower__left__categry__list__parent__list
-                %h3
-                  = link_to "#{parent.name}",category_products_path, class: "parent_category",id: "#{parent.id}"
-          %ul.lower__left__categry__list__child
-          %ul.lower__left__categry__list__grandchild
+      -# .lower__left__categry__box#categry__box
+      -#   .lower__left__categry__list
+      -#     %ul.lower__left__categry__list__parent
+      -#       - @parents.each do |parent|
+      -#         %li.lower__left__categry__list__parent__list
+      -#           %h3
+      -#             = link_to "#{parent.name}",category_products_path, class: "parent_category",id: "#{parent.id}"
+      -#     %ul.lower__left__categry__list__child
+      -#     %ul.lower__left__categry__list__grandchild

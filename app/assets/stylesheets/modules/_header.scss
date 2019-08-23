@@ -186,34 +186,32 @@
         }
       }
     }
-
   }
 }
+// // 以下、カテゴリーのカーソルを当てると、色が変わるCSS
+// .now-selected-red{
+//   background-color:#ea352d;
+//   color:white;
+//   display: block;
+// }
 
-// 以下、カテゴリーのカーソルを当てると、色が変わるCSS
-.now-selected-red{
-  background-color:#ea352d;
-  color:white;
-  display: block;
-}
+// .now-selected-gray{
+//   background-color: #f2f2f2;
+//   display: block;
+// }
 
-.now-selected-gray{
-  background-color: #f2f2f2;
-  display: block;
-}
-
-.now-selected-rgba{
-  background-color:  #f2f2f2;
-  display: block;
-}
-// link_toメソッドをブロック要素化
-a{
-  text-decoration: none;
-  color: black;
-  display: block;
-  padding: 0px 16px;
-}
-// ボーダーラインのcss
-// border: solid;
-// border-width: 0.1px;
-// border-color: #e0e0e0;
+// .now-selected-rgba{
+//   background-color:  #f2f2f2;
+//   display: block;
+// }
+// // link_toメソッドをブロック要素化
+// a{
+//   text-decoration: none;
+//   color: black;
+//   display: block;
+//   padding: 0px 16px;
+// }
+// // ボーダーラインのcss
+// // border: solid;
+// // border-width: 0.1px;
+// // border-color: #e0e0e0;
