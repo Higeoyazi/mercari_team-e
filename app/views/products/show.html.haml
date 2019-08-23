@@ -45,11 +45,14 @@
         - @product.product_images.drop(1).each do |n|
           = image_tag "#{n.image_url}",class:"sub-image__size"
 
-    .price
-      %span.price__figure
-        = "¥ #{@product.price.to_s(:delimited)}"
-      %span.price__tax (税込)
-      %span.price__shipping__fee 送料込み
+
+    .price__and__button
+      .price
+        %span.price__figure
+          = "¥ #{@product.price.to_s(:delimited)}"
+        %span.price__tax (税込)
+        %span.price__shipping__fee 送料込み
+
     
     .show-btns
     - if @product.status == "sell"
