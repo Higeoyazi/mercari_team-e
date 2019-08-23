@@ -1,10 +1,12 @@
+= render 'shared/header'
 .product-show
   .contents.clearfix
     %h1.product-name
       = @product.name
     .main
-      = image_tag("#{@product.product_images.first.image_url}", class: "main__image__size")
-      %table.main__ditail__table
+      = image_tag("#{@product.product_images.last.image_url}", class:"main__image__size")
+      %table.main__detail__table
+
         %tbody
           %tr
             %th 出品者
@@ -14,17 +16,20 @@
             %th カテゴリー
             %td
               = @product.category.name
-          %tr
-            %th ブランド
-            %td 
-              = @product.brand_name
+          -#見た目の便宜上一旦コメントアウト
+          -# %tr
+          -#   %th ブランド
+          -#   %td 
+          -#     = @product.brand_name
+
           %tr
             %th 商品の状態
             %td 
               = @product.quality
           %tr
             %th 配送料の負担
-            %td 送料込み(出品者負担)
+            %td
+              =@product.delivery_cost
           %tr
             %th 配送の方法
             %td らくらくメルカリ便
@@ -34,56 +39,88 @@
               =@product.delivery_origin
           %tr
             %th 発送日の目安
-            %td 1~2日で発送
+            %td 
+              =@product.prep_days
       .sub-image
         - @product.product_images.drop(1).each do |n|
           = image_tag "#{n.image_url}",class:"sub-image__size"
 
-    .price__and__button
-      .price
-        %span.price__figure
-          =@product.price
-        %span.price__tax (税込)
-        %span.price__shipping__fee 送料込み
-      .button
-        %button{type: "submit", class: "button__btn"}
-          %span 購入画面に進む
+    .price
+      %span.price__figure
+        = "¥ #{@product.price.to_s(:delimited)}"
+      %span.price__tax (税込)
+      %span.price__shipping__fee 送料込み
+    
+    .show-btns
+    - if @product.status == "sell"
+      - if (user_signed_in? && @product.user_id == current_user.id)
+        = link_to edit_product_path(@product.id), class: "edit-btn" do
+          編集画面へ進む
+        %button.delete-btn#modal-open-btn この商品を削除する
+        = link_to "", product_path(@product.id), method: :delete
+        #overlay
+          #modalWindow
+            .modal-message-box
+              %div 確認
+              %div 本当に削除しますか？
+            %button#modal-close-btn キャンセル
+            %button#delete-comformation-btn 削除する
+      - else
+        = link_to confirm_product_path(@product), class: "buy-btn" do
+          購入画面へ進む      
+
+    - else
+      = link_to root_path, class: "soldout-btn" do
+        売り切れです
+
     .description.clearfix
       %p.description__inner
         =@product.description
 
-      
-    %button.comment__form__submit__btn#modal-open-btn この商品を削除する
-    = link_to "", product_path, method: :delete, id: 'item-delete-btn'
-    #overlay
-      #modalWindow
-        .modal-message-box
-          %div 確認
-          %div 本当に削除しますか？
-        %button#modal-close-btn キャンセル
-        %button#delete-comformation-btn 削除する
-
+  .contents.clearfix
     .comment
-      .comment__boby
-        .comment__form.clearfix
-          %form.comment__form
-            %textarea{type: "text", class: "comment__form__textarea"}
-          %button{type: "submit", class: "comment__form__submit__btn"}
-            %span コメントする
+      .comment__boby.clearfix
+        %ul.comment__body__item.clearfix
+          - @comments.each do |comment|
+            %li.comment__body__item__content
+              .comment__body__item__content__user
+                - if comment.user.avatar?
+                  = image_tag "#{comment.user.avatar}", size: '40x40', class: 'user_avatar'
+                - else
+                  = image_tag '//static.mercdn.net/images/member_photo_noimage_thumb.png', size: '40x40', class: 'user_avatar'
+              .comment__body__item__content__nickname
+                = comment.user.nickname
+              .comment__body__item__content__text
+                .comment__body__item__content__text__box
+                  = simple_format(comment.text)
+                .comment__body__item__content__text__time
+                  %i.far.fa-clock
+                  %time(datetime="#{comment.created_at}")= time_ago_in_words(comment.created_at)
+                  前
+                  %i.far.fa-flag
+                  
+                
+
+      .comment__form.clearfix
+        = form_with model: @comment, url: comments_path, local: true, class: "comment__form" do |f|
+          %p.comment__form__text 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+          = f.text_area :text, class: "comment__form__textarea"
+          = f.submit 'コメントする', class: "comment__form__submit__btn"
 
     .product-space
 
     .sns__box.clearfix
-      %ul{class: "sns__box__btns"}
+      %ul.sns__box__btns
         %li
-        =link_to "" ,{class: "sns__box__facebook"} do
+        =link_to "" ,{class: "sns__box__btns__facebook"} do
           %i.fab.fa-facebook.fa-2x
         %li
-        =link_to "" ,{class: "sns__box__Twitter"} do
+        =link_to "" ,{class: "sns__box__btns__Twitter"} do
           %i.fab.fa-twitter.fa-2x
         %li
-        =link_to "" ,{class: "sns__box__LINE"} do
+        =link_to "" ,{class: "sns__box__btns__LINE"} do
           %i.fab.fa-line.fa-2x
           
     .product-space
 
+= render 'shared/footer' 

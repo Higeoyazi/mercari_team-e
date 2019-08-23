@@ -1,13 +1,13 @@
 .user-devise-container
   .devise-header
     %h1.devise-header__logo
-      = link_to do
+      = link_to root_path do
         =image_tag "https://www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?128691313", alt: "mercari", class: "mercari-logo"
   .login-main
     .login-panel
       .login-no-account
         %p アカウントをお持ちでない方はこちら
-        = link_to "新規会員登録", new_user_registration_path
+        = link_to "新規会員登録",  step1_signup_index_path
       .login-form-inner
         = link_to user_facebook_omniauth_authorize_path, class: "facebook-login contents__btn contents__btn__facebook", method: :post do
           %i.fab.fa-facebook

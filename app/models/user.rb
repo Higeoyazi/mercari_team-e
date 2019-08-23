@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
 
+
   # Association
   has_one :profile, dependent: :destroy
   accepts_nested_attributes_for :profile
@@ -12,24 +13,35 @@ class User < ApplicationRecord
   has_one :address, dependent: :destroy
   accepts_nested_attributes_for :address
 
-  has_one_attached :avatar
-  has_many :buyer_orders, class_name: 'Order', :foreign_key => 'buyer_id'
-  has_many :saler_orders, class_name: 'Order', :foreign_key => 'saler_id'
+
+  ## ユーザーの売買履歴を出力する
+  has_many :bought_orders, class_name: 'Order',
+                           foreign_key: 'buyer_id',
+                           dependent: :destroy
+  has_many :sold_orders, class_name: 'Order',
+                         foreign_key: 'seller_id',
+                         dependent: :destroy
+
+
+  ## ユーザーが買った商品、売った商品を出力する
+  has_many :bought, through: :bought_orders, source: :product
+  has_many :sold, through: :sold_orders, source: :product
+
+
+  # has_one_attached :avatar(Active Storageは使わないためコメントアウト)
   has_many :products
   has_many :comments
   has_many :sns_credentials
   has_many :credit_cards, dependent: :destroy
 
 
-
   # Validation
   VALID_EMAIL_REGEX =  /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :nickname,              presence: true, length: {maximum: 20}, on: :step2
   validates :email,                 presence: true, uniqueness: true,
-                                    format: { with: VALID_EMAIL_REGEX }, on: :validates_step2
+                                    format: { with: VALID_EMAIL_REGEX }, on: :step2
   validates :password,              presence: true, length: {minimum: 6, maximum: 128}, on: :step2
   validates :password_confirmation, presence: true, length: {minimum: 6, maximum: 128}, on: :step2
-
 
 
   # Sign_up OR Login with FB or Google
@@ -37,7 +49,6 @@ class User < ApplicationRecord
     uid = auth.uid
     provider = auth.provider
     snscredential = SnsCredential.where(uid: uid, provider: provider).first
-
     if snscredential.present?
       user = User.where(id: snscredential.user_id).first
     else
@@ -51,11 +62,29 @@ class User < ApplicationRecord
       else
         user = User.new(
           nickname: auth.info.name,
-          email:    auth.info.email,
-          )
+          email:    auth.info.email,)
       end
     end
-
     return user
   end
+
+
+  # buy product
+  def buy(product)
+    buyer = self
+    seller = product.user
+    unless buyer == seller
+      unless product.status == 'sold'
+        bought_orders.create(product_id: product.id, seller_id: seller.id)
+        product.status = 'sold'
+        product.save
+      end
+    end
+  end
+
+  # def cancel
+  # end
+
+  mount_uploader :avatar, ImageUploader
+
 end

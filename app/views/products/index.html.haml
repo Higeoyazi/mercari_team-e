@@ -1,30 +1,92 @@
 .wrapper
-  =link_to 'ログアウト(後で消します!)', destroy_user_session_path, method: :delete #後で消します!
   = render 'shared/header'
   = render 'shared/exhibit-btn'
   .main
-    .slide
+    .app-upper-baner
+      .app-upper-baner__content
+        .app-upper-baner__content__inner
+          .app-upper-baner__content__inner__text 
+            %h2 
+              スマホでかんたん
+              %br 
+              フリマアプリ
+            %p  
+              メルカリはスマホカメラからすぐに出品できる
+              %br 
+              購入時も安心な独自システムのアプリです
+          %ul.middle
+            %li
+              = link_to image_tag("//www-mercari-jp.akamaized.net/assets/img/common/common/app-store.svg?206587138", size: "170x50"), "https://itunes.apple.com/jp/app/id667861049?l=ja&amp;mt=8",target: "_blank"
+            %li
+              = link_to image_tag("//www-mercari-jp.akamaized.net/assets/img/common/common/google-play.svg?206587138", size: "170x50"), "https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja",target: "_blank"
+        .app-upper-baner__content__app
+          = image_tag "///www-mercari-jp.akamaized.net/assets/img/common/jp/top/main_content_pc.png?3125985667",id:"sp",height: "390px"
+    
     .products-container
       %h2.products-container__head
-        %span 商品一覧
+        %span ピックアップカテゴリー
       .products-container__content
-        -#ここから切り出した方がいい
-        = render partial: "products-box"
-        = render partial: "products-box"
-        = render partial: "products-box"
-        = render partial: "products-box"
-        = render partial: "products-box"
-        = render partial: "products-box"
-        = render partial: "products-box"
-        = render partial: "products-box"
+        .products-container__content__head
+          = "#{Category.find(1).name}新着アイテム"
+        .products-container__content__box#ladies
+          = render partial: "product", collection: @products_ladies
+        .products-container__content__view-all
+          = link_to "すべての商品を見る"
 
-        -# = render partial: "products-box", collection: @products
-        -# = render partial: "products-box", collection: @products
-        -# = render partial: "products-box", collection: @products
-        -# = render partial: "products-box", collection: @products
-        -# = render partial: "products-box", collection: @products
-        -# = render partial: "products-box", collection: @products
-        -# = render partial: "products-box", collection: @products
-        -# = render partial: "products-box", collection: @products
-        -# @productにproductテーブルの最新のデータ4件を
+        .products-container__content__head
+          = "#{Category.find(200).name}新着アイテム"
+        .products-container__content__box#mens
+          = render partial: "product", collection: @products_mens
+        .products-container__content__view-all
+          = link_to "すべての商品を見る"
+
+        .products-container__content__head
+          = "#{Category.find(346).name}新着アイテム"
+        .products-container__content__box#kids
+          = render partial: "product", collection: @products_kids
+        .products-container__content__view-all
+          = link_to "すべての商品を見る"
+
+        .products-container__content__head
+          = "#{Category.find(481).name}新着アイテム"
+        .products-container__content__box#interior
+          = render partial: "product", collection: @products_interior
+        .products-container__content__view-all
+          = link_to "すべての商品を見る"
+
+        .products-container__content__head
+          = "#{Category.find(623).name}新着アイテム"
+        .products-container__content__box#entertainment
+          = render partial: "product", collection: @products_hobby
+        .products-container__content__view-all
+          = link_to "すべての商品を見る"
+
+        .products-container__content__head
+          = "#{Category.find(682).name}新着アイテム"
+        .products-container__content__box#hobby
+          = render partial: "product", collection: @products_toy
+        .products-container__content__view-all
+          = link_to "すべての商品を見る"
+        
+        .products-container__content__head
+          = "#{Category.find(795).name}新着アイテム"
+        .products-container__content__box#cosmetic
+          = render partial: "product", collection: @products_cosmetic
+        .products-container__content__view-all
+          = link_to "すべての商品を見る"
+
+        .products-container__content__head
+          = "#{Category.find(895).name}新着アイテム"
+        .products-container__content__box#electric
+          = render partial: "product", collection: @products_electric
+        .products-container__content__view-all
+          = link_to "すべての商品を見る"
+        -# = render partial: .products-container__content__box"
+        -# = render partial: .products-container__content__box"
+        -# = render partial: .products-container__content__box"
+        -# = render partial: .products-container__content__box"
+        -# = render partial: .products-container__content__box"
+        -# = render partial: .products-container__content__box"
+        -# = render partial: .products-container__content__box"
+        -# = render partial: .products-container__content__box"
   = render 'shared/footer' 

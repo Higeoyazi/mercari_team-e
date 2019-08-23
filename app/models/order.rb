@@ -1,6 +1,9 @@
 class Order < ApplicationRecord
   # Association
-  belongs_to :buyer, class_name: 'User', :foreign_key => 'buyer_id'
-  belongs_to :saler, class_name: 'User', :foreign_key => 'saler_id'
   belongs_to :product
+  belongs_to :seller, class_name: 'User'
+  belongs_to :buyer, class_name: 'User'
+
+  # Validation
+  # 全てreferences型なので書く必要なし
 end

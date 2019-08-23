@@ -1,4 +1,6 @@
 class MypagesController < ApplicationController
+  before_action :authenticate_user!
+ 
   def profile
   end
 
@@ -6,9 +8,6 @@ class MypagesController < ApplicationController
   end
   
   def identification
-  end
-
-  def edition
   end
 
 end

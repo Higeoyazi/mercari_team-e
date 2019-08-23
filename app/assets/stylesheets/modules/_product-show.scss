@@ -1,16 +1,15 @@
+// 要リファクタリング
 .product-show {
   height: 100%;
-  width: 100%;
-  padding: 20px 40px 40px;
+  width: 100vw;
 
   .contents {
     @include confirmationWidth;
-    height: 1250px;
-    text-align: center;
-    margin: 0 auto;
-    padding: 24px 40px 40px;
+    height: auto;
+    margin: 20px auto 40px;
+    padding: 24px 20px 20px;
     background-color: $white;
-    
+    box-sizing: border-box;
     .product-name{
       font-size: 24px;
       margin-bottom: 30px;
@@ -18,69 +17,110 @@
     }
     
     .main {
-      @include confirmationWidth;
+      width: 100%;
       height:400px;
-        &__image__size {
-          width:225px;
-          height:300px;
-          margin:0 60px;
-          float:left;
-        }
-        &__ditail__table {
-          width:280px;
-          height:400px;
-          margin-right:40px;
-          float:right;
-            tbody {
-              border: solid 1px;
-                th{
-                  font-weight: 400;
-                  background: $white;
-                  font-weight: 400;
-                }
-            }
+      background-color: $white;
+      &__image__size {
+        width:300px;
+        height:300px;
+        float:left;
+      }
+      &__detail__table {
+        width:300px;
+        height:400px;
+        float:right;
+          tbody {
+            border: solid 1px #eee;
+              th{
+                font-weight: 400;
+                background: $light_gray;
+                border: solid 1px #eee;
+                padding: 8px;
+              }
+              td{
+                border: solid 1px #eee;
+                padding: 8px;
+              }
+          }
         }
         .sub-image{
           height:60px;
           width:300px;
           padding-top:300px;
-          margin-left:30px;
           &__size{
             width:60px;
             height:60px;
-            float:left;
+            
           }
         }
     }
   
   .price__and__button {
-    @include confirmationWidth;
+    width: 100%;
+    text-align: center;
     .price{
       margin: 24px 0 0;
-      margin: 0 16px 0 0;
+      &__figure{
+        @include fontWeight;
+        text-align:center;
+        font-size: 50px;
+        margin: 0 16px 0 0;
+      }
     }
-    .price__figure{
-      @include fontWeight;
-      text-align:center;
-      font-size: 50px;
-      margin: 0 16px 0 0;
-    }
-    .button__btn {
-      @include confirmationWidth;
+  }
+    .edit-btn{
+      display: block;
+      width: 100%;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      background: $gray;
+      color: $white;
       @include fontWeight;
       font-size: 24px;
       margin: 16px 0 0;
+      text-decoration: none;
+    }
+    .delete-btn{
+      width: 50%;
+      height: 50px;
+      background: $gray;
+      color: $white;
+      font-size: 14px;
+      margin: 16px 0 16px 155px;
+    }
+    .buy-btn{
+      display: block;
+      width: 100%;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
       background: $red;
       color: $white;
-      height:50px;
+      @include fontWeight;
+      font-size: 24px;
+      margin: 16px 0 0;
+      text-decoration: none;
     }
-  }
+    .soldout-btn{
+      display: block;
+      width: 100%;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      background: $gray;
+      color: $white;
+      @include fontWeight;
+      font-size: 24px;
+      margin: 16px 0 0;
+      text-decoration: none;
+    }
 
   .description {
-    @include confirmationWidth;
-    text-align:center;
-    margin-bottom: 18px;
+    width: 100%;
+    padding: 32px 0 20px;
     &__inner {
+      font-size: 18px;
       white-space: pre-wrap;
     }
   }
@@ -135,31 +175,71 @@
         height: 60px;
       }
     }
-    
-    .item-delete-btn {
-    //削除ボタンの非表示
-      width: 0;
-      height: 0;
-      margin: 0;
-      padding: 0;
-      border: 0;
-    }
 
   .comment {
-    @include confirmationWidth;
+    .clearfix:after{
+      content:"";
+      clear: both;
+      display: block;
+    }
+    width: 100%;
     text-align:center;
     margin-top:30px;
-      &__form__textarea {
-        @include confirmationWidth;
-        height: 100px;
-      }
-      &__form__submit__btn {
-          @include confirmationWidth;
-          height: 50px;
-          background: $gray;
-          color: $white;
-          font-size: 14px;
+    &__body__item{
+      list-style: none;
+      position: relative;
+      &__content{
+        width: 100%;
+        text-align: left;
+        margin: 60px 0;
+        &__nickname{
+          margin: 0 0 7px 3px;
         }
+        &__user{
+          border-radius: 50%;
+          .user_avatar{
+            border-radius: 50%;
+          }
+        }
+        &__text{
+          padding: 16px;
+          background: #eef0f4;
+          border-radius: 15px;
+          line-height: 1.5;
+          word-break: break-all;
+          &__time{
+            margin: 8px 0 0 0;
+            color: #aaa;
+            .fa-flag{
+              float: right;
+              margin-top: 4px;
+            }
+          }
+        } 
+      }
+    }
+    &__form p{
+      padding: 8px;
+      font-size: 14px;
+      background: #fff6de;
+      text-align: left;
+      margin: 48px 0 8px 0;
+    }
+    &__form__textarea {
+      margin-top: 8px;
+      padding: 10px;
+      width: 96%;
+      max-width: 100%;
+      min-height: 100px;
+      text-align: left;
+    }
+    &__form__submit__btn {
+      width: 100%;
+      height: 50px;
+      background: $gray;
+      color: $white;
+      font-size: 14px;
+    }
   }
 
   .product-space {
@@ -167,31 +247,29 @@
   }
 
   .sns__box {
-    @include confirmationWidth;
+    width: 100%;
     height:115px;
-    text-align:center;
-    display: block;
     margin: 24px auto;
     padding: 32px 0 24px;
-    background: $white;
-      &__btns{
-        display:flex;
-      }
+    &__btns{
+      display:flex;
+      justify-content: center;
       &__facebook {
         color:blue;
-        float:left;
-        padding: 20px 40px;
+        font-size: 30px;
+        padding: 0 10px;
       }
       &__Twitter {
         color:skyblue;
-        padding: 20px 40px;
+        font-size: 30px;
+        padding: 0 10px;
       }
       &__LINE {
         color:green;
-        float:right;
-        padding: 20px 40px;
+        font-size: 30px;
+        padding: 0 10px;
       }
+    }
     }
   }
 }
-

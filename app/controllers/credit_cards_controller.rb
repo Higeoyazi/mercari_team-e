@@ -3,7 +3,7 @@ class CreditCardsController < ApplicationController
   require 'payjp'
 
   def index #ユーザーの全てのクレジットカードを全て出す
-    credit_card = CreditCard.where(user_id: current_user.id).first
+    credit_cards = CreditCard.where(user_id: current_user.id)
     if credit_cards.blank?
       redirect_to  action: 'new'
     else
@@ -36,36 +36,6 @@ class CreditCardsController < ApplicationController
       credit_card.delete
     end
     redirect_to action: 'new' #ここで飛ばす時にフラッシュいれるor消去完了のページに飛ばすのがいいかも
-  end
-
-
-  def pay
-    @product = Product.find(params[:id]) #ここはparamsの引数の値間違っているかもしれないので後で確認。
-    gets_key
-
-    # 実際の挙動見て下記にするか決める
-    # Payjp::Charge.create(
-    #   amount: @product.price, # 買う商品の値段
-    #   customer: credit_card.customer_id, # payjpに登録されているどの顧客情報(カード情報)を使うか。
-    #   currency: 'jpy'
-    # )
-    # redirect_to action: 'done'
-
-    pay = Payjp::Charge.new(
-      amount: @product.price, # 買う商品の値段
-      customer: credit_card.customer_id, # payjpに登録されているどの顧客情報(カード情報)を使うか。
-      currency: 'jpy'
-    )
-
-    if pay.save
-      redirect_to action: 'done'
-    # else
-      # ここに購入画面のビューをリダイレクト
-    end
-  end
-
-
-  def done #完了画面
   end
 
 

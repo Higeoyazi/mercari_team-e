@@ -1,0 +1,81 @@
+.wrapper-buy
+  .wrapper__mercari-logo
+    = link_to root_path do
+      = image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?917505326", size: "183x90", alt: "メルカリロゴ", class: "mercari-logo"
+  .header-buy
+    .header-buy__title
+      購入内容の確認
+      
+  .buy-confirmation
+    .buy-confirmation__main
+      .buy-confirmation__main__content-item
+        .buy-confirmation__main__content-item__photo
+          = image_tag "#{@product.product_images.last.image_url}", alt: "商品写真", class: "item-photo"
+          .buy-confirmation__main__content-item__name
+            = @product.name
+        .buy-confirmation__main__content-item__price-fee-box
+          .buy-confirmation__main__content-item__price-fee-box__price
+            = "#{@product.price.to_s(:delimited)}円"
+          .buy-confirmation__main__content-item__price-fee-box__shipping-fee
+            送料込み
+      .buy-confirmation__main__point
+        .buy-confirmation__main__point__display
+          .buy-confirmation__main__point__display__box
+            ポイントはありません
+      .buy-confirmation__main__price
+        .buy-confirmation__main__price__display
+          .buy-confirmation__main__price__display__text
+            支払い金額
+        .buy-confirmation__main__price__display
+          .buy-confirmation__main__price__display__fee
+            = "¥#{@product.price.to_s(:delimited)}"
+        - if @product.status == "sell"
+          = form_tag pay_product_path(@product) do
+            %button.red_btn{type: "submit"} 購入する
+  .send-confirmation
+    .send-confirmation__adress
+      .send-confirmation__adress__box
+        配送先
+      .send-confirmation__adress__details
+        = @address.postal_code
+        %br/
+        = "#{@address.prefecture} #{@address.city} #{@address.block}"
+        %br/
+        = "#{@profile.family_name} #{@profile.first_name}"
+      .send-confirmation__adress__change
+        .send-confirmation__adress__change__icon
+        =link_to "#", class:"link-to-change" do
+          変更する
+          %i.fa.fa-chevron-right
+  .credit-confirmation 
+    .credit-confirmation__purchase
+      .credit-confirmation__purchase__way
+        支払い方法
+      .credit-confirmation__purchase__card-number
+        ************9999
+        %br/
+        01 / 01
+      .credit-confirmation__purchase__card-company
+        = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?917505326", size: "49x15", alt: "カード会社ロゴ", class: "card-logo"
+      .credit-confirmation__purchase__change
+        .credit-confirmation__purchase__change
+        =link_to "#", class:"link-to-change" do
+          変更する
+          %i.fa.fa-chevron-right
+  .footer-buy
+    .footer-buy__menu
+      .footer-buy__menu__list
+      =link_to "#", class:"link-to-bottom-icon" do
+        プライバシーポリシー
+      .footer-buy__menu__list
+      =link_to "#", class:"link-to-bottom-icon" do
+        メルカリ利用規約
+      .footer-buy__menu__list
+      =link_to "#", class:"link-to-bottom-icon" do
+        特定商取引に関する表記
+    .footer-buy__logo
+      .footer-buy__logo__mercari
+      =link_to "#", class:"link-to-bottom-mercari-icon" do
+        = image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?917505326", size: "130x65", alt: "フッターロゴ", class: "footer-logo"
+    .footer-buy__copyright
+      © 2019 Mercari

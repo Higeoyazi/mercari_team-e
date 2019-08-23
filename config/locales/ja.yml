@@ -28,6 +28,13 @@ ja:
         name: 商品名
         description: 詳細
         price: 価格
+        quality: 状態
+        category_id: カテゴリー
+        delivery_cost: 送料負担
+        delivery_origin: 発送元
+        prep_days: 発送までの日数
+      product_images:
+        image_url: 画像
 
     date:
       abbr_day_names:

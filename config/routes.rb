@@ -7,13 +7,14 @@ Rails.application.routes.draw do
   
   resources :products, only:[:new, :show, :edit, :create, :update,:destroy] do
     collection do
-      get 'end'
       get 'search'
       get 'category'
     end
     member do
-      get 'preview'
+      resources :comments, only: [:create]
       get 'confirm'
+      post 'pay'
+      get 'pay_done'
     end
   end
 
@@ -32,12 +33,11 @@ Rails.application.routes.draw do
     collection do
       get 'profile'
       get 'logout'
-      get 'edition'
       get 'identification'
 
       resources :credit_cards, only: [:index, :new, :create, :destroy]
-      #payアクションはproductの中にネストさせてルーティング作るかも、もしくは単独。後日。
     end
   end
+  resources :users, only: [:edit,:update] 
 end
 
