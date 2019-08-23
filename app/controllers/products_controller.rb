@@ -53,6 +53,7 @@ class ProductsController < ApplicationController
   def update
     if @product.user_id == current_user.id && @product.valid?
       @product.update(product_params)
+      flash[:notice] = "編集が完了しました"
       redirect_to product_path(@product.id)
     end
   end

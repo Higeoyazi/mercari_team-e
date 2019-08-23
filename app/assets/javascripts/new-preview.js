@@ -8,7 +8,7 @@ $(document).on('turbolinks:load', function () {
        find_img.nextAll().remove();
        find_img.remove();
     }
-    var img = '<div class="img_view"><img alt="" class="img" max-width = "140px" height = "137px"><p style="font-size: 15px;"><a href="#" class="img_del">削除</a></p></div>';
+    var img = '<div class="img-view"><img alt="" class="img-view__preview"><p class="link-preview"><a href="#" class="img_del">削除</a></p></div>';
     view_box.append(img);
 
     filereader.onload = function() {
@@ -24,7 +24,7 @@ $(document).on('turbolinks:load', function () {
       if(window.confirm('画像を削除します。\nよろしいですか？')){
         setTimeout(function(){
           parentBox.find('input[type=file]').val('');
-          parentBox.find('.img_view').remove();
+          parentBox.find('.img-view').remove();
         } , 0);
       }
       return false;
