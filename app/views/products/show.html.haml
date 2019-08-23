@@ -45,13 +45,6 @@
         - @product.product_images.drop(1).each do |n|
           = image_tag "#{n.image_url}",class:"sub-image__size"
 
-<<<<<<< Updated upstream
-    .price
-      %span.price__figure
-        = "¥ #{@product.price}"
-      %span.price__tax (税込)
-      %span.price__shipping__fee 送料込み
-=======
     .price__and__button
       .price
         %span.price__figure
