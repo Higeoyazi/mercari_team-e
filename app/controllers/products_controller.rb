@@ -49,7 +49,7 @@ class ProductsController < ApplicationController
   end
 
   def update
-    if @product.user_id == current_user.id
+    if @product.user_id == current_user.id && @product.valid?
       @product.update(product_params)
       redirect_to product_path(@product.id)
     end
@@ -64,11 +64,6 @@ class ProductsController < ApplicationController
 
   def search
     @products = Product.where('name LIKE(?)', "%#{params[:keyword]}%")
-  end
-
-  def destroy
-    @product.destroy
-    redirect_to root_path
   end
 
 
