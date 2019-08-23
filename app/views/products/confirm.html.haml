@@ -15,7 +15,7 @@
             = @product.name
         .buy-confirmation__main__content-item__price-fee-box
           .buy-confirmation__main__content-item__price-fee-box__price
-            = "#{@product.price}円"
+            = "#{@product.price.to_s(:delimited)}円"
           .buy-confirmation__main__content-item__price-fee-box__shipping-fee
             送料込み
       .buy-confirmation__main__point
@@ -28,7 +28,7 @@
             支払い金額
         .buy-confirmation__main__price__display
           .buy-confirmation__main__price__display__fee
-            = "¥#{@product.price}"
+            = "¥#{@product.price.to_s(:delimited)}"
         - if @product.status == "sell"
           = form_tag pay_product_path(@product) do
             %button.red_btn{type: "submit"} 購入する

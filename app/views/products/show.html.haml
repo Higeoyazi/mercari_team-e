@@ -47,7 +47,7 @@
 
     .price
       %span.price__figure
-        = "¥ #{@product.price}"
+        = "¥ #{@product.price.to_s(:delimited)}"
       %span.price__tax (税込)
       %span.price__shipping__fee 送料込み
     
