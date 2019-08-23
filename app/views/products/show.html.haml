@@ -4,7 +4,7 @@
     %h1.product-name
       = @product.name
     .main
-      = image_tag("#{@product.product_images.last.image_url}", class:"main__image__size")
+      = image_tag("#{@product.product_images.first.image_url}", class:"main__image__size")
       %table.main__detail__table
 
         %tbody
