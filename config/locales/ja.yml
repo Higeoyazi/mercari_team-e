@@ -35,6 +35,8 @@ ja:
         prep_days: 発送までの日数
       product_images:
         image_url: 画像
+      comment:
+        text: コメント
 
     date:
       abbr_day_names:

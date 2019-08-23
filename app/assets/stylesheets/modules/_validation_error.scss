@@ -4,9 +4,15 @@
   line-height: 1.8;
 }
 .field_with_errors{
+  textarea{
+    border-color: #ea352de8 !important; 
+  } 
   input{
-  border-color: #ea352de8 !important; 
+    border-color: #ea352de8 !important; 
   }
+  select{
+    border-color: #ea352de8 !important; 
+    }
 }
 .forth-main-wrapper__box{
   .error{
