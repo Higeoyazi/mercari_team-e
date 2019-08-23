@@ -5,7 +5,7 @@
                 サイズは90です。
                 特に汚れは見当たりません。
                 自宅保管していました。",
-    price:Faker::Number.within(range: 300..999999),
+    price:Faker::Number.within(range: 300..9999),
     size:"L",
     brand_name:"NIKE",
     quality:"新品、未使用",
@@ -27,7 +27,7 @@ end
                 サイズは90です。
                 特に汚れは見当たりません。
                 自宅保管していました。",
-    price:Faker::Number.within(range: 300..999999),
+    price:Faker::Number.within(range: 300..9999),
     size:"L",
     brand_name:"NIKE",
     quality:"新品、未使用",
@@ -49,7 +49,7 @@ end
                 サイズは90です。
                 特に汚れは見当たりません。
                 自宅保管していました。",
-    price:Faker::Number.within(range: 300..999999),
+    price:Faker::Number.within(range: 300..9999),
     size:"L",
     brand_name:"NIKE",
     quality:"新品、未使用",
@@ -71,7 +71,7 @@ end
                 サイズは90です。
                 特に汚れは見当たりません。
                 自宅保管していました。",
-    price:Faker::Number.within(range: 300..999999),
+    price:Faker::Number.within(range: 300..9999),
     size:"L",
     brand_name:"NIKE",
     quality:"新品、未使用",
@@ -93,7 +93,7 @@ end
                 サイズは90です。
                 特に汚れは見当たりません。
                 自宅保管していました。",
-    price:Faker::Number.within(range: 300..999999),
+    price:Faker::Number.within(range: 300..9999),
     size:"L",
     brand_name:"NIKE",
     quality:"新品、未使用",
@@ -115,7 +115,7 @@ end
                 サイズは90です。
                 特に汚れは見当たりません。
                 自宅保管していました。",
-    price:Faker::Number.within(range: 300..999999),
+    price:Faker::Number.within(range: 300..9999),
     size:"L",
     brand_name:"NIKE",
     quality:"新品、未使用",
@@ -137,7 +137,7 @@ end
                 サイズは90です。
                 特に汚れは見当たりません。
                 自宅保管していました。",
-    price:Faker::Number.within(range: 300..999999),
+    price:Faker::Number.within(range: 300..9999),
     size:"L",
     brand_name:"NIKE",
     quality:"新品、未使用",
@@ -159,7 +159,7 @@ end
                 サイズは90です。
                 特に汚れは見当たりません。
                 自宅保管していました。",
-    price:Faker::Number.within(range: 300..999999),
+    price:Faker::Number.within(range: 300..9999),
     size:"L",
     brand_name:"NIKE",
     quality:"新品、未使用",
@@ -181,7 +181,7 @@ end
                 サイズは90です。
                 特に汚れは見当たりません。
                 自宅保管していました。",
-    price:Faker::Number.within(range: 300..999999),
+    price:Faker::Number.within(range: 300..9999),
     size:"L",
     brand_name:"NIKE",
     quality:"新品、未使用",
@@ -203,7 +203,7 @@ end
                 サイズは90です。
                 特に汚れは見当たりません。
                 自宅保管していました。",
-    price:Faker::Number.within(range: 300..999999),
+    price:Faker::Number.within(range: 300..9999),
     size:"L",
     brand_name:"NIKE",
     quality:"新品、未使用",
@@ -225,7 +225,7 @@ end
                 サイズは90です。
                 特に汚れは見当たりません。
                 自宅保管していました。",
-    price:Faker::Number.within(range: 300..999999),
+    price:Faker::Number.within(range: 300..9999),
     size:"L",
     brand_name:"NIKE",
     quality:"新品、未使用",
@@ -247,7 +247,7 @@ end
                 サイズは90です。
                 特に汚れは見当たりません。
                 自宅保管していました。",
-    price:Faker::Number.within(range: 300..999999),
+    price:Faker::Number.within(range: 300..9999),
     size:"L",
     brand_name:"NIKE",
     quality:"新品、未使用",
@@ -269,7 +269,7 @@ end
                 サイズは90です。
                 特に汚れは見当たりません。
                 自宅保管していました。",
-    price:Faker::Number.within(range: 300..999999),
+    price:Faker::Number.within(range: 300..9999),
     size:"L",
     brand_name:"NIKE",
     quality:"新品、未使用",
