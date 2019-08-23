@@ -423,7 +423,7 @@
                     padding: 0 0 24px;
                     border: 0;
                     display: flex;
-                    .l-left{
+                    &__left{
                       width: 50%;
                       line-height: 48px;
                       font-weight: 600;
@@ -437,21 +437,18 @@
                         background: $red;
                       }
                     }
-                    .l-right{
+                    &__right{
                       line-height: 48px;
                       height: 48px;
                       width: 200px;
-                      .yen{
+                      
+                      &__yen{
                         float: left;
                       }
-                      .input-price{
+                      &__input-price{
                         margin:0 0 0 auto;
                         padding: 10px 16px 8px;
-                        color: inherit;
                         text-align: right;
-                        font-family: inherit;
-                        font-style: inherit;
-                        font-weight: inherit;
                         border-radius: 5px;
                         float: right;
                       }

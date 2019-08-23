@@ -80,14 +80,20 @@
       font-size: 24px;
       margin: 16px 0 0;
       text-decoration: none;
+      
     }
     .delete-btn{
+      display: block;
       width: 50%;
       height: 50px;
+      line-height: 50px;
+      text-align: center;
       background: $gray;
       color: $white;
-      font-size: 14px;
+      @include fontWeight;
+      font-size: 16px;
       margin: 16px 0 16px 155px;
+      text-decoration: none;
     }
     .buy-btn{
       display: block;

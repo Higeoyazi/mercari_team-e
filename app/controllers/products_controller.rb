@@ -38,9 +38,11 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     if @product.valid?
       @product.save
+      flash[:notice] = "出品しました"
       redirect_to root_path
     else
       @product.product_images.build #validに引っかかった際、画像なしの状態の入力データを持ち越してrenderで元の画面に戻るので、もう一度buildしてproductsにproducts_imagesを持たせてあげないと、fields_forによるformが消えてしまう。
+      flash[:alert] = "出品できませんでした"
       render new_product_path(@product)
     end
   end
@@ -49,16 +51,9 @@ class ProductsController < ApplicationController
   end
 
   def update
-    if @product.user_id == current_user.id
+    if @product.user_id == current_user.id && @product.valid?
       @product.update(product_params)
       redirect_to product_path(@product.id)
-    end
-  end
-
-  def destroy
-    if @product.user_id == current_user.id
-      @product.destroy
-      redirect_to root_path
     end
   end
 
@@ -66,11 +61,12 @@ class ProductsController < ApplicationController
     @products = Product.where('name LIKE(?)', "%#{params[:keyword]}%")
   end
 
+
   def destroy
     @product.destroy
+    flash[:notice] = "削除しました"
     redirect_to root_path
   end
-
 
   def category
     @children = Category.find(params[:parent_id]).children
