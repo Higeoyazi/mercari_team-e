@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     collection do
       get 'end'
       get 'search'
+      get 'category'
     end
     member do
       get 'preview'

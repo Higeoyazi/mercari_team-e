@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :destroy]
+  before_action :set_parents, only: [:index, :show,:search]
 
   def index
     @products = Product.all.order("created_at DESC").limit(4)
@@ -11,7 +12,6 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     @product.product_images.build
-
   end
 
   def create
@@ -33,6 +33,13 @@ class ProductsController < ApplicationController
     redirect_to root_path
   end
 
+  def category
+    @children = Category.find(params[:parent_id]).children
+    respond_to do |format|
+      format.json
+    end
+  end
+
 private
   def product_params
     params.require(:product).permit(
@@ -51,5 +58,9 @@ private
 
   def set_product
     @product = Product.find(params[:id])
+  end
+
+  def set_parents
+    @parents = Category.where(ancestry: nil)
   end
 end

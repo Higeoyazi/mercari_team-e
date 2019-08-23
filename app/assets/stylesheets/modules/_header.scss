@@ -14,7 +14,7 @@
         box-sizing: border-box;
         &__title{
 
-        }
+        } 
       }
       &__right{
         position: relative;
@@ -70,12 +70,14 @@
       &__left{
         height: 46px;
         float: left;
+        display: flex;
         box-sizing: border-box;
         a:link {color: black;}
         a:visited{color: black;}
         a:hover {color: #0099e8;text-decoration: none;}
         .option{
           display: inline-block;
+          display: flex;
           line-height: 46px;
           list-style: none;
           font-size: 14px;
@@ -118,5 +120,73 @@
         }
       }
     }
+// category_index_scss  リファクタリングの必要あり！！
+    .lower__left__categry__box{
+      // display: none;
+      height: 1012px;
+      width: 672px;
+      .lower__left__categry__list{
+        display: flex;
+        line-height: 44px;
+        height: 1012px;
+        width: 672px;
+        background: $white;
+        &__parent{
+          z-index: 1;
+          @include category-index-lists-Width;
+        }
+        &__parent__list{
+          width: auto;
+          background: $white;
+          @include category-index-lists-Width;
+        }
+        &__child{
+          z-index: 1;
+          @include category-index-lists-Width;
+        }
+        &__child__list{
+          list-style: none;
+          background: $white;
+          @include category-index-lists-Width;
+        }
+        &__grandchild{
+          z-index: 1;
+          @include category-index-lists-Width;
+        }
+        &__grandchild__list{
+          background: $white;
+          @include category-index-lists-Width;
+        }
+      }
+    }
+
   }
 }
+
+// 以下、カテゴリーのカーソルを当てると、色が変わるCSS
+.now-selected-red{
+  background-color:#ea352d;
+  color:white;
+  display: block;
+}
+
+.now-selected-gray{
+  background-color: #f2f2f2;
+  display: block;
+}
+
+.now-selected-rgba{
+  background-color:  #f2f2f2;
+  display: block;
+}
+// link_toメソッドをブロック要素化
+a{
+  text-decoration: none;
+  color: black;
+  display: block;
+  padding: 0px 16px;
+}
+// ボーダーラインのcss
+// border: solid;
+// border-width: 0.1px;
+// border-color: #e0e0e0;
