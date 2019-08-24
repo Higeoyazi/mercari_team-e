@@ -65,7 +65,9 @@ class ProductsController < ApplicationController
   end
 
   def search
-    @products = Product.where('name LIKE(?)', "%#{params[:keyword]}%")
+    search_keywords = params[:keyword]
+    @products = Product.where('name LIKE(?)', "%#{search_keywords}%")
+    @search_keywords = search_keywords
   end
 
   def destroy

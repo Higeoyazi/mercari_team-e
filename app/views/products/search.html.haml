@@ -1,10 +1,46 @@
 = render 'shared/header'
-.main
-  .slide
-  .products-container
-    %h2.products-container__head
-      %span検索結果
+
+-if @products && @search_keywords != ""
+  %p.something-search-result
+    = "#{@search_keywords}" 
+    の検索結果
+
+-if @products == [] && @search_keywords
+  %p.nothing-search-result
+    = "#{@search_keywords}" 
+    に該当する商品はありませんでした。
+
+-if @products && @search_keywords == ""
+  %p.nil-keyword-search-result
+    新着商品
+
+.search-main
+  .search-products-container
     -@products.each do |product|
-      %p= product.name
-    .products-container__content
-= render 'shared/footer' 
+      .search-products-container__content__box
+        = render partial: "product", locals: { product: product } 
+        
+= render 'shared/footer'
+
+
+
+-# cssプロパティ
+-# .search-products-container
+          display: flex;
+          justify-content: space-between;
+          flex-direction: row;
+          margin: 30px;
+          padding: 40px 0;
+          flex-wrap: wrap;
+
+-# %p
+  -#     margin: 50px 0px 0px 50px;
+  -#     font-size: 20px;
+
+          margin: 0px 0px 0px 50px;
+
+-# .search-main
+-#         width: 100vw;
+-#         height: 100%;
+-#         background: #f5f5f5;
+-#         min-height: 1000px;
