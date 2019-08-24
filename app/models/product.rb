@@ -37,5 +37,5 @@ class Product < ApplicationRecord
                                 
   validates :category_id,       presence: true
   validates :user_id,           presence: true
-  validates :product_images,    presence: true #この書き方でproduct_imagesをproductと一緒にbuildした時のproductのparamsの一つであるproduct_imagesのattributesがあるかどうかvalidしてくれる
+  # validates :product_images,    presence: true #この書き方でproduct_imagesをproductと一緒にbuildした時のproductのparamsの一つであるproduct_imagesのattributesがあるかどうかvalidしてくれる
 end
