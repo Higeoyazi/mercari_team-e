@@ -4,7 +4,7 @@
     %h1.product-name
       = @product.name
     .main
-      = image_tag("#{@product.product_images.last.image_url}", class:"main__image__size")
+      = image_tag("#{@product.product_images.first.image_url}", class:"main__image__size")
       %table.main__detail__table
 
         %tbody
@@ -59,7 +59,7 @@
       - if (user_signed_in? && @product.user_id == current_user.id)
         = link_to edit_product_path(@product.id), class: "edit-btn" do
           編集画面へ進む
-        = link_to product_path(@product.id), method: :delete, class: "edit-btn" do
+        = link_to product_path(@product.id), method: :delete, class: "delete-btn" do
           この商品を削除する
       - else
         = link_to confirm_product_path(@product), class: "buy-btn" do
@@ -98,7 +98,7 @@
                 
 
       .comment__form.clearfix
-        = form_with model: @comment, url: comments_path, local: true, class: "comment__form" do |f|
+        = form_for @comment, builder: CustomFormBuilder, url: comments_path, local: true, class: "comment__form" do |f|
           %p.comment__form__text 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
           = f.text_area :text, class: "comment__form__textarea"
           = f.submit 'コメントする', class: "comment__form__submit__btn"

@@ -17,21 +17,24 @@ class Product < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :condition
+  belongs_to_active_hash :preparation
+  belongs_to_active_hash :cost
+  
   #validation
-  VALID_CHOICE_REGEX = /\A[ぁ-んァ-ン一-龥]/ #全角ひらがな、全角カタカナ、漢字のみ
+  VALID_NUMBER_REGEX = /[0-9]{8,10}/
 
   validates :name,              presence: true, length: {maximum: 40}
   validates :description,       presence: true, length: {maximum: 1000 }
   
   validates :price,             presence: true, numericality: {less_than: 999999, greater_than: 300}
-  validates :quality,           presence: true,
-                                format: { with: VALID_CHOICE_REGEX},on: :new
-  validates :delivery_origin,   presence: true,
-                                format: { with: VALID_CHOICE_REGEX},on: :new
-  validates :delivery_cost,     presence: true,
-                                format: { with: VALID_CHOICE_REGEX},on: :new
-  validates :prep_days,         presence: true,
-                                format: { with: VALID_CHOICE_REGEX},on: :new
+  validates :quality,           presence: true
+                                
+  validates :delivery_origin,   presence: true
+                                
+  validates :delivery_cost,     presence: true
+                                
+  validates :prep_days,         presence: true
+                                
   validates :category_id,       presence: true
   validates :user_id,           presence: true
   # validates :product_images,    presence: true #この書き方でproduct_imagesをproductと一緒にbuildした時のproductのparamsの一つであるproduct_imagesのattributesがあるかどうかvalidしてくれる

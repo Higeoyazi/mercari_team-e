@@ -31,7 +31,7 @@ class ProductsController < ApplicationController
   
   def new
     @product = Product.new
-    @product.product_images.build
+    4.times{@product.product_images.build}
   end
 
   def create
@@ -51,16 +51,10 @@ class ProductsController < ApplicationController
   end
 
   def update
-    if @product.user_id == current_user.id
+    if @product.user_id == current_user.id && @product.valid?
       @product.update(product_params)
+      flash[:notice] = "編集が完了しました"
       redirect_to product_path(@product.id)
-    end
-  end
-
-  def destroy
-    if @product.user_id == current_user.id
-      @product.destroy
-      redirect_to root_path
     end
   end
 
@@ -70,12 +64,12 @@ class ProductsController < ApplicationController
     @search_keywords = search_keywords
   end
 
+
   def destroy
     @product.destroy
     flash[:notice] = "削除しました"
     redirect_to root_path
   end
-
 
   def category
     @children = Category.find(params[:parent_id]).children
@@ -127,7 +121,7 @@ private
       :delivery_cost,
       :prep_days,
       :category_id,
-      product_images_attributes: [:id, :image_url]
+      product_images_attributes: [:id, [:image_url]]
     ).merge(user_id: current_user.id)
   end
 
