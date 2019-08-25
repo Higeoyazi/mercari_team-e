@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-
+  before_action :set_parents
+  
   def edit
     @user = current_user
   end
@@ -16,6 +17,10 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:nickname,:introduce,:avatar)
+  end
+
+  def set_parents
+    @parents = Category.where(ancestry: nil)
   end
 
 end

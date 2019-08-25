@@ -1,6 +1,6 @@
-.slide
+-# .slide
   -# 画面上部スライドに対する変更をする予定
-  -# .slide__content
+  -# .slide__content1
   -#   %h2
   -#     スマホでかんたん
   -#     %br>/
@@ -15,3 +15,13 @@
   -#     .pull-left
   -#       = link_to image_tag("//www-mercari-jp.akamaized.net/assets/img/common/common/google-play.svg?206587138", size: "135x40"), "https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja",target: "_blank"
   -# = image_tag "//www-mercari-jp.akamaized.net/assets/img/common/jp/download_content_pc.png?206587138"
+
+-# 画像スライドショーの処理
+%ul.slide
+  %li
+    = image_tag"mercariの画像6.png",class: "image-size"
+  %li
+    = image_tag"mercariの画像1.png",class: "image-size"
+  %li
+    = image_tag"mercariの画像2.png",class: "image-size"
+  

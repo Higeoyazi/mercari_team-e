@@ -110,6 +110,10 @@ private
     @product = Product.find(params[:id])
   end
 
+  def set_parents
+    @parents = Category.where(ancestry: nil)
+  end
+
   def product_params
     params.require(:product).permit(
       :name,
@@ -125,7 +129,4 @@ private
     ).merge(user_id: current_user.id)
   end
 
-  def set_parents
-    @parents = Category.where(ancestry: nil)
-  end
 end
