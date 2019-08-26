@@ -66,6 +66,7 @@ class ProductsController < ApplicationController
 
 
   def destroy
+    binding.pry
     @product.destroy
     flash[:notice] = "削除しました"
     redirect_to root_path
