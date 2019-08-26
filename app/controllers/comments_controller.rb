@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
 
   before_action  :authenticate_user!
+  before_action  :set_parents
 
   def create
     @product = Product.find(params[:id])
@@ -13,6 +14,12 @@ class CommentsController < ApplicationController
       @comments = @product.comments
       render 'products/show'
     end
+  end
+
+  private
+
+  def set_parents
+    @parents = Category.where(ancestry: nil)
   end
 
   def comment_params
