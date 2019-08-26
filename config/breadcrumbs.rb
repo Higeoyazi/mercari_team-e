@@ -1,3 +1,4 @@
+# パンくずリストの設定です。
 crumb :root do
   link "メルカリ", root_path
 end
