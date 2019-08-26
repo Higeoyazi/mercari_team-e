@@ -9,13 +9,11 @@ $(function() {
 
     $(document).on("click","#delete-comformation-btn",function(){
       let ProductID = $(this).attr("data-product.id");
-
       $.ajax({
         url: "/products/" + ProductID,
         type: "POST",
         data: {"id":ProductID,"_method": "DELETE"} 
       }) 
-
     })
   });
 });
