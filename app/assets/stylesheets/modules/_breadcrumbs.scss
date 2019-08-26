@@ -1,0 +1,22 @@
+.breadcrumbs{
+  border: solid;
+  border-width: thin;
+  border-color: #eae6e6;
+  background-color: $white;
+  a{
+    text-decoration: none;
+    color: black;
+    display: inline-block;
+  }
+  &_list{
+    height: 49px;
+    line-height: 3.2;
+    margin: 0px 141px;
+    padding: 3px 0px;
+    font-size: 15px;
+    .current{
+      font-weight: 600;
+    }
+  }
+  
+}

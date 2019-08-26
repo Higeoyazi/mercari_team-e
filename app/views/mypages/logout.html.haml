@@ -1,6 +1,9 @@
 .wrapper
   = render 'shared/header'
-  = render 'shared/exhibit-btn'  
+  = render 'shared/exhibit-btn' 
+  -# 以下の2行はパンくずリストを表示させるコード
+  - breadcrumb :logout_mypages
+  = render "shared/breadcrumbs"
   .wrapper-mypage
     .container-mypage
       = render partial:"shared/sidebar"
