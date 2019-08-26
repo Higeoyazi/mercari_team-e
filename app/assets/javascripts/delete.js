@@ -1,3 +1,6 @@
+// ブラウザのコンソール上において、エラーが発生するため、一時コメントアウトしています。
+// 必要に応じてコメントアウトを外していただいて大丈夫です!
+
 // document.addEventListener(
 //   "DOMContentLoaded", e => {
 //     let modal_open = document.getElementById("modal-open-btn");
