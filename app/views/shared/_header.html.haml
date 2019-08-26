@@ -19,8 +19,8 @@
           %h2
             = fa_icon "tags", class: "option__icon"
             %span ブランドから探す
-      .lower__right
 
+      .lower__right
         - if user_signed_in?
           %ul.user-nav
             =link_to "", class: "user-nav__menu" do
@@ -42,12 +42,12 @@
             %li
               = link_to 'ログイン', new_user_session_path, class: 'login-nav__signin'
       
-      -# .lower__left__categry__box#categry__box
-      -#   .lower__left__categry__list
-      -#     %ul.lower__left__categry__list__parent
-      -#       - @parents.each do |parent|
-      -#         %li.lower__left__categry__list__parent__list
-      -#           %h3
-      -#             = link_to "#{parent.name}",category_products_path, class: "parent_category",id: "#{parent.id}"
-      -#     %ul.lower__left__categry__list__child
-      -#     %ul.lower__left__categry__list__grandchild
+      -# カテゴリーの一覧表示
+      .lower__categries__box#categries__box
+        %ul.lower__categries__box__parents
+          - @parents.each do |parent|
+            %li.lower__categries__box__parent
+              %h3
+                = link_to "#{parent.name}",category_products_path, class: "parent_category",id: "#{parent.id}"
+        %ul.lower__categries__box__children
+        %ul.lower__categries__box__grandchildren

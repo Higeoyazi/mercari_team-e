@@ -1,5 +1,7 @@
 @import 'reset';
 @import 'font-awesome';
+@import 'slick-theme';
+@import 'slick';
 @import 'config/colors';
 @import 'mixins/mixin';
 @import 'modules/product-new';
@@ -9,6 +11,7 @@
 @import 'modules/product-header';
 @import 'modules/wrapper';
 @import 'modules/header';
+@import 'modules/images-slide';
 @import 'modules/footer';
 @import 'modules/exhibit-btn';
 @import 'modules/products';
@@ -28,7 +31,6 @@
 @import 'modules/sidebar';
 @import 'modules/validation_error';
 @import 'modules/flash';
-
 
 // ページ全体の基本のfontや背景色
 body{
