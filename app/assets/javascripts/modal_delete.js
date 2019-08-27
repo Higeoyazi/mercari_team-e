@@ -14,7 +14,6 @@ $(function() {
         data: {"id":ProductID,"_method": "DELETE"} 
         // このような記述でDELETEメソッドに読み替えてくれる
       })
-      debugger
     })
   });
 });
