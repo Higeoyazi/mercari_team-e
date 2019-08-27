@@ -62,6 +62,10 @@ class ProductsController < ApplicationController
     search_keywords = params[:keyword]
     @products = Product.where('name LIKE(?)', "%#{search_keywords}%")
     @search_keywords = search_keywords
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
 
