@@ -29,7 +29,7 @@ $(document).on('turbolinks:load', function() {
         data: {parent_id: id},
         datatype: "json"  
       })
-
+      
       .done(function(children){
         children.forEach(function(child){
           let html = buildChildHTML(child);

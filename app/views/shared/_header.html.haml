@@ -9,10 +9,6 @@
         %input{type: "search", class:"form", placeholder:"何かお探しですか？",name:"keyword"}
         %button{type: "submit", class:"mask"}
           = fa_icon "search", class: "mask__search"
-          -# インクリメンタルサーチの結果
-    -# .box_product_search_result
-    -#   %ul.product_search_result
-
     .lower
       %ul.lower__left
         =link_to "", class: "option", id: "search-categories" do
@@ -23,7 +19,6 @@
           %h2
             = fa_icon "tags", class: "option__icon"
             %span ブランドから探す
-
       .lower__right
         - if user_signed_in?
           %ul.user-nav
@@ -45,7 +40,6 @@
               = link_to '新規会員登録', step1_signup_index_path, class: 'login-nav__signup'
             %li
               = link_to 'ログイン', new_user_session_path, class: 'login-nav__signin'
-      
       -# カテゴリーの一覧表示
       .lower__categries__box#categries__box
         %ul.lower__categries__box__parents
@@ -55,3 +49,5 @@
                 = link_to "#{parent.name}",category_products_path, class: "parent_category",id: "#{parent.id}"
         %ul.lower__categries__box__children
         %ul.lower__categries__box__grandchildren
+      -# インクリメンタルサーチの検索結果の一覧画面
+      %ul.product__search__result__box

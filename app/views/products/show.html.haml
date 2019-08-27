@@ -71,7 +71,7 @@
               %div 確認
               %div 本当に削除しますか？
             %button#modal-close-btn キャンセル
-            %button#delete-comformation-btn{"data-product.id":"#{@product.id}"} 削除する
+            %button#delete-comformation-btn{"data-product-id":"#{@product.id}"} 削除する
       - else
         = link_to confirm_product_path(@product), class: "buy-btn" do
           購入画面へ進む      
