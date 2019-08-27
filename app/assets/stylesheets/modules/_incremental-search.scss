@@ -1,0 +1,24 @@
+.product__search__result__box{
+  width: 841px;
+  min-height: 40px;
+  max-height: 410px;
+  overflow: scroll;
+  line-height: 4px;
+  margin-left: auto;
+  z-index: 1;
+  position: relative;
+  background-color: white;
+  border: solid;
+  border-width: thin;
+  border-color: gray;
+  display: none;
+  &__list{
+    padding: 20px 40px;
+    display: inline-block;
+    &__name{
+      text-decoration: none;
+      color: black;
+      font-size: 15px;
+    }
+  }
+}
