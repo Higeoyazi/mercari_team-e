@@ -3,22 +3,19 @@ $(document).on('turbolinks:load', function() {
 
   $(function() {
 
+    // インクリメンタルサーチの実装
     var search_list = $(".product__search__result__box");
 
     function appendProduct(product){
       var html = `<li class="product__search__result__box__list" data-product-id="${product.id}">
-                    <a href="/products/search" class="product__search__result__box__list__name" name:"keyword">
-                      ${product.name}
-                    </a>
+                    <span class="product__search__result__box__list__name" name:"keyword">${product.name}</span>
                   </li>`
       search_list.append(html);
     }
 
     function appendErrMsgToHTML(nothing_product){
       var html = `<li class="product__search__result__box__list">
-                    <span class="product__search__result__box__list__name">
-                      ${nothing_product}
-                    </span>  
+                    <span class="product__search__result__box__list__name">${nothing_product}</span>  
                   </li>`
       search_list.append(html)
     }
@@ -54,7 +51,32 @@ $(document).on('turbolinks:load', function() {
       });
     });
 
-    // カーソルが検索結果画面boxから外れた時、boxが非表示にする処理
+    // インクリメンタルサーチ後の実装
+    // 検索結果boxの文字列をクリックすると、検索窓にクリックした文字列を表示させることができる処理
+    $(document).on("click",".product__search__result__box__list__name",function(){
+      let clicked_text = $(this).text();
+
+      function showHTML(product){
+          let html = `${product.name}`
+        return html;
+      }
+
+      $.ajax({
+        type: 'GET',
+        url: '/products/search',
+        data: { keyword: clicked_text },
+        dataType: 'json'
+      })
+      
+      .done(function(products) {
+        products.forEach(function(product){
+          html = showHTML(product)
+          $('input[name="keyword"]').val(html);
+        });
+      });
+    });
+
+    // カーソルが検索結果画面boxから外れた時、boxを一時非表示にする処理
     $(document).on("mouseleave",".product__search__result__box",function(){
       $(".product__search__result__box").hide();
     });
