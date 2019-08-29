@@ -13,5 +13,7 @@
     %script{src: "https://js.pay.jp/", type: "text/javascript"}/
     -# 以下の1行は、画像スライドショーを実装するためのコード
     %script{ type: "text/javascript", src: "//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"}
+    -# 以下の1行は、コメント送信のAjax化した際に時刻表示を調節するプラグインを使用するためのコード
+    %script{src: "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.23.0/locale/ja.js"}
   %body
     = yield
