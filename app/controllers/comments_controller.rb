@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
     if @comment.valid?
       @comment.save
         respond_to do |format|
-          format.html { redirect_to controller: 'products', action: 'show' }
+          format.html { redirect_to product }
           format.json
         end
     else
