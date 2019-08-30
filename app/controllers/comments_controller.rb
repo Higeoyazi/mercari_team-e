@@ -8,7 +8,10 @@ class CommentsController < ApplicationController
     @comment = @product.comments.new(comment_params)
     if @comment.valid?
       @comment.save
-      redirect_to controller: 'products', action: 'show'
+        respond_to do |format|
+          format.html { redirect_to product }
+          format.json
+        end
     else
       @product = Product.find(params[:id])
       @comments = @product.comments

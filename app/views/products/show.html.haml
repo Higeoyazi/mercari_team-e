@@ -71,7 +71,7 @@
               %div 確認
               %div 本当に削除しますか？
             %button#modal-close-btn キャンセル
-            %button#delete-comformation-btn{"data-product-id":"#{@product.id}"} 削除する
+            %button#delete-comformation-btn{"data-product-id": "#{@product.id}"} 削除する
       - else
         = link_to confirm_product_path(@product), class: "buy-btn" do
           購入画面へ進む      
@@ -105,8 +105,6 @@
                   %time(datetime="#{comment.created_at}")= time_ago_in_words(comment.created_at)
                   前
                   %i.far.fa-flag
-                  
-                
 
       .comment__form.clearfix
         = form_for @comment, builder: CustomFormBuilder, url: comments_path, local: true, class: "comment__form" do |f|
