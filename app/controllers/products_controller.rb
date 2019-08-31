@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
 
   require 'payjp'
   before_action :set_product, only: [:edit, :show, :destroy, :update]
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :category, :search]
   before_action :set_parents, only: [:index, :show,:search]
 
   def index
